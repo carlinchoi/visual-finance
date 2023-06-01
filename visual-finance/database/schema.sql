@@ -1,0 +1,24 @@
+BEGIN TRANSACTION;
+
+DROP TABLE IF EXISTS volunteer_application;
+DROP TABLE IF EXISTS volunteers CASCADE;
+DROP TABLE IF EXISTS users CASCADE;
+DROP TABLE IF EXISTS administrators CASCADE;
+DROP TABLE IF EXISTS adoptions;
+DROP TABLE IF EXISTS pets CASCADE;
+DROP TABLE IF EXISTS pet_photos;
+
+
+CREATE TABLE users (
+	user_id SERIAL,
+	username VARCHAR(50) NOT NULL UNIQUE,
+	password_hash VARCHAR(200) NOT NULL,
+	role VARCHAR(50) NOT NULL,
+    email VARCHAR(255),
+    first_name VARCHAR(255),
+    last_name VARCHAR(255),
+    phone VARCHAR(255),
+	CONSTRAINT PK_user PRIMARY KEY (user_id)
+);
+
+COMMIT TRANSACTION;
