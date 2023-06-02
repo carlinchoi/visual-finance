@@ -3,8 +3,10 @@ package carlinchoi.visualfinance.dao;
 import carlinchoi.visualfinance.model.StockFinancials;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+@Service
 public class StockFinancialAPIService {
     private static final String API_URL = "https://api.polygon.io/vX/reference/financials";
     private final RestTemplate restTemplate;
@@ -21,4 +23,3 @@ public class StockFinancialAPIService {
         return restTemplate.getForObject(url, StockFinancials.class);
     }
 }
-
