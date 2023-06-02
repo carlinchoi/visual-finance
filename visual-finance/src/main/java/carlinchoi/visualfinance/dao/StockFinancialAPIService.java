@@ -2,24 +2,23 @@ package carlinchoi.visualfinance.dao;
 
 import carlinchoi.visualfinance.model.StockFinancials;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.client.RestTemplate;
 
 public class StockFinancialAPIService {
-    @Service
-    public class FinancialAPIService {
-        private static final String API_URL = "https://api.polygon.io/vX/reference/financials?ticker=AAPL&apiKey=vwp7xrRUR8gCvOCfzsjMK_AFhqgSt_hj"; // Replace with the actual API endpoint
+    private static final String API_URL = "https://api.polygon.io/vX/reference/financials";
+    private final RestTemplate restTemplate;
+    private final String apiKey;
 
-        private final RestTemplate restTemplate;
-
-        @Autowired
-        public FinancialAPIService(RestTemplate restTemplate) {
-            this.restTemplate = restTemplate;
-        }
-
-        public StockFinancials getFinancialData() {
-            return restTemplate.getForObject(API_URL, StockFinancials.class);
-        }
+    @Autowired
+    public StockFinancialAPIService(RestTemplate restTemplate, @Value("${polygon.api.key}") String apiKey) {
+        this.restTemplate = restTemplate;
+        this.apiKey = apiKey;
     }
 
+    public StockFinancials getFinancialData(String ticker) {
+        String url = API_URL + "?ticker=" + ticker + "&apiKey=" + apiKey;
+        return restTemplate.getForObject(url, StockFinancials.class);
+    }
 }
+
