@@ -1,7 +1,6 @@
 package carlinchoi.visualfinance.security.jwt;
 
 import io.jsonwebtoken.*;
-import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -16,6 +15,7 @@ import org.springframework.stereotype.Component;
 
 import java.security.Key;
 import java.util.Arrays;
+import java.util.Base64;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;
@@ -45,7 +45,7 @@ public class TokenProvider implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() {
-        byte[] keyBytes = Decoders.BASE64.decode(base64Secret);
+        byte[] keyBytes = Base64.getDecoder().decode(base64Secret);
         this.key = Keys.hmacShaKeyFor(keyBytes);
     }
 
