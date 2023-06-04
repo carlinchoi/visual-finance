@@ -1,5 +1,4 @@
 package carlinchoi.visualfinance.security;
-
 import carlinchoi.visualfinance.security.jwt.JWTConfigurer;
 import carlinchoi.visualfinance.security.jwt.TokenProvider;
 import org.springframework.context.annotation.Bean;
