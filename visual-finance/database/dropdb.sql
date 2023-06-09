@@ -5,9 +5,9 @@
 -- The following line terminates any active connections to the database so that it can be destroyed
 SELECT pg_terminate_backend(pid)
 FROM pg_stat_activity
-WHERE datname = 'visual-finance';
+WHERE datname = 'visualfinance';
 
-DROP DATABASE visual-finance;
+DROP DATABASE visualfinance;
 
-DROP USER visual-finance_owner;
-DROP USER visual-finance_appuser;
+DROP USER visual_finance_owner;
+DROP USER visual_finance_appuser;

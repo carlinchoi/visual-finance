@@ -2,11 +2,11 @@
 -- This script creates the database users and grants them the necessary permissions
 -- ********************************************************************************
 --
-CREATE USER final_capstone_owner
-WITH PASSWORD 'finalcapstone';
+CREATE USER visual_finance_owner
+WITH PASSWORD 'visualfinance';
 
-CREATE USER final_capstone_appuser
-WITH PASSWORD 'finalcapstone';
+CREATE USER visual_finance_appuser
+WITH PASSWORD 'visualfinance';
 
 GRANT ALL
 ON ALL TABLES IN SCHEMA public
