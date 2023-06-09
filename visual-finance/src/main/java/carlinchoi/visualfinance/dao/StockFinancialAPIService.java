@@ -1,7 +1,6 @@
 package carlinchoi.visualfinance.dao;
 
 import carlinchoi.visualfinance.model.StockFinancials;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
@@ -12,7 +11,6 @@ public class StockFinancialAPIService {
     private final RestTemplate restTemplate;
     private final String apiKey;
 
-    @Autowired
     public StockFinancialAPIService(RestTemplate restTemplate, @Value("${polygon.api.key}") String apiKey) {
         this.restTemplate = restTemplate;
         this.apiKey = apiKey;
@@ -23,3 +21,4 @@ public class StockFinancialAPIService {
         return restTemplate.getForObject(url, StockFinancials.class);
     }
 }
+
