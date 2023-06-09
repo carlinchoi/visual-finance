@@ -15,11 +15,16 @@ public class UserController {
     private UserDao userDao;
 
     public UserController(UserDao userDao) {
-        //this.pet = pet;
         this.userDao = userDao;
     }
 
-    //(`/user/${userId}`)
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(value="/all", method = RequestMethod.GET)
+        public List<User> findAll() {
+        List<User> allUsers = userDao.findAll();
+        return allUsers;
+    }
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{userId}", method = RequestMethod.GET)
         public User getUserById(@PathVariable("userId") int userId) {
@@ -39,38 +44,6 @@ public class UserController {
     public void deleteUser(@RequestBody User user, @PathVariable("username") String username) {
         user = userDao.getUserByUsername(username);
         userDao.deleteUser(user);
-    }
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value="/pending-volunteer",method=RequestMethod.POST)
-    public boolean pendingVolunteer(@RequestBody User user){
-        return userDao.createPendingVolunteerUser(user);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value="/pending-volunteer",method=RequestMethod.PUT)
-    public void updateVolunteer(@RequestBody User user){
-         userDao.updatePendingVolunteerUser(user);
-    }
-
-
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/pending-volunteer/{userId}", method = RequestMethod.PUT)
-    public void updatePendingVolunteerRole(@PathVariable("userId") int userId, @RequestParam String newRole) {
-        userDao.updateUserRole(userId, newRole);
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/volunteer", method = RequestMethod.GET)
-    List<User> findAllVolunteersAndAdmin() {
-        List<User> volunteerList = userDao.findAllVolunteersAndAdmin();
-        return volunteerList;
-    }
-
-    @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(value = "/application-status/{userId}", method = RequestMethod.PUT)
-    public void updateUserApplicationStatus(@PathVariable("userId") int userId, @RequestParam String newStatus) {
-        userDao.updateUserApplicationStatus(userId, newStatus);
     }
 
     @ResponseStatus(HttpStatus.OK)
