@@ -91,4 +91,20 @@ public class StockFinancials {
     public void setNet_cash_flow(long net_cash_flow) {
         this.net_cash_flow = net_cash_flow;
     }
+
+    @Override
+    public String toString() {
+        return "StockFinancials{" +
+                "tickers='" + tickers + '\'' +
+                ", company_name='" + company_name + '\'' +
+                ", current_liabilities=" + current_liabilities +
+                ", diluted_earnings_per_share=" + diluted_earnings_per_share +
+                ", gross_profit=" + gross_profit +
+                ", basic_earnings_per_share=" + basic_earnings_per_share +
+                ", revenues=" + revenues +
+                ", costs_and_expenses=" + costs_and_expenses +
+                ", net_income_loss=" + net_income_loss +
+                ", net_cash_flow=" + net_cash_flow +
+                '}';
+    }
 }

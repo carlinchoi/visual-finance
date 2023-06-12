@@ -1,4 +1,4 @@
-package carlinchoi.visualfinance.dao;
+package carlinchoi.visualfinance.service;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

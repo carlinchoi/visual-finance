@@ -1,4 +1,4 @@
-package carlinchoi.visualfinance.dao;
+package carlinchoi.visualfinance.service;
 
 
 import carlinchoi.visualfinance.Entity.EmailDetails;

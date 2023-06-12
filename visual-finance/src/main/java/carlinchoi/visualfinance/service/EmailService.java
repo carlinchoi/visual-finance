@@ -1,4 +1,4 @@
-package carlinchoi.visualfinance.dao;
+package carlinchoi.visualfinance.service;
 
 // Java Program to Illustrate Creation Of
 // Service Interface

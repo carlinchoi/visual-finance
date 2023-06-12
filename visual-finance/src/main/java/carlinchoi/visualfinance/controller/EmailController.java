@@ -2,7 +2,7 @@ package carlinchoi.visualfinance.controller;
 
 
 import carlinchoi.visualfinance.Entity.EmailDetails;
-import carlinchoi.visualfinance.dao.EmailService;
+import carlinchoi.visualfinance.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;

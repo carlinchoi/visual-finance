@@ -1,4 +1,4 @@
-package carlinchoi.visualfinance.dao;
+package carlinchoi.visualfinance.service;
 
 import carlinchoi.visualfinance.model.StockFinancials;
 import org.springframework.beans.factory.annotation.Value;
