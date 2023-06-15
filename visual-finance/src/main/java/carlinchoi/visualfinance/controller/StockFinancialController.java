@@ -21,15 +21,10 @@ public class StockFinancialController {
 
     @RequestMapping("/financial-data")
     public StockFinancials getFinancialData(@RequestParam("ticker") String ticker, Model model) {
-        return stockFinancialAPIService.getFinancialData(ticker);
+        StockFinancials financialData = stockFinancialAPIService.getFinancialData(ticker);
+        System.out.println(financialData); // Log the financial data
+        return financialData;
     }
 
-//    @GetMapping("/financial-data")
-//    public String getFinancialData(@RequestParam("ticker") String ticker, Model model) {
-//        StockFinancials stockFinancials = stockFinancialAPIService.getFinancialData(ticker);
-//        model.addAttribute("stockFinancials", stockFinancials);
-//        return "financial-data"; // Return the name of the view template
-//    }
-
-
+    // ...
 }

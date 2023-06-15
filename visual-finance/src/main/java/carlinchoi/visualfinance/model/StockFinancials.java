@@ -2,44 +2,154 @@ package carlinchoi.visualfinance.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.util.Arrays;
+
 public class StockFinancials {
-    @JsonProperty("tickers")
-    private String ticker;
-    @JsonProperty("company_name")
-    private String companyName;
-    @JsonProperty("financials")
-    private StockFinancials financialsData;
+    private Result[] results;
 
-    public String getTicker() {
-        return ticker;
+    public Result[] getResults() {
+        return results;
     }
 
-    public void setTicker(String ticker) {
-        this.ticker = ticker;
+    public void setResults(Result[] results) {
+        this.results = results;
     }
 
-    public String getCompanyName() {
-        return companyName;
+    public static class Result {
+        @JsonProperty("tickers")
+        private String[] tickers;
+        @JsonProperty("company_name")
+        private String companyName;
+        @JsonProperty("financials")
+        private Financials financials;
+
+        public String[] getTickers() {
+            return tickers;
+        }
+
+        public void setTickers(String[] tickers) {
+            this.tickers = tickers;
+        }
+
+        public String getCompanyName() {
+            return companyName;
+        }
+
+        public void setCompanyName(String companyName) {
+            this.companyName = companyName;
+        }
+
+        public Financials getFinancials() {
+            return financials;
+        }
+
+        public void setFinancials(Financials financials) {
+            this.financials = financials;
+        }
+
+        @Override
+        public String toString() {
+            return "Result{" +
+                    "tickers=" + Arrays.toString(tickers) +
+                    ", companyName='" + companyName + '\'' +
+                    ", financials=" + financials +
+                    '}';
+        }
     }
 
-    public void setCompanyName(String companyName) {
-        this.companyName = companyName;
+    public static class Financials {
+        @JsonProperty("balance_sheet")
+        private BalanceSheet balanceSheet;
+
+        public BalanceSheet getBalanceSheet() {
+            return balanceSheet;
+        }
+
+        public void setBalanceSheet(BalanceSheet balanceSheet) {
+            this.balanceSheet = balanceSheet;
+        }
+
+        @Override
+        public String toString() {
+            return "Financials{" +
+                    "balanceSheet=" + balanceSheet +
+                    '}';
+        }
     }
 
-    public StockFinancials getFinancialsData() {
-        return financialsData;
+    public static class BalanceSheet {
+        @JsonProperty("current_liabilities")
+        private BalanceSheetItem currentLiabilities;
+
+        public BalanceSheetItem getCurrentLiabilities() {
+            return currentLiabilities;
+        }
+
+        public void setCurrentLiabilities(BalanceSheetItem currentLiabilities) {
+            this.currentLiabilities = currentLiabilities;
+        }
+
+        @Override
+        public String toString() {
+            return "BalanceSheet{" +
+                    "currentLiabilities=" + currentLiabilities +
+                    '}';
+        }
     }
 
-    public void setFinancialsData(StockFinancials financialsData) {
-        this.financialsData = financialsData;
+    public static class BalanceSheetItem {
+        private long value;
+        private String unit;
+        private String label;
+        private int order;
+
+        public long getValue() {
+            return value;
+        }
+
+        public void setValue(long value) {
+            this.value = value;
+        }
+
+        public String getUnit() {
+            return unit;
+        }
+
+        public void setUnit(String unit) {
+            this.unit = unit;
+        }
+
+        public String getLabel() {
+            return label;
+        }
+
+        public void setLabel(String label) {
+            this.label = label;
+        }
+
+        public int getOrder() {
+            return order;
+        }
+
+        public void setOrder(int order) {
+            this.order = order;
+        }
+
+        @Override
+        public String toString() {
+            return "BalanceSheetItem{" +
+                    "value=" + value +
+                    ", unit='" + unit + '\'' +
+                    ", label='" + label + '\'' +
+                    ", order=" + order +
+                    '}';
+        }
     }
 
     @Override
     public String toString() {
         return "StockFinancials{" +
-                "ticker='" + ticker + '\'' +
-                ", companyName='" + companyName + '\'' +
-                ", financialsData=" + financialsData +
+                "results=" + Arrays.toString(results) +
                 '}';
     }
 }
