@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="7308568c-2145-480f-a4f0-d3c0578cdde9" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/README.md" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/package-lock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/package.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/favicon.ico" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/logo192.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/logo512.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/manifest.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/public/robots.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/App.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/App.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/App.test.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/index.css" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/logo.svg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/reportWebVitals.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/setupTests.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/store/features/counterSlice.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/frontend/my-app/src/store/index.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/.mvn/wrapper/maven-wrapper.jar" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/database/create.sh" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/database/data.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/database/dropdb.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/database/schema.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/database/user.sql" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/mvnw" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/mvnw.cmd" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/pom.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/Entity/EmailDetails.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/VisualFinanceApplication.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/controller/AuthenticationController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/controller/EmailController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/controller/SecurityTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/controller/StockFinancialController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/controller/UserController.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/dao/JdbcUserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/dao/UserDao.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/Authority.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/LoginDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/LoginResponseDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/RegisterUserDto.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/StockFinancials.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/model/User.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/JwtAccessDeniedHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/JwtAuthenticationEntryPoint.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/SecurityUtils.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/UserModelDetailsService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/UserNotActivatedException.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/WebSecurityConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/jwt/JWTConfigurer.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/jwt/JWTFilter.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/security/jwt/TokenProvider.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/service/EmailService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/service/EmailServiceImpl.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/service/RestTemplateConfig.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/java/carlinchoi/visualfinance/service/StockFinancialAPIService.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/main/resources/application.properties" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/visual-finance/src/test/java/carlinchoi/visualfinance/VisualFinanceApplicationTests.java" beforeDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectId" id="2RRbSOAybc2o0UpDu8isBcrVHF7" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "last_opened_file_path": "S:/Workspace/Side Projects/visual-finance/backend",
+    "settings.editor.selected.configurable": "configurable.group.appearance"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="7308568c-2145-480f-a4f0-d3c0578cdde9" name="Changes" comment="" />
+      <created>1687215839461</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1687215839461</updated>
+    </task>
+    <servers />
+  </component>
+</project>
