@@ -19,10 +19,8 @@ import {
 } from '@mui/material';
 
 // project import
-import OrdersTable from './OrdersTable';
 import IncomeAreaChart from './IncomeAreaChart';
 import MonthlyBarChart from './MonthlyBarChart';
-import ReportAreaChart from './ReportAreaChart';
 import SalesColumnChart from './SalesColumnChart';
 import MainCard from 'components/MainCard';
 import AnalyticEcommerce from 'components/cards/statistics/AnalyticEcommerce';
@@ -148,17 +146,6 @@ const DashboardDefault = () => {
       </Grid>
 
       {/* row 3 */}
-      <Grid item xs={12} md={7} lg={8}>
-        <Grid container alignItems="center" justifyContent="space-between">
-          <Grid item>
-            <Typography variant="h5">Recent Orders</Typography>
-          </Grid>
-          <Grid item />
-        </Grid>
-        <MainCard sx={{ mt: 2 }} content={false}>
-          <OrdersTable />
-        </MainCard>
-      </Grid>
       <Grid item xs={12} md={5} lg={4}>
         <Grid container alignItems="center" justifyContent="space-between">
           <Grid item>
@@ -181,7 +168,6 @@ const DashboardDefault = () => {
               <Typography variant="h5">Low</Typography>
             </ListItemButton>
           </List>
-          <ReportAreaChart />
         </MainCard>
       </Grid>
 
