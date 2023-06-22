@@ -1,53 +1,28 @@
-import React, { useEffect, useState } from 'react';
+// import axios from '../boot/axios.js';
 
-const FinancialData = () => {
-  const [financialData, setFinancialData] = useState(null);
+const fetchFinancialData = async (ticker) => {
+  try {
+    // const response = await axios.get('/financial-data', {
+    //   params: {
+    //     ticker: ticker
+    //   }
+    // });
 
-  useEffect(() => {
-    fetch('/financial-data?ticker=AAPL')
-      .then((response) => response.json())
-      .then((data) => {
-        setFinancialData(data);
-      })
-      .catch((error) => {
-        console.error('Error fetching financial data:', error);
-      });
-  }, []);
-
-  if (!financialData) {
-    return <div>Loading...</div>;
+    // // Handle the response, update the state, etc.
+    // console.log(response.data);
+    console.log(ticker);
+  } catch (error) {
+    // Handle the error
+    console.error(error);
   }
-
-  return (
-    <div>
-      <h2>{financialData.company_name}</h2>
-      <table>
-        <thead>
-          <tr>
-            <th>Label</th>
-            <th>Value</th>
-            <th>Unit</th>
-          </tr>
-        </thead>
-        <tbody>
-          {Object.entries(financialData.financials).map(([category, items]) => (
-            <React.Fragment key={category}>
-              <tr>
-                <td colSpan="3">{category}</td>
-              </tr>
-              {Object.values(items).map((item) => (
-                <tr key={item.order}>
-                  <td>{item.label}</td>
-                  <td>{item.value}</td>
-                  <td>{item.unit}</td>
-                </tr>
-              ))}
-            </React.Fragment>
-          ))}
-        </tbody>
-      </table>
-    </div>
-  );
 };
 
-export default FinancialData;
+// Example usage
+const handleSearch = (ticker) => {
+  fetchFinancialData(ticker);
+};
+
+// Call the function with the desired ticker from user input
+handleSearch('AAPL'); // Example: Passing 'AAPL' as the ticker
+
+export default handleSearch;

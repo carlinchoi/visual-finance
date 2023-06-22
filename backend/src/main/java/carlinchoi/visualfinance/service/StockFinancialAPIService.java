@@ -3,9 +3,11 @@ package carlinchoi.visualfinance.service;
 import carlinchoi.visualfinance.model.StockFinancials;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 @Service
+@CrossOrigin
 public class StockFinancialAPIService {
     private static final String API_URL = "https://api.polygon.io/vX/reference/financials";
     private final RestTemplate restTemplate;
