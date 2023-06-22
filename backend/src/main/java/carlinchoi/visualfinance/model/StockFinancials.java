@@ -243,26 +243,6 @@ public class StockFinancials {
         }
     }
 
-    public static class CashFlowStatement {
-        @JsonProperty("net_cash_flow")
-        private CashFlowStatementItem netCashFlow;
-
-        public CashFlowStatementItem getNetCashFlow() {
-            return netCashFlow;
-        }
-
-        public void setNetCashFlow(CashFlowStatementItem netCashFlow) {
-            this.netCashFlow = netCashFlow;
-        }
-
-        @Override
-        public String toString() {
-            return "CashFlowStatement{" +
-                    "netCashFlow=" + netCashFlow +
-                    '}';
-        }
-    }
-
     public static class IncomeStatementItem {
         private double value;
         private String unit;
@@ -312,17 +292,59 @@ public class StockFinancials {
         }
     }
 
+    public static class CashFlowStatement {
+        @JsonProperty("operating_cash_flow")
+        private CashFlowStatementItem operatingCashFlow;
+        @JsonProperty("investing_cash_flow")
+        private CashFlowStatementItem investingCashFlow;
+        @JsonProperty("financing_cash_flow")
+        private CashFlowStatementItem financingCashFlow;
+
+        public CashFlowStatementItem getOperatingCashFlow() {
+            return operatingCashFlow;
+        }
+
+        public void setOperatingCashFlow(CashFlowStatementItem operatingCashFlow) {
+            this.operatingCashFlow = operatingCashFlow;
+        }
+
+        public CashFlowStatementItem getInvestingCashFlow() {
+            return investingCashFlow;
+        }
+
+        public void setInvestingCashFlow(CashFlowStatementItem investingCashFlow) {
+            this.investingCashFlow = investingCashFlow;
+        }
+
+        public CashFlowStatementItem getFinancingCashFlow() {
+            return financingCashFlow;
+        }
+
+        public void setFinancingCashFlow(CashFlowStatementItem financingCashFlow) {
+            this.financingCashFlow = financingCashFlow;
+        }
+
+        @Override
+        public String toString() {
+            return "CashFlowStatement{" +
+                    "operatingCashFlow=" + operatingCashFlow +
+                    ", investingCashFlow=" + investingCashFlow +
+                    ", financingCashFlow=" + financingCashFlow +
+                    '}';
+        }
+    }
+
     public static class CashFlowStatementItem {
-        private double value;
+        private long value;
         private String unit;
         private String label;
         private int order;
 
-        public double getValue() {
+        public long getValue() {
             return value;
         }
 
-        public void setValue(double value) {
+        public void setValue(long value) {
             this.value = value;
         }
 
@@ -359,12 +381,5 @@ public class StockFinancials {
                     ", order=" + order +
                     '}';
         }
-    }
-
-    @Override
-    public String toString() {
-        return "StockFinancials{" +
-                "results=" + Arrays.toString(results) +
-                '}';
     }
 }

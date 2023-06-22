@@ -6,6 +6,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.List;
+
 @Service
 @CrossOrigin
 public class StockFinancialAPIService {
@@ -18,9 +20,12 @@ public class StockFinancialAPIService {
         this.apiKey = apiKey;
     }
 
-    public StockFinancials getFinancialData(String ticker) {
+    public List<StockFinancials.Result> getFinancialData(String ticker) {
         String url = API_URL + "?ticker=" + ticker + "&apiKey=" + apiKey;
-        return restTemplate.getForObject(url, StockFinancials.class);
+        StockFinancials stockFinancials = restTemplate.getForObject(url, StockFinancials.class);
+        if (stockFinancials != null) {
+            return List.of(stockFinancials.getResults());
+        }
+        return List.of();
     }
 }
-
