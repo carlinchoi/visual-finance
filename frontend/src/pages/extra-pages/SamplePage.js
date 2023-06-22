@@ -1,13 +1,12 @@
 import React from 'react';
-import FinancialData from '../../components/FinancialData.js';
 import TestAxios from '../../components/TestAxios.js';
-
+import MonthlyBarChart from 'pages/dashboard/MonthlyBarChart.js';
 const SamplePage = () => {
   return (
     <div>
       {/* Other components */}
-      <FinancialData />
       <TestAxios />
+      <MonthlyBarChart />
       {/* Other components */}
     </div>
   );
