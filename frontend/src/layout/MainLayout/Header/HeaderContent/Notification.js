@@ -22,7 +22,7 @@ import {
 
 // project import
 import MainCard from 'components/MainCard';
-import Transitions from 'components/@extended/Transitions';
+import Transitions from 'components/transitions-animations/Transitions';
 
 // assets
 import { BellOutlined, CloseOutlined, GiftOutlined, MessageOutlined, SettingOutlined } from '@ant-design/icons';
