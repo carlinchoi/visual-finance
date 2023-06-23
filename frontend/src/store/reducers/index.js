@@ -1,11 +1,9 @@
-// third-party
+// index.js
+
 import { combineReducers } from 'redux';
-
-// project import
 import menu from './menu';
+import currentLiabilitiesReducer from './currentLiabilitiesReducer';
 
-// ==============================|| COMBINE REDUCERS ||============================== //
-
-const reducers = combineReducers({ menu });
+const reducers = combineReducers({ menu, currentLiabilities: currentLiabilitiesReducer });
 
 export default reducers;
