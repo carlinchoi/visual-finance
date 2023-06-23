@@ -1,6 +1,13 @@
 // currentLiabilitiesReducer.js
 
-import { FETCH_CURRENT_LIABILITIES } from './actions';
+const FETCH_CURRENT_LIABILITIES = 'FETCH_CURRENT_LIABILITIES';
+
+export const fetchCurrentLiabilities = (data) => {
+  return {
+    type: FETCH_CURRENT_LIABILITIES,
+    payload: data
+  };
+};
 
 const initialState = {
   currentLiabilitiesData: [],
