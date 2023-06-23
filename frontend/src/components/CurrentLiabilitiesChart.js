@@ -13,11 +13,17 @@ const CurrentLiabilitiesChart = () => {
         const response = await axios.get('http://localhost:8080/financial-data?ticker=AAPL');
         const data = response.data;
 
-        // Extract current liabilities data for each quarter
-        const currentLiabilities = data.map((item) => ({
-          quarter: item.fiscal_period,
-          value: item.financials.balance_sheet.current_liabilities.value
-        }));
+        // Filter and extract current liabilities data for each quarter
+        const currentLiabilities = data
+          .filter((item) => {
+            const fiscalPeriod = item.fiscal_period.toUpperCase();
+            return fiscalPeriod === 'Q1' || fiscalPeriod === 'Q2' || fiscalPeriod === 'Q3' || fiscalPeriod === 'Q4';
+          })
+          .map((item) => ({
+            quarter: item.fiscal_period,
+            year: item.fiscal_year,
+            value: item.financials.balance_sheet.current_liabilities.value
+          }));
 
         setCurrentLiabilitiesData(currentLiabilities);
         setLoading(false);
@@ -41,20 +47,40 @@ const CurrentLiabilitiesChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: currentLiabilitiesData.map((item) => item.quarter)
+        categories: currentLiabilitiesData.map((item) => `${item.quarter} ${item.year}`).reverse(),
+        title: {
+          text: 'Fiscal Year + Fiscal Period'
+        }
+      },
+      yaxis: {
+        title: {
+          text: 'In Millions'
+        },
+        labels: {
+          formatter: (value) => `${(value / 1000000).toFixed(0)}M`
+        }
+      },
+      title: {
+        text: 'Current Liabilities',
+        align: 'center',
+        style: {
+          fontSize: '18px',
+          fontWeight: 'bold',
+          fontFamily: undefined
+        }
       }
     },
     series: [
       {
         name: 'Current Liabilities',
-        data: currentLiabilitiesData.map((item) => item.value)
+        data: currentLiabilitiesData.map((item) => item.value / 1000000).reverse()
       }
     ]
   };
 
   return (
     <div>
-      <Chart options={chartData.options} series={chartData.series} type="bar" width={500} height={300} />
+      <Chart options={chartData.options} series={chartData.series} type="bar" width={700} height={500} />
     </div>
   );
 };
