@@ -1,24 +1,38 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
 import Chart from 'react-apexcharts';
 import { fetchCurrentLiabilities } from '../store/reducers/currentLiabilitiesReducer';
 
-const CurrentLiabilitiesChart = () => {
-  const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
-  const loading = useSelector((state) => state.currentLiabilities.loading);
-  const error = useSelector((state) => state.currentLiabilities.error);
-
+const RevenueChart = () => {
   const dispatch = useDispatch();
+  const [revenueData, setRevenueData] = useState([]);
+  const [loading, setLoading] = useState(true);
 
+  // Access the revenue data from the Redux store
+  const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
+
+  useEffect(() => {
+    if (currentLiabilitiesData.length > 0) {
+      // Process the revenue data
+      const revenues = currentLiabilitiesData.map((item) => ({
+        quarter: item.quarter,
+        year: item.year,
+        value: item.financials.income_statement.revenues.value
+      }));
+
+      setRevenueData(revenues);
+      setLoading(false);
+    }
+  }, [currentLiabilitiesData]);
+
+  // Fetch current liabilities data
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const response = await axios.get('http://localhost:8080/financial-data?ticker=AAPL');
-        const data = response.data;
+        const response = await fetch('http://localhost:8080/financial-data?ticker=AAPL');
+        const data = await response.json();
 
-        dispatch(fetchCurrentLiabilities(data)); // Store the entire response.data
-
+        // Filter and extract current liabilities data for each quarter
         const currentLiabilities = data
           .filter((item) => {
             const fiscalPeriod = item.fiscal_period.toUpperCase();
@@ -30,9 +44,10 @@ const CurrentLiabilitiesChart = () => {
             value: item.financials.balance_sheet.current_liabilities.value
           }));
 
+        // Dispatch the action to update the store
         dispatch(fetchCurrentLiabilities(currentLiabilities));
       } catch (error) {
-        console.log(error);
+        console.error(error);
       }
     };
 
@@ -43,14 +58,10 @@ const CurrentLiabilitiesChart = () => {
     return <div>Loading...</div>;
   }
 
-  if (error) {
-    return <div>Error: {error}</div>;
-  }
-
   const chartData = {
     options: {
       xaxis: {
-        categories: currentLiabilitiesData.map((item) => `${item.quarter} ${item.year}`).reverse(),
+        categories: revenueData.map((item) => `${item.quarter} ${item.year}`).reverse(),
         title: {
           text: 'Fiscal Year + Fiscal Period'
         }
@@ -64,7 +75,7 @@ const CurrentLiabilitiesChart = () => {
         }
       },
       title: {
-        text: 'Current Liabilities',
+        text: 'Revenues',
         align: 'center',
         style: {
           fontSize: '18px',
@@ -75,8 +86,8 @@ const CurrentLiabilitiesChart = () => {
     },
     series: [
       {
-        name: 'Current Liabilities',
-        data: currentLiabilitiesData.map((item) => item.value / 1000000).reverse()
+        name: 'Revenues',
+        data: revenueData.map((item) => item.value / 1000000).reverse()
       }
     ]
   };
@@ -88,4 +99,4 @@ const CurrentLiabilitiesChart = () => {
   );
 };
 
-export default CurrentLiabilitiesChart;
+export default RevenueChart;
