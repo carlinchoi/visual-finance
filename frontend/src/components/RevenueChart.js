@@ -34,16 +34,18 @@ const RevenueChart = () => {
     return <div>Error: {error}</div>;
   }
 
-  const revenueData = currentLiabilitiesData.map((item) => ({
-    quarter: item.quarter,
-    year: item.year,
-    value: item.financials.income_statement?.revenues?.value || 0
-  }));
+  const revenueData = currentLiabilitiesData
+    .filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY')
+    .map((item) => ({
+      quarter: item.fiscal_period || 'N/A',
+      year: item.fiscal_year || 'N/A',
+      value: item.financials?.income_statement?.revenues?.value || 0
+    }));
 
   const chartData = {
     options: {
       xaxis: {
-        categories: revenueData.map((item) => `${item.quarter} ${item.year}`).reverse(),
+        categories: revenueData.map((item) => `${item.year} ${item.quarter}`).reverse(),
         title: {
           text: 'Fiscal Year + Fiscal Period'
         }
@@ -73,6 +75,8 @@ const RevenueChart = () => {
       }
     ]
   };
+  console.log(currentLiabilitiesData);
+  console.log(revenueData);
 
   return (
     <div>

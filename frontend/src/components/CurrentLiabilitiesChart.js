@@ -8,10 +8,12 @@ const CurrentLiabilitiesChart = () => {
     return <div>Loading...</div>;
   }
 
+  const filteredData = currentLiabilitiesData.filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY');
+
   const chartData = {
     options: {
       xaxis: {
-        categories: currentLiabilitiesData.map((item) => `${item.quarter} ${item.year}`).reverse(),
+        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse(),
         title: {
           text: 'Fiscal Year + Fiscal Period'
         }
@@ -37,7 +39,7 @@ const CurrentLiabilitiesChart = () => {
     series: [
       {
         name: 'Current Liabilities',
-        data: currentLiabilitiesData.map((item) => item.financials.balance_sheet?.current_liabilities?.value || 0).reverse()
+        data: filteredData.map((item) => item.financials.balance_sheet?.current_liabilities?.value || 0).reverse()
       }
     ]
   };
