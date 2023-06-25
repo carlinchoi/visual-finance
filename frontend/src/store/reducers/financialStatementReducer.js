@@ -1,26 +1,26 @@
 // currentLiabilitiesReducer.js
 
-const FETCH_CURRENT_LIABILITIES = 'FETCH_CURRENT_LIABILITIES';
+const FETCH_FINANCIAL_STATEMENT = 'FETCH_FINANCIAL_STATEMENT';
 
-export const fetchCurrentLiabilities = (data) => {
+export const fetchFinancialStatement = (data) => {
   return {
-    type: FETCH_CURRENT_LIABILITIES,
+    type: FETCH_FINANCIAL_STATEMENT,
     payload: data
   };
 };
 
 const initialState = {
-  currentLiabilitiesData: [],
+  financialStatementData: [],
   loading: true,
   error: null
 };
 
-const currentLiabilitiesReducer = (state = initialState, action) => {
+const financialStatementReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_CURRENT_LIABILITIES:
+    case FETCH_FINANCIAL_STATEMENT:
       return {
         ...state,
-        currentLiabilitiesData: action.payload,
+        financialStatementData: action.payload,
         loading: false,
         error: null
       };
@@ -29,4 +29,4 @@ const currentLiabilitiesReducer = (state = initialState, action) => {
   }
 };
 
-export default currentLiabilitiesReducer;
+export default financialStatementReducer;

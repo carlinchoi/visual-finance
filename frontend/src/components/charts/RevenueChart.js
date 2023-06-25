@@ -1,22 +1,22 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchCurrentLiabilities } from '../../store/reducers/financialStatementReducer';
+import { fetchFinancialStatement } from '../../store/reducers/financialStatementReducer';
 
 const RevenueChart = () => {
   const dispatch = useDispatch();
-  const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
+  const financialStatementData = useSelector((state) => state.currentLiabilities.financialStatementData);
   const loading = useSelector((state) => state.currentLiabilities.loading);
   const error = useSelector((state) => state.currentLiabilities.error);
 
   useEffect(() => {
-    if (currentLiabilitiesData.length === 0) {
+    if (financialStatementData.length === 0) {
       const fetchData = async () => {
         try {
           const response = await fetch('http://localhost:8080/financial-data?ticker=AAPL');
           const data = await response.json();
 
-          dispatch(fetchCurrentLiabilities(data));
+          dispatch(fetchFinancialStatement(data));
         } catch (error) {
           console.error(error);
         }
@@ -24,7 +24,7 @@ const RevenueChart = () => {
 
       fetchData();
     }
-  }, [currentLiabilitiesData, dispatch]);
+  }, [financialStatementData, dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,7 +34,7 @@ const RevenueChart = () => {
     return <div>Error: {error}</div>;
   }
 
-  const revenueData = currentLiabilitiesData
+  const revenueData = financialStatementData
     .filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY')
     .map((item) => ({
       quarter: item.fiscal_period || 'N/A',
@@ -75,7 +75,7 @@ const RevenueChart = () => {
       }
     ]
   };
-  console.log(currentLiabilitiesData);
+  console.log(financialStatementData);
   console.log(revenueData);
 
   return (

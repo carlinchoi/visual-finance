@@ -2,13 +2,13 @@ import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 const CurrentLiabilitiesChart = () => {
-  const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
+  const financialStatementData = useSelector((state) => state.currentLiabilities.financialStatementData);
 
-  if (currentLiabilitiesData.length === 0) {
+  if (financialStatementData.length === 0) {
     return <div>Loading...</div>;
   }
 
-  const filteredData = currentLiabilitiesData.filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY');
+  const filteredData = financialStatementData.filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY');
 
   const chartData = {
     options: {
