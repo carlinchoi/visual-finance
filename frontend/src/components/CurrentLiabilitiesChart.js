@@ -1,50 +1,11 @@
-import React, { useEffect } from 'react';
-import { useSelector, useDispatch } from 'react-redux';
-import axios from 'axios';
+import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchCurrentLiabilities } from '../store/reducers/currentLiabilitiesReducer';
 
 const CurrentLiabilitiesChart = () => {
   const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
-  const loading = useSelector((state) => state.currentLiabilities.loading);
-  const error = useSelector((state) => state.currentLiabilities.error);
 
-  const dispatch = useDispatch();
-
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get('http://localhost:8080/financial-data?ticker=AAPL');
-        const data = response.data;
-
-        dispatch(fetchCurrentLiabilities(data)); // Store the entire response.data
-
-        const currentLiabilities = data
-          .filter((item) => {
-            const fiscalPeriod = item.fiscal_period.toUpperCase();
-            return fiscalPeriod === 'Q1' || fiscalPeriod === 'Q2' || fiscalPeriod === 'Q3' || fiscalPeriod === 'Q4';
-          })
-          .map((item) => ({
-            quarter: item.fiscal_period,
-            year: item.fiscal_year,
-            value: item.financials.balance_sheet.current_liabilities.value
-          }));
-
-        dispatch(fetchCurrentLiabilities(currentLiabilities));
-      } catch (error) {
-        console.log(error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
-
-  if (loading) {
+  if (currentLiabilitiesData.length === 0) {
     return <div>Loading...</div>;
-  }
-
-  if (error) {
-    return <div>Error: {error}</div>;
   }
 
   const chartData = {
@@ -76,7 +37,7 @@ const CurrentLiabilitiesChart = () => {
     series: [
       {
         name: 'Current Liabilities',
-        data: currentLiabilitiesData.map((item) => item.value / 1000000).reverse()
+        data: currentLiabilitiesData.map((item) => item.financials.balance_sheet?.current_liabilities?.value || 0).reverse()
       }
     ]
   };

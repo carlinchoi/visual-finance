@@ -1,62 +1,44 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 import { fetchCurrentLiabilities } from '../store/reducers/currentLiabilitiesReducer';
 
 const RevenueChart = () => {
   const dispatch = useDispatch();
-  const [revenueData, setRevenueData] = useState([]);
-  const [loading, setLoading] = useState(true);
-
-  // Access the revenue data from the Redux store
   const currentLiabilitiesData = useSelector((state) => state.currentLiabilities.currentLiabilitiesData);
+  const loading = useSelector((state) => state.currentLiabilities.loading);
+  const error = useSelector((state) => state.currentLiabilities.error);
 
   useEffect(() => {
-    if (currentLiabilitiesData.length > 0) {
-      // Process the revenue data
-      const revenues = currentLiabilitiesData.map((item) => ({
-        quarter: item.quarter,
-        year: item.year,
-        value: item.financials.income_statement.revenues.value
-      }));
+    if (currentLiabilitiesData.length === 0) {
+      const fetchData = async () => {
+        try {
+          const response = await fetch('http://localhost:8080/financial-data?ticker=AAPL');
+          const data = await response.json();
 
-      setRevenueData(revenues);
-      setLoading(false);
+          dispatch(fetchCurrentLiabilities(data));
+        } catch (error) {
+          console.error(error);
+        }
+      };
+
+      fetchData();
     }
-  }, [currentLiabilitiesData]);
-
-  // Fetch current liabilities data
-  useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await fetch('http://localhost:8080/financial-data?ticker=AAPL');
-        const data = await response.json();
-
-        // Filter and extract current liabilities data for each quarter
-        const currentLiabilities = data
-          .filter((item) => {
-            const fiscalPeriod = item.fiscal_period.toUpperCase();
-            return fiscalPeriod === 'Q1' || fiscalPeriod === 'Q2' || fiscalPeriod === 'Q3' || fiscalPeriod === 'Q4';
-          })
-          .map((item) => ({
-            quarter: item.fiscal_period,
-            year: item.fiscal_year,
-            value: item.financials.balance_sheet.current_liabilities.value
-          }));
-
-        // Dispatch the action to update the store
-        dispatch(fetchCurrentLiabilities(currentLiabilities));
-      } catch (error) {
-        console.error(error);
-      }
-    };
-
-    fetchData();
-  }, [dispatch]);
+  }, [currentLiabilitiesData, dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
   }
+
+  if (error) {
+    return <div>Error: {error}</div>;
+  }
+
+  const revenueData = currentLiabilitiesData.map((item) => ({
+    quarter: item.quarter,
+    year: item.year,
+    value: item.financials.income_statement?.revenues?.value || 0
+  }));
 
   const chartData = {
     options: {
