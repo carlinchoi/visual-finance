@@ -1,5 +1,3 @@
-// currentLiabilitiesReducer.js
-
 const FETCH_FINANCIAL_STATEMENT = 'FETCH_FINANCIAL_STATEMENT';
 
 export const fetchFinancialStatement = (data) => {

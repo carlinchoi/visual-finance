@@ -5,9 +5,9 @@ import { fetchFinancialStatement } from '../../store/reducers/financialStatement
 
 const RevenueChart = () => {
   const dispatch = useDispatch();
-  const financialStatementData = useSelector((state) => state.currentLiabilities.financialStatementData);
-  const loading = useSelector((state) => state.currentLiabilities.loading);
-  const error = useSelector((state) => state.currentLiabilities.error);
+  const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);
+  const loading = useSelector((state) => state.financialStatement.loading);
+  const error = useSelector((state) => state.financialStatement.error);
 
   useEffect(() => {
     if (financialStatementData.length === 0) {

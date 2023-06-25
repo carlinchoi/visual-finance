@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
 
 const CurrentLiabilitiesChart = () => {
-  const financialStatementData = useSelector((state) => state.currentLiabilities.financialStatementData);
+  const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);
 
   if (financialStatementData.length === 0) {
     return <div>Loading...</div>;

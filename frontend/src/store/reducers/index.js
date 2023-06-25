@@ -2,8 +2,8 @@
 
 import { combineReducers } from 'redux';
 import menu from './menu';
-import currentLiabilitiesReducer from './financialStatementReducer';
+import financialStatementReducer from './financialStatementReducer';
 
-const reducers = combineReducers({ menu, currentLiabilities: currentLiabilitiesReducer });
+const reducers = combineReducers({ menu, financialStatement: financialStatementReducer });
 
 export default reducers;
