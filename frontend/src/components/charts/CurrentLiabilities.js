@@ -31,7 +31,8 @@ const CurrentLiabilitiesChart = () => {
           fontWeight: 'bold',
           fontFamily: undefined
         }
-      }
+      },
+      colors: ['#FFA500']
     },
     series: [
       {

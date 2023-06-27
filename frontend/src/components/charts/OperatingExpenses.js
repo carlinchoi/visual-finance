@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-const NetCashFlowChart = () => {
+const OperatingExpensesChart = () => {
   const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);
 
   if (financialStatementData.length === 0) {
@@ -13,34 +13,35 @@ const NetCashFlowChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse()
+        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse(),
       },
       yaxis: {
         title: {
-          text: 'In Millions'
+          text: 'In Millions',
         },
         labels: {
-          formatter: (value) => `${(value / 1000000).toFixed(0)}M`
-        }
+          formatter: (value) => `${(value / 1000000).toFixed(0)}M`,
+        },
       },
       title: {
-        text: 'Net Cash Flow',
+        text: 'Operating Expenses',
         align: 'center',
         style: {
           fontSize: '18px',
           fontWeight: 'bold',
-          fontFamily: undefined
-        }
+          fontFamily: undefined,
+        },
       },
-      colors: ['#05D4DE']
+      colors: ['#F42C00']
     },
     series: [
       {
-        name: 'Net Cash Flow',
-        data: filteredData.map((item) => item.financials.cash_flow_statement?.net_cash_flow?.value || 0).reverse()
-      }
-    ]
+        name: 'Operating Expenses',
+        data: filteredData.map((item) => item.financials.income_statement?.gross_profit?.value || 0).reverse(),
+      },
+    ],
   };
+  
 
   return (
     <div>
@@ -49,4 +50,4 @@ const NetCashFlowChart = () => {
   );
 };
 
-export default NetCashFlowChart;
+export default OperatingExpensesChart;
