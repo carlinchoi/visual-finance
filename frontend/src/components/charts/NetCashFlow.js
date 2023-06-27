@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 import Chart from 'react-apexcharts';
 
-const CurrentLiabilitiesChart = () => {
+const NetCashFlowChart = () => {
   const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);
 
   if (financialStatementData.length === 0) {
@@ -13,10 +13,7 @@ const CurrentLiabilitiesChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse(),
-        title: {
-          text: 'Fiscal Year + Fiscal Period'
-        }
+        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse()
       },
       yaxis: {
         title: {
@@ -27,7 +24,7 @@ const CurrentLiabilitiesChart = () => {
         }
       },
       title: {
-        text: 'Current Liabilities',
+        text: 'Net Cash Flow',
         align: 'center',
         style: {
           fontSize: '18px',
@@ -38,8 +35,8 @@ const CurrentLiabilitiesChart = () => {
     },
     series: [
       {
-        name: 'Current Liabilities',
-        data: filteredData.map((item) => item.financials.balance_sheet?.current_liabilities?.value || 0).reverse()
+        name: 'Net Cash Flow',
+        data: filteredData.map((item) => item.financials.cash_flow_statement?.net_cash_flow?.value || 0).reverse()
       }
     ]
   };
@@ -51,4 +48,4 @@ const CurrentLiabilitiesChart = () => {
   );
 };
 
-export default CurrentLiabilitiesChart;
+export default NetCashFlowChart;

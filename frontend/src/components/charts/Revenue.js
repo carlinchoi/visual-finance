@@ -45,10 +45,7 @@ const RevenueChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: revenueData.map((item) => `${item.year} ${item.quarter}`).reverse(),
-        title: {
-          text: 'Fiscal Year + Fiscal Period'
-        }
+        categories: revenueData.map((item) => `${item.year} ${item.quarter}`).reverse()
       },
       yaxis: {
         title: {
