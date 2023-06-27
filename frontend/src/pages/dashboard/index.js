@@ -9,6 +9,7 @@ import CurrentLiabilitiesChart from 'components/charts/CurrentLiabilities';
 import NetCashFlowChart from 'components/charts/NetCashFlow';
 import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
+import SearchBar from 'components/SearchBar';
 
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
@@ -21,90 +22,101 @@ import avatar4 from 'assets/images/users/avatar-4.png';
 const DashboardDefault = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={12} md={5} lg={4}>
+      {/* Add SearchBar here */}
+      <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
         <Grid container justifyContent="center">
           <MainCard sx={{ mt: 2 }}>
-            <Box sx={{ p: 3, pb: 0 }}>
-              <Stack spacing={2}></Stack>
-            </Box>
-            <RevenueChart />
+            <SearchBar />
+            <Box sx={{ p: 1, pb: 0 }}></Box>
           </MainCard>
         </Grid>
       </Grid>
-
-      <Grid item xs={12} md={5} lg={4}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
-            <Box sx={{ p: 3, pb: 0 }}>
-              <Stack spacing={2}></Stack>
-            </Box>
-            <CurrentLiabilitiesChart />
-          </MainCard>
+      <Grid container justifyContent="center" alignItems="center">
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Box sx={{ p: 3, pb: 0 }}>
+                <Stack spacing={2}></Stack>
+              </Box>
+              <RevenueChart />
+            </MainCard>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12} md={5} lg={4}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
-            <Box sx={{ p: 3, pb: 0 }}>
-              <Stack spacing={2}></Stack>
-            </Box>
-            <NetCashFlowChart />
-          </MainCard>
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Box sx={{ p: 3, pb: 0 }}>
+                <Stack spacing={2}></Stack>
+              </Box>
+              <CurrentLiabilitiesChart />
+            </MainCard>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12} md={5} lg={4}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
-            <Box sx={{ p: 3, pb: 0 }}>
-              <Stack spacing={2}></Stack>
-            </Box>
-            <OperatingExpensesChart />
-          </MainCard>
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Box sx={{ p: 3, pb: 0 }}>
+                <Stack spacing={2}></Stack>
+              </Box>
+              <NetCashFlowChart />
+            </MainCard>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12} md={5} lg={4}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
-            <Box sx={{ p: 3, pb: 0 }}>
-              <Stack spacing={2}></Stack>
-            </Box>
-            <GrossProfitChart />
-          </MainCard>
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Box sx={{ p: 3, pb: 0 }}>
+                <Stack spacing={2}></Stack>
+              </Box>
+              <OperatingExpensesChart />
+            </MainCard>
+          </Grid>
         </Grid>
-      </Grid>
 
-      <Grid item xs={12} md={5} lg={4}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
-            <Stack spacing={3}>
-              <Grid container justifyContent="center" alignItems="center">
-                <Grid item>
-                  <Stack>
-                    <Typography variant="h5" noWrap>
-                      Help & Support Chat
-                    </Typography>
-                    <Typography variant="caption" color="secondary" noWrap>
-                      Typical reply within 24 hours
-                    </Typography>
-                  </Stack>
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Box sx={{ p: 3, pb: 0 }}>
+                <Stack spacing={2}></Stack>
+              </Box>
+              <GrossProfitChart />
+            </MainCard>
+          </Grid>
+        </Grid>
+
+        <Grid item xs={12} md={5} lg={4}>
+          <Grid container justifyContent="center">
+            <MainCard sx={{ mt: 2 }}>
+              <Stack spacing={3}>
+                <Grid container justifyContent="center" alignItems="center">
+                  <Grid item>
+                    <Stack>
+                      <Typography variant="h5" noWrap>
+                        Help & Support Chat
+                      </Typography>
+                      <Typography variant="caption" color="secondary" noWrap>
+                        Typical reply within 24 hours
+                      </Typography>
+                    </Stack>
+                  </Grid>
+                  <Grid item>
+                    <AvatarGroup sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
+                      <Avatar alt="Remy Sharp" src={avatar1} />
+                      <Avatar alt="Travis Howard" src={avatar2} />
+                      <Avatar alt="Cindy Baker" src={avatar3} />
+                      <Avatar alt="Agnes Walker" src={avatar4} />
+                    </AvatarGroup>
+                  </Grid>
                 </Grid>
-                <Grid item>
-                  <AvatarGroup sx={{ '& .MuiAvatar-root': { width: 32, height: 32 } }}>
-                    <Avatar alt="Remy Sharp" src={avatar1} />
-                    <Avatar alt="Travis Howard" src={avatar2} />
-                    <Avatar alt="Cindy Baker" src={avatar3} />
-                    <Avatar alt="Agnes Walker" src={avatar4} />
-                  </AvatarGroup>
-                </Grid>
-              </Grid>
-              <Button size="small" variant="contained" sx={{ textTransform: 'capitalize' }}>
-                Need Help?
-              </Button>
-            </Stack>
-          </MainCard>
+                <Button size="small" variant="contained" sx={{ textTransform: 'capitalize' }}>
+                  Need Help?
+                </Button>
+              </Stack>
+            </MainCard>
+          </Grid>
         </Grid>
       </Grid>
     </Grid>
