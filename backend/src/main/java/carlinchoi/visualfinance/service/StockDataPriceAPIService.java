@@ -7,7 +7,6 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
-
 @Service
 @CrossOrigin
 public class StockDataPriceAPIService {

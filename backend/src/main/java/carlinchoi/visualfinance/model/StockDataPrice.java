@@ -22,7 +22,7 @@ public class StockDataPrice {
         @JsonProperty("price")
         private int price;
         @JsonProperty("market_cap")
-        private int marketCap;
+        private long marketCap;
         @JsonProperty("52_week_high")
         private int yearlyHigh;
         @JsonProperty("52_week_low")
@@ -44,11 +44,11 @@ public class StockDataPrice {
             this.price = price;
         }
 
-        public int getMarketCap() {
+        public long getMarketCap() {
             return marketCap;
         }
 
-        public void setMarketCap(int marketCap) {
+        public void setMarketCap(long marketCap) {
             this.marketCap = marketCap;
         }
 
