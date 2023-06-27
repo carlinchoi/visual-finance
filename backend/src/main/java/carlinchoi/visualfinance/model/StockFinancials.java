@@ -293,19 +293,19 @@ public class StockFinancials {
     }
 
     public static class CashFlowStatement {
-        @JsonProperty("operating_cash_flow")
-        private CashFlowStatementItem operatingCashFlow;
+        @JsonProperty("net_cash_flow")
+        private CashFlowStatementItem netCashFlow;
         @JsonProperty("investing_cash_flow")
         private CashFlowStatementItem investingCashFlow;
         @JsonProperty("financing_cash_flow")
         private CashFlowStatementItem financingCashFlow;
 
-        public CashFlowStatementItem getOperatingCashFlow() {
-            return operatingCashFlow;
+        public CashFlowStatementItem getnetCashFlow() {
+            return netCashFlow;
         }
 
-        public void setOperatingCashFlow(CashFlowStatementItem operatingCashFlow) {
-            this.operatingCashFlow = operatingCashFlow;
+        public void setNetCashFlow(CashFlowStatementItem netCashFlow) {
+            this.netCashFlow = netCashFlow;
         }
 
         public CashFlowStatementItem getInvestingCashFlow() {
@@ -327,7 +327,7 @@ public class StockFinancials {
         @Override
         public String toString() {
             return "CashFlowStatement{" +
-                    "operatingCashFlow=" + operatingCashFlow +
+                    "operatingCashFlow=" + netCashFlow +
                     ", investingCashFlow=" + investingCashFlow +
                     ", financingCashFlow=" + financingCashFlow +
                     '}';

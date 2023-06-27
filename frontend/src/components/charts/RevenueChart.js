@@ -76,7 +76,6 @@ const RevenueChart = () => {
     ]
   };
   console.log(financialStatementData);
-  console.log(revenueData);
 
   return (
     <div>
