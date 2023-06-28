@@ -11,7 +11,7 @@ import { SearchOutlined } from '@ant-design/icons';
 
 const SearchBar = ({ setSearchTicker }) => {
   const handleSearch = (event) => {
-    const searchValue = event.target.value;
+    const searchValue = event.target.value.toUpperCase();
     setSearchTicker(searchValue);
   };
 

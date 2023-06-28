@@ -34,7 +34,7 @@ const RevenueChart = () => {
   const handleSearchTicker = (e) => {
     if (e.key === 'Enter') {
       console.log('Search Ticker:', searchInput);
-      dispatch(setSearchTicker(searchInput));
+      dispatch(setSearchTicker(searchInput.toUpperCase())); // Convert to uppercase
     }
   };
 
@@ -94,9 +94,11 @@ const RevenueChart = () => {
       <input
         type="text"
         value={searchInput}
-        onChange={handleChangeSearchInput}
-        onKeyDown={handleSearchTicker}
+        // onChange={handleChangeSearchInput}
+        // onKeyDown={handleSearchTicker}
         placeholder="Enter Stock Ticker"
+        onChange={handleChangeSearchInput}
+        onSubmit={handleSearchTicker}
       />
 
       <Chart options={chartData.options} series={chartData.series} type="bar" width={700} height={500} />
