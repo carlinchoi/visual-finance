@@ -15,7 +15,9 @@ const DataPrice = () => {
       const fetchData = async () => {
         try {
           console.log('Fetching financial data...');
-          const response = await fetch(` https://api.stockdata.org/v1/data/quote?symbols=${searchTickerInput}&api_token=S3nvQTA2exbOPxsRjTKy00OUpUCPfNlfSXhgiJOz`);
+          const response = await fetch(
+            ` https://api.stockdata.org/v1/data/quote?symbols=${searchTickerInput}&api_token=S3nvQTA2exbOPxsRjTKy00OUpUCPfNlfSXhgiJOz`
+          );
           const data = await response.json();
           console.log('Financial data:', data);
 
@@ -45,10 +47,11 @@ const DataPrice = () => {
             <Typography variant="h6" gutterBottom>
               Ticker: {item.ticker}
             </Typography>
-            <Typography variant="body1">Price: {item.price}</Typography>
-            <Typography variant="body1">Market Cap: {item.market_cap}</Typography> {/* Use 'market_cap' instead of 'marketCap' */}
-            <Typography variant="body1">52 Week High: {item['52_week_high']}</Typography> {/* Use '52_week_high' instead of 'yearlyHigh' */}
-            <Typography variant="body1">52 Week Low: {item['52_week_low']}</Typography> {/* Use '52_week_low' instead of 'yearlyLow' */}
+            <Typography variant="body1">Name: {item.name}</Typography>
+            <Typography variant="body1">Price: ${item.price}</Typography>
+            <Typography variant="body1">Market Cap: ${item.market_cap}</Typography>
+            <Typography variant="body1">52 Week High: ${item['52_week_high']}</Typography>{' '}
+            <Typography variant="body1">52 Week Low: ${item['52_week_low']}</Typography>
             <br />
           </div>
         ))}
