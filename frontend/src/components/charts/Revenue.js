@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchFinancialStatement, setSearchTicker } from '../../store/reducers/financialStatementReducer';
+import { fetchFinancialStatement } from '../../store/reducers/financialStatementReducer';
 
 const RevenueChart = () => {
   const dispatch = useDispatch();
@@ -9,8 +9,6 @@ const RevenueChart = () => {
   const loading = useSelector((state) => state.financialStatement.loading);
   const error = useSelector((state) => state.financialStatement.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
-
-  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
     if (searchTickerInput) {
@@ -30,17 +28,6 @@ const RevenueChart = () => {
       fetchData();
     }
   }, [searchTickerInput, dispatch]);
-
-  const handleSearchTicker = (e) => {
-    if (e.key === 'Enter') {
-      console.log('Search Ticker:', searchInput);
-      dispatch(setSearchTicker(searchInput.toUpperCase())); // Convert to uppercase
-    }
-  };
-
-  const handleChangeSearchInput = (e) => {
-    setSearchInput(e.target.value);
-  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -91,16 +78,6 @@ const RevenueChart = () => {
 
   return (
     <div>
-      <input
-        type="text"
-        value={searchInput}
-        // onChange={handleChangeSearchInput}
-        // onKeyDown={handleSearchTicker}
-        placeholder="Enter Stock Ticker"
-        onChange={handleChangeSearchInput}
-        onSubmit={handleSearchTicker}
-      />
-
       <Chart options={chartData.options} series={chartData.series} type="bar" width={700} height={500} />
     </div>
   );
