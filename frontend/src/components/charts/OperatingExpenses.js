@@ -37,7 +37,7 @@ const OperatingExpensesChart = () => {
     series: [
       {
         name: 'Operating Expenses',
-        data: filteredData.map((item) => item.financials.income_statement?.gross_profit?.value || 0).reverse()
+        data: filteredData.map((item) => item.financials.income_statement?.operating_expenses?.value || 0).reverse()
       }
     ]
   };
