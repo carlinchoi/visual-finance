@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStockDataPrice } from '../../store/reducers/stockDataPriceReducer';
 import { Card, CardContent, Typography } from '@mui/material';
@@ -9,15 +9,34 @@ const DataPrice = () => {
   const loading = useSelector((state) => state.financialStatement.loading);
   const error = useSelector((state) => state.financialStatement.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
+  const [apiToken, setApiToken] = useState('');
 
   useEffect(() => {
-    if (searchTickerInput) {
+    const fetchApiToken = async () => {
+      try {
+        console.log('Fetching API token...');
+        const response = await fetch('http://localhost:8080/api/token'); // Replace with your backend endpoint to fetch the API token
+        const data = await response.json();
+        console.log('API token:', data.token);
+        setApiToken(data.token);
+      } catch (error) {
+        console.error('Error fetching API token:', error);
+      }
+    };
+
+    fetchApiToken();
+  }, []);
+
+  useEffect(() => {
+    if (searchTickerInput && apiToken) {
       const fetchData = async () => {
         try {
           console.log('Fetching financial data...');
-          const response = await fetch(
-            ` https://api.stockdata.org/v1/data/quote?symbols=${searchTickerInput}&api_token=S3nvQTA2exbOPxsRjTKy00OUpUCPfNlfSXhgiJOz`
-          );
+          const response = await fetch(`https://api.stockdata.org/v1/data/quote?symbols=${searchTickerInput}`, {
+            headers: {
+              Authorization: `Bearer ${apiToken}`
+            }
+          });
           const data = await response.json();
           console.log('Financial data:', data);
 
@@ -29,7 +48,7 @@ const DataPrice = () => {
 
       fetchData();
     }
-  }, [searchTickerInput, dispatch]);
+  }, [searchTickerInput, apiToken, dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
