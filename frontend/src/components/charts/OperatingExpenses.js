@@ -13,15 +13,15 @@ const OperatingExpensesChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse(),
+        categories: filteredData.map((item) => `${item.fiscal_year} ${item.fiscal_period}`).reverse()
       },
       yaxis: {
         title: {
-          text: 'In Millions',
+          text: 'In Millions'
         },
         labels: {
-          formatter: (value) => `${(value / 1000000).toFixed(0)}M`,
-        },
+          formatter: (value) => `${(value / 1000000).toFixed(0)}M`
+        }
       },
       title: {
         text: 'Operating Expenses',
@@ -29,19 +29,18 @@ const OperatingExpensesChart = () => {
         style: {
           fontSize: '18px',
           fontWeight: 'bold',
-          fontFamily: undefined,
-        },
+          fontFamily: undefined
+        }
       },
       colors: ['#F42C00']
     },
     series: [
       {
         name: 'Operating Expenses',
-        data: filteredData.map((item) => item.financials.income_statement?.gross_profit?.value || 0).reverse(),
-      },
-    ],
+        data: filteredData.map((item) => item.financials.income_statement?.gross_profit?.value || 0).reverse()
+      }
+    ]
   };
-  
 
   return (
     <div>

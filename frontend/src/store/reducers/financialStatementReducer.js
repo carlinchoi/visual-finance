@@ -1,4 +1,5 @@
 const FETCH_FINANCIAL_STATEMENT = 'FETCH_FINANCIAL_STATEMENT';
+const SET_SEARCH_TICKER = 'SET_SEARCH_TICKER';
 
 export const fetchFinancialStatement = (data) => {
   return {
@@ -7,10 +8,18 @@ export const fetchFinancialStatement = (data) => {
   };
 };
 
+export const setSearchTicker = (ticker) => {
+  return {
+    type: SET_SEARCH_TICKER,
+    payload: ticker
+  };
+};
+
 const initialState = {
   financialStatementData: [],
   loading: true,
-  error: null
+  error: null,
+  searchTicker: null
 };
 
 const financialStatementReducer = (state = initialState, action) => {
@@ -21,6 +30,11 @@ const financialStatementReducer = (state = initialState, action) => {
         financialStatementData: action.payload,
         loading: false,
         error: null
+      };
+    case SET_SEARCH_TICKER:
+      return {
+        ...state,
+        searchTicker: action.payload
       };
     default:
       return state;
