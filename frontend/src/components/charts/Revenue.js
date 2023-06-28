@@ -1,30 +1,46 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchFinancialStatement } from '../../store/reducers/financialStatementReducer';
+import { fetchFinancialStatement, setSearchTicker } from '../../store/reducers/financialStatementReducer';
 
 const RevenueChart = () => {
   const dispatch = useDispatch();
   const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);
   const loading = useSelector((state) => state.financialStatement.loading);
   const error = useSelector((state) => state.financialStatement.error);
+  const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
+
+  const [searchInput, setSearchInput] = useState('');
 
   useEffect(() => {
-    if (financialStatementData.length === 0) {
+    if (searchTickerInput) {
       const fetchData = async () => {
         try {
-          const response = await fetch('http://localhost:8080/financial-data?ticker=AAPL');
+          console.log('Fetching financial data...');
+          const response = await fetch(`http://localhost:8080/financial-data?ticker=${searchTickerInput}`);
           const data = await response.json();
+          console.log('Financial data:', data);
 
           dispatch(fetchFinancialStatement(data));
         } catch (error) {
-          console.error(error);
+          console.error('Error fetching financial data:', error);
         }
       };
 
       fetchData();
     }
-  }, [financialStatementData, dispatch]);
+  }, [searchTickerInput, dispatch]);
+
+  const handleSearchTicker = (e) => {
+    if (e.key === 'Enter') {
+      console.log('Search Ticker:', searchInput);
+      dispatch(setSearchTicker(searchInput));
+    }
+  };
+
+  const handleChangeSearchInput = (e) => {
+    setSearchInput(e.target.value);
+  };
 
   if (loading) {
     return <div>Loading...</div>;
@@ -72,10 +88,17 @@ const RevenueChart = () => {
       }
     ]
   };
-  console.log(financialStatementData);
 
   return (
     <div>
+      <input
+        type="text"
+        value={searchInput}
+        onChange={handleChangeSearchInput}
+        onKeyDown={handleSearchTicker}
+        placeholder="Enter Stock Ticker"
+      />
+
       <Chart options={chartData.options} series={chartData.series} type="bar" width={700} height={500} />
     </div>
   );

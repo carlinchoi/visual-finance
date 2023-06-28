@@ -19,7 +19,7 @@ const initialState = {
   financialStatementData: [],
   loading: true,
   error: null,
-  searchTicker: null
+  searchTicker: ''
 };
 
 const financialStatementReducer = (state = initialState, action) => {
