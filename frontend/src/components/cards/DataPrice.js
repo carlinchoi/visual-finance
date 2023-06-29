@@ -15,7 +15,7 @@ const DataPrice = () => {
     const fetchApiToken = async () => {
       try {
         console.log('Fetching API token...');
-        const response = await fetch('http://localhost:8080/api/token'); // Replace with your backend endpoint to fetch the API token
+        const response = await fetch('http://localhost:8080/api/token');
         const data = await response.json();
         console.log('API token:', data.token);
         setApiToken(data.token);

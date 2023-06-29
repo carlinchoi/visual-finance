@@ -19,6 +19,8 @@ public class StockDataPrice {
     public static class Response {
         @JsonProperty("ticker")
         private String ticker;
+        @JsonProperty("name")
+        private String name;
         @JsonProperty("price")
         private int price;
         @JsonProperty("market_cap")
@@ -34,6 +36,14 @@ public class StockDataPrice {
 
         public void setTicker(String ticker) {
             this.ticker = ticker;
+        }
+
+        public String getName() {
+            return name;
+        }
+
+        public void setName(String name) {
+            this.name = name;
         }
 
         public int getPrice() {

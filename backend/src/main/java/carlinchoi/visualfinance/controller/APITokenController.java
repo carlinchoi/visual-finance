@@ -1,6 +1,7 @@
 package carlinchoi.visualfinance.controller;// Import necessary packages
 
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -22,6 +23,9 @@ public class APITokenController {
     public ResponseEntity<Map<String, String>> getAPIToken() {
         Map<String, String> response = new HashMap<>();
         response.put("token", apiToken);
-        return ResponseEntity.ok(response);
+        HttpHeaders headers = new HttpHeaders();
+        headers.setCacheControl("no-cache");
+        return ResponseEntity.ok().headers(headers).body(response);
     }
+
 }

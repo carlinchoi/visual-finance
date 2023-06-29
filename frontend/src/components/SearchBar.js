@@ -3,18 +3,14 @@ import PropTypes from 'prop-types';
 import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material';
 import { connect } from 'react-redux';
 import { setSearchTicker } from '../store/reducers/financialStatementReducer';
-
-// assets
 import { SearchOutlined } from '@ant-design/icons';
-
-// ==============================|| HEADER CONTENT - SEARCH ||============================== //
 
 const SearchBar = ({ setSearchTicker }) => {
   const [searchValue, setSearchValue] = useState('');
 
   const handleSearch = (event) => {
     if (event.key === 'Enter') {
-      const uppercaseValue = searchValue.toUpperCase(); // Convert to uppercase
+      const uppercaseValue = searchValue.toUpperCase();
       setSearchTicker(uppercaseValue);
     }
   };
@@ -37,11 +33,11 @@ const SearchBar = ({ setSearchTicker }) => {
           aria-describedby="search-bar-text"
           inputProps={{
             'aria-label': 'weight',
-            onKeyDown: handleSearch // Call handleSearch on key down
+            onKeyDown: handleSearch
           }}
           placeholder="Search for Stock Ticker"
           value={searchValue}
-          onChange={handleChange} // Call handleChange on input change
+          onChange={handleChange}
         />
       </FormControl>
     </Box>
