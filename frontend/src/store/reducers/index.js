@@ -4,7 +4,13 @@ import { combineReducers } from 'redux';
 import menu from './menu';
 import financialStatementReducer from './financialStatementReducer';
 import stockDataPriceReducer from './stockDataPriceReducer';
+import stockDividendsReducer from './stockDividendsReducer';
 
-const reducers = combineReducers({ menu, financialStatement: financialStatementReducer, stockDataPrice: stockDataPriceReducer });
+const reducers = combineReducers({
+  menu,
+  financialStatement: financialStatementReducer,
+  stockDataPrice: stockDataPriceReducer,
+  stockDividends: stockDividendsReducer
+});
 
 export default reducers;

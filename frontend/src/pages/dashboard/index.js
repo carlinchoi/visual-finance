@@ -9,6 +9,7 @@ import CurrentLiabilitiesChart from 'components/charts/CurrentLiabilities';
 import NetCashFlowChart from 'components/charts/NetCashFlow';
 import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
+import DividendsChart from 'components/charts/Dividends';
 
 const DashboardDefault = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
@@ -63,6 +64,13 @@ const DashboardDefault = () => {
             <Grid container justifyContent="center">
               <MainCard sx={{ mt: 2 }}>
                 <GrossProfitChart />
+              </MainCard>
+            </Grid>
+          </Grid>
+          <Grid item xs={12} md={5} lg={4}>
+            <Grid container justifyContent="center">
+              <MainCard sx={{ mt: 2 }}>
+                <DividendsChart />
               </MainCard>
             </Grid>
           </Grid>
