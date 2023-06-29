@@ -8,7 +8,7 @@ const DividendsChart = () => {
   const stockDividendsData = useSelector((state) => state.stockDividends.stockDividendsData);
   const loading = useSelector((state) => state.stockDividends.loading);
   const error = useSelector((state) => state.stockDividends.error);
-  const searchTickerInput = useSelector((state) => state.stockDividends.searchTicker);
+  const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
   useEffect(() => {
     if (searchTickerInput) {
@@ -28,36 +28,33 @@ const DividendsChart = () => {
   }, [searchTickerInput, dispatch]);
 
   if (loading) {
-    return <div>Loading...has no dividend data to display</div>;
+    return <div>`${searchTickerInput}` has no dividend data to display</div>;
   }
 
   if (error) {
     return <div>Error: {error}</div>;
   }
 
-  const dividendData = stockDividendsData
-    .filter((item) => item.fiscal_period !== 'TTM' && item.fiscal_period !== 'FY')
-    .map((item) => ({
-      quarter: item.fiscal_period || 'N/A',
-      year: item.fiscal_year || 'N/A',
-      value: item.financials?.income_statement?.revenues?.value || 0
-    }));
+  const dividendData = stockDividendsData.map((item) => ({
+    payDate: item.pay_date || 'N/A',
+    value: item.cash_amount || 0
+  }));
 
   const chartData = {
     options: {
       xaxis: {
-        categories: dividendData.map((item) => `${item.year} ${item.quarter}`).reverse()
+        categories: dividendData.map((item) => `${item.payDate}`).reverse()
       },
       yaxis: {
         title: {
-          text: 'In Millions'
+          text: 'Dividend Amount paid'
         },
         labels: {
           formatter: (value) => `${(value / 1000000).toFixed(0)}M`
         }
       },
       title: {
-        text: 'Revenues',
+        text: 'Dividends',
         align: 'center',
         style: {
           fontSize: '18px',
