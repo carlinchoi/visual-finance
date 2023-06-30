@@ -21,29 +21,31 @@ const SearchBar = ({ setSearchTicker }) => {
   };
 
   return (
-    <Box sx={{ display: 'flex', alignItems: 'center' }}>
-      <FormControl sx={{ flex: 1, marginRight: 1 }}>
-        <OutlinedInput
-          size="small"
-          id="search-bar"
-          startAdornment={
-            <InputAdornment position="start" sx={{ marginRight: -0.5 }}>
-              <SearchOutlined />
-            </InputAdornment>
-          }
-          aria-describedby="search-bar-text"
-          inputProps={{
-            'aria-label': 'weight',
-            onKeyDown: handleSearch
-          }}
-          placeholder="Search for Stock Ticker"
-          value={searchValue}
-          onChange={handleChange}
-        />
-      </FormControl>
-      <Button variant="contained" endIcon={<SendIcon />} sx={{ marginLeft: -1 }}>
-        Search
-      </Button>
+    <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '700px' }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 1, width: '670px' }}>
+        <FormControl sx={{ flex: 1, marginRight: 1 }}>
+          <OutlinedInput
+            size="small"
+            id="search-bar"
+            startAdornment={
+              <InputAdornment position="start" sx={{ marginRight: -0.5 }}>
+                <SearchOutlined />
+              </InputAdornment>
+            }
+            aria-describedby="search-bar-text"
+            inputProps={{
+              'aria-label': 'weight',
+              onKeyDown: handleSearch
+            }}
+            placeholder="Search for Stock Ticker"
+            value={searchValue}
+            onChange={handleChange}
+          />
+        </FormControl>
+        <Button variant="contained" endIcon={<SendIcon />} sx={{ marginLeft: -1 }}>
+          Search
+        </Button>
+      </Box>
     </Box>
   );
 };

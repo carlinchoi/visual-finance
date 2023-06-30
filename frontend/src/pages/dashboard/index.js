@@ -10,12 +10,19 @@ import NetCashFlowChart from 'components/charts/NetCashFlow';
 import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
 import DividendsChart from 'components/charts/Dividends';
+import HomeText from 'components/cards/HomeText';
 
 const DashboardDefault = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
   return (
+    
     <Grid container justifyContent="center" alignItems="center">
+       <Grid item xs={12}>
+            <Grid container justifyContent="center">
+              <HomeText />
+            </Grid>
+          </Grid>
       <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
         <Grid container justifyContent="center">
           <MainCard sx={{ mt: 2 }}>
