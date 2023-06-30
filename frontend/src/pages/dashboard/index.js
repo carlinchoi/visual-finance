@@ -19,7 +19,7 @@ const DashboardDefault = () => {
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12}>
         <Grid container justifyContent="center">
-          <HomeText />
+          {searchTickerInput ? null : <HomeText />}
         </Grid>
       </Grid>
       <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
@@ -30,57 +30,47 @@ const DashboardDefault = () => {
         </Grid>
       </Grid>
       {searchTickerInput && (
-        <>
+        <Grid container justifyContent="center">
           <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <DataPrice />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <DataPrice />
+            </MainCard>
+          </Grid>
+        </Grid>
+      )}
+      {searchTickerInput && (
+        <Grid container justifyContent="center">
+          <Grid item xs={12} md={5} lg={4}>
+            <MainCard sx={{ mt: 2 }}>
+              <RevenueChart />
+            </MainCard>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <RevenueChart />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <CurrentLiabilitiesChart />
+            </MainCard>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <CurrentLiabilitiesChart />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <NetCashFlowChart />
+            </MainCard>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <NetCashFlowChart />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <GrossProfitChart />
+            </MainCard>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <OperatingExpensesChart />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <OperatingExpensesChart />
+            </MainCard>
           </Grid>
           <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <GrossProfitChart />
-              </MainCard>
-            </Grid>
+            <MainCard sx={{ mt: 2 }}>
+              <DividendsChart />
+            </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
-            <Grid container justifyContent="center">
-              <MainCard sx={{ mt: 2 }}>
-                <DividendsChart />
-              </MainCard>
-            </Grid>
-          </Grid>
-        </>
+        </Grid>
       )}
     </Grid>
   );
