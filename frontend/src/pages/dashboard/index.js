@@ -16,13 +16,12 @@ const DashboardDefault = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
   return (
-    
     <Grid container justifyContent="center" alignItems="center">
-       <Grid item xs={12}>
-            <Grid container justifyContent="center">
-              <HomeText />
-            </Grid>
-          </Grid>
+      <Grid item xs={12}>
+        <Grid container justifyContent="center">
+          <HomeText />
+        </Grid>
+      </Grid>
       <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
         <Grid container justifyContent="center">
           <MainCard sx={{ mt: 2 }}>
