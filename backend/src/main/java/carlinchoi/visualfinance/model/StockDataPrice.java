@@ -29,6 +29,8 @@ public class StockDataPrice {
         private int yearlyHigh;
         @JsonProperty("52_week_low")
         private int yearlyLow;
+        @JsonProperty("previous_close_price")
+        private int previousCloseprice;
 
         public String getTicker() {
             return ticker;
@@ -78,6 +80,13 @@ public class StockDataPrice {
             this.yearlyLow = yearlyLow;
         }
 
+        public int getPreviousCloseprice() {
+            return previousCloseprice;
+        }
+
+        public void setPreviousCloseprice(int previousCloseprice) {
+            this.previousCloseprice = previousCloseprice;
+        }
         @Override
         public String toString() {
             return "response{" +
@@ -86,6 +95,7 @@ public class StockDataPrice {
                     ", marketCap=" + marketCap +
                     ", yearlyHigh=" + yearlyHigh +
                     ", yearlyLow=" + yearlyLow +
+                    ", previousClosePrice=" + previousCloseprice +
                     '}';
         }
     }

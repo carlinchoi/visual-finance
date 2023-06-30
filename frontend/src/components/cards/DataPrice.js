@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStockDataPrice } from '../../store/actions/stockDataPriceActions';
-import { Card, CardContent, Typography } from '@mui/material';
+// import { Card, CardContent, Typography } from '@mui/material';
 
 const DataPrice = () => {
   const dispatch = useDispatch();
@@ -58,25 +58,55 @@ const DataPrice = () => {
     return <div>Error: {error}</div>;
   }
 
+  //   return (
+  // <Card>
+  //   <CardContent>
+  //     {stockDataPrice?.data?.map((item) => (
+  //       <div key={item.ticker}>
+  //         <Typography variant="h6" gutterBottom>
+  //           Ticker: {item.ticker}
+  //         </Typography>
+  //         <Typography variant="body1">Name: {item.name}</Typography>
+  //         <Typography variant="body1">Price: ${item.price}</Typography>
+  //         <Typography variant="body1">Market Cap: ${item.market_cap}</Typography>
+  //         <Typography variant="body1">52 Week High: ${item['52_week_high']}</Typography>{' '}
+  //         <Typography variant="body1">52 Week Low: ${item['52_week_low']}</Typography>
+  //         <br />
+  //       </div>
+  //     ))}
+  //   </CardContent>
+  // </Card>
+  //   );
+  // };
   return (
-    <Card>
-      <CardContent>
-        {stockDataPrice?.data?.map((item) => (
+    <div>
+      {stockDataPrice?.data?.map((item) => {
+        const dollarChange = item.price - item.previous_close_price;
+        const percentageChange = (dollarChange / item.previous_close_price) * 100;
+
+        const isPositiveChange = dollarChange >= 0;
+        const backgroundColor = isPositiveChange ? '#c9fbd1' : '#fbd1d1';
+
+        return (
           <div key={item.ticker}>
-            <Typography variant="h6" gutterBottom>
-              Ticker: {item.ticker}
-            </Typography>
-            <Typography variant="body1">Name: {item.name}</Typography>
-            <Typography variant="body1">Price: ${item.price}</Typography>
-            <Typography variant="body1">Market Cap: ${item.market_cap}</Typography>
-            <Typography variant="body1">52 Week High: ${item['52_week_high']}</Typography>{' '}
-            <Typography variant="body1">52 Week Low: ${item['52_week_low']}</Typography>
-            <br />
+            <h1>{item.name}</h1>
+            <h3>{item.ticker} | NASDAQ</h3>
+            <h1>
+              ${item.price}{' '}
+              <span style={{ backgroundColor }}>
+                <span style={{ color: isPositiveChange ? 'green' : 'red' }}>{dollarChange.toFixed(2)}</span>
+              </span>{' '}
+              (
+              <span style={{ backgroundColor }}>
+                <span style={{ color: isPositiveChange ? 'green' : 'red' }}>{percentageChange.toFixed(2)}%</span>
+              </span>
+              )
+            </h1>
+            <h3>Next Earnings:</h3>
           </div>
-        ))}
-      </CardContent>
-    </Card>
+        );
+      })}
+    </div>
   );
 };
-
 export default DataPrice;

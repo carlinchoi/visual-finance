@@ -16,7 +16,6 @@ export const setSearchTicker = (ticker) => {
   };
 };
 
-
 export const resetSearchTicker = () => {
   return {
     type: RESET_SEARCH_TICKER
