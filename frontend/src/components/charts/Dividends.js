@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchStockDividends } from '../../store/reducers/stockDividendsReducer';
+import { fetchStockDividends } from '../../store/actions/stockDividendsActions';
 
 const DividendsChart = () => {
   const dispatch = useDispatch();
@@ -47,10 +47,7 @@ const DividendsChart = () => {
       },
       yaxis: {
         title: {
-          text: 'Dividend Amount paid'
-        },
-        labels: {
-          formatter: (value) => `${(value / 1000000).toFixed(0)}M`
+          text: 'Dividend Amount Paid'
         }
       },
       title: {
@@ -65,8 +62,8 @@ const DividendsChart = () => {
     },
     series: [
       {
-        name: 'Revenues',
-        data: dividendData.map((item) => item.value / 1000000).reverse()
+        name: 'Dividends',
+        data: dividendData.map((item) => item.value).reverse()
       }
     ]
   };

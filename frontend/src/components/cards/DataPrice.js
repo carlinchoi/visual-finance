@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { fetchStockDataPrice } from '../../store/reducers/stockDataPriceReducer';
+import { fetchStockDataPrice } from '../../store/actions/stockDataPriceActions';
 import { Card, CardContent, Typography } from '@mui/material';
 
 const DataPrice = () => {

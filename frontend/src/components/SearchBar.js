@@ -1,8 +1,9 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { Box, FormControl, InputAdornment, OutlinedInput } from '@mui/material';
+import { Box, FormControl, InputAdornment, OutlinedInput, Button } from '@mui/material';
+import SendIcon from '@mui/icons-material/Send';
 import { connect } from 'react-redux';
-import { setSearchTicker } from '../store/reducers/financialStatementReducer';
+import { setSearchTicker } from '../store/actions/financialStatementActions';
 import { SearchOutlined } from '@ant-design/icons';
 
 const SearchBar = ({ setSearchTicker }) => {
@@ -20,13 +21,13 @@ const SearchBar = ({ setSearchTicker }) => {
   };
 
   return (
-    <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }}>
-      <FormControl sx={{ width: { xs: '100%', md: 770 } }}>
+    <Box sx={{ display: 'flex', alignItems: 'center' }}>
+      <FormControl sx={{ flex: 1, marginRight: 1 }}>
         <OutlinedInput
           size="small"
           id="search-bar"
           startAdornment={
-            <InputAdornment position="start" sx={{ mr: -0.5 }}>
+            <InputAdornment position="start" sx={{ marginRight: -0.5 }}>
               <SearchOutlined />
             </InputAdornment>
           }
@@ -40,6 +41,9 @@ const SearchBar = ({ setSearchTicker }) => {
           onChange={handleChange}
         />
       </FormControl>
+      <Button variant="contained" endIcon={<SendIcon />} sx={{ marginLeft: -1 }}>
+        Search
+      </Button>
     </Box>
   );
 };

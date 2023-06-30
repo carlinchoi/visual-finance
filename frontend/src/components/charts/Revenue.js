@@ -1,8 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
-import { fetchFinancialStatement } from '../../store/reducers/financialStatementReducer';
-
+import { fetchFinancialStatement } from '../../store/actions/financialStatementActions';
 const RevenueChart = () => {
   const dispatch = useDispatch();
   const financialStatementData = useSelector((state) => state.financialStatement.financialStatementData);

@@ -1,25 +1,12 @@
-const FETCH_FINANCIAL_STATEMENT = 'FETCH_FINANCIAL_STATEMENT';
-const SET_SEARCH_TICKER = 'SET_SEARCH_TICKER';
-
-export const fetchFinancialStatement = (data) => {
-  return {
-    type: FETCH_FINANCIAL_STATEMENT,
-    payload: data
-  };
-};
-
-export const setSearchTicker = (ticker) => {
-  return {
-    type: SET_SEARCH_TICKER,
-    payload: ticker
-  };
-};
+import { FETCH_FINANCIAL_STATEMENT } from '../actions/financialStatementActions';
+import { SET_SEARCH_TICKER } from '../actions/financialStatementActions';
+import { RESET_SEARCH_TICKER } from '../actions/financialStatementActions';
 
 const initialState = {
   financialStatementData: [],
   loading: true,
   error: null,
-  searchTicker: ''
+  searchTicker: null
 };
 
 const financialStatementReducer = (state = initialState, action) => {
@@ -35,6 +22,11 @@ const financialStatementReducer = (state = initialState, action) => {
       return {
         ...state,
         searchTicker: action.payload
+      };
+    case RESET_SEARCH_TICKER:
+      return {
+        ...state,
+        searchTicker: null
       };
     default:
       return state;
