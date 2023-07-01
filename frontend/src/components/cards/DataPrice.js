@@ -89,20 +89,17 @@ const DataPrice = () => {
 
         return (
           <div key={item.ticker}>
-            <h1>{item.name}</h1>
-            <h3>{item.ticker} | NASDAQ</h3>
-            <h1>
+            <h1 style={{ margin: 0 }}>{item.name}</h1>
+            <h3 style={{ margin: '0 0 5px 0' }}>{item.ticker} | NASDAQ</h3>
+            <h2 style={{ margin: '8px 0 0 0' }}>
               ${item.price}{' '}
-              <span style={{ backgroundColor }}>
-                <span style={{ color: isPositiveChange ? 'green' : 'red' }}>{dollarChange.toFixed(2)}</span>
-              </span>{' '}
-              (
-              <span style={{ backgroundColor }}>
-                <span style={{ color: isPositiveChange ? 'green' : 'red' }}>{percentageChange.toFixed(2)}%</span>
+              <span style={{ color: isPositiveChange ? 'green' : 'red', marginLeft: '10px', backgroundColor, fontSize: '23.5px' }}>
+                ${dollarChange.toFixed(2)} {' | '}
+                {isPositiveChange ? '+' : '-'}
+                {percentageChange.toFixed(2)}%
               </span>
-              )
-            </h1>
-            <h3>Next Earnings:</h3>
+            </h2>
+            <h3 style={{ margin: '0 0 5px 0' }}>Next Earnings:</h3>
           </div>
         );
       })}
