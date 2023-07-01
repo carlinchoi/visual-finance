@@ -14,17 +14,11 @@ public class TwelveData {
         this.meta = meta;
     }
 
-    public String getUrl() {
-        return url;
-    }
-
-    public void setUrl(String url) {
-        this.url = url;
-    }
-
     public static class Meta {
         @JsonProperty("symbol")
         private String symbol;
+//        @JsonProperty("name")
+//        private String name;
 
         public String getSymbol() {
             return symbol;
@@ -33,5 +27,29 @@ public class TwelveData {
         public void setSymbol(String symbol) {
             this.symbol = symbol;
         }
+
+//        public String getName() {
+//            return name;
+//        }
+//
+//        public void setName(String name) {
+//            this.name = name;
+//        }
+    }
+
+    public String getUrl() {
+        return url;
+    }
+
+    public void setUrl(String url) {
+        this.url = url;
+    }
+
+    @Override
+    public String toString() {
+        return "TwelveData{" +
+                "meta=" + meta +
+                ", url='" + url + '\'' +
+                '}';
     }
 }

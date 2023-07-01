@@ -11,7 +11,7 @@ import java.util.List;
 @Service
 @CrossOrigin
 public class TwelveDataAPIService {
-    private static final String API_URL  = "https://api.twelvedata.com/";
+    private static final String API_URL  = "https://api.twelvedata.com/logo";
     private final RestTemplate restTemplate;
     private final String apiKey;
 
@@ -20,13 +20,12 @@ public class TwelveDataAPIService {
         this.apiKey = apiKey;
     }
 
-    public List<TwelveData.Meta> getTwelveLogo(String symbol) {
-        String url = API_URL + "logo?symbol=" + symbol + "&apikey=" + apiKey;
+    public List<TwelveData> getTwelveLogo(String symbol) {
+        String url = API_URL + "?symbol=" + symbol + "&apikey=" + apiKey;
         TwelveData twelveData = restTemplate.getForObject(url, TwelveData.class);
-        if (twelveData != null && twelveData.getMeta() != null) {
-            return List.of(twelveData.getMeta());
-        }
-        return List.of();
+            return List.of(twelveData);
+
+
     }
 
 }

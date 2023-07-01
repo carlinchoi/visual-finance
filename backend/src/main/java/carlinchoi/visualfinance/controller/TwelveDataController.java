@@ -20,8 +20,8 @@ public class TwelveDataController {
     }
 
     @GetMapping("/logo")
-    public ResponseEntity<List<TwelveData.Meta>> getLogo(@RequestParam("symbol") String symbol) {
-        List<TwelveData.Meta> logo = twelveDataAPIService.getTwelveLogo(symbol);
+    public ResponseEntity<List<TwelveData>> getLogo(@RequestParam("symbol") String symbol) {
+        List<TwelveData> logo = twelveDataAPIService.getTwelveLogo(symbol);
         return ResponseEntity.ok(logo);
     }
 }
