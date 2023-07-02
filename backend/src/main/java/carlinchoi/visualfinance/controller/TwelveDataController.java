@@ -1,6 +1,7 @@
 package carlinchoi.visualfinance.controller;
 
-import carlinchoi.visualfinance.model.TwelveData;
+import carlinchoi.visualfinance.model.TwelveEarnings;
+import carlinchoi.visualfinance.model.TwelveLogo;
 import carlinchoi.visualfinance.service.TwelveDataAPIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -20,8 +21,14 @@ public class TwelveDataController {
     }
 
     @GetMapping("/logo")
-    public ResponseEntity<List<TwelveData>> getLogo(@RequestParam("symbol") String symbol) {
-        List<TwelveData> logo = twelveDataAPIService.getTwelveLogo(symbol);
+    public ResponseEntity<List<TwelveLogo>>getLogo(@RequestParam("symbol") String symbol) {
+        List<TwelveLogo> logo = twelveDataAPIService.getTwelveLogo(symbol);
         return ResponseEntity.ok(logo);
+    }
+
+    @GetMapping("/earnings")
+    public ResponseEntity<List<TwelveEarnings>> getEarnings(@RequestParam("symbol") String symbol) {
+        List<TwelveEarnings> earnings = twelveDataAPIService.getTwelveEarnings(symbol);
+        return ResponseEntity.ok(earnings);
     }
 }

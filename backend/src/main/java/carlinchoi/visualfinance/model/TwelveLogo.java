@@ -2,7 +2,7 @@ package carlinchoi.visualfinance.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-public class TwelveData {
+public class TwelveLogo {
     private Meta meta;
     private String url;
 
