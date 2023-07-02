@@ -69,49 +69,44 @@ const DataPrice = () => {
         const backgroundColor = isPositiveChange ? '#c9fbd1' : '#fbd1d1';
 
         // Get the corresponding twelvedata object
-        const twelvedata = twelveData?.[0];
-        const url = twelvedata?.meta.url || '';
-        console.log('URL:', url);
+        const twelvedata = twelveData?.find((data) => data.meta.symbol === item.ticker);
+        const logoUrl = twelvedata?.url || '';
+
         return (
-          <div key={item.ticker}>
-            <h1 style={{ margin: 0 }}>
-              {item.name} {url && `- ${url}`}
-            </h1>
-            <h3 style={{ margin: '0 0 5px 0' }}>{item.ticker} | NASDAQ</h3>
-            <h2 style={{ margin: '8px 0 0 0' }}>
-              ${item.price}{' '}
-              <span
-                style={{
-                  color: isPositiveChange ? 'green' : 'red',
-                  marginLeft: '10px',
-                  backgroundColor,
-                  fontSize: '23.5px'
+          <div key={item.ticker} style={{ display: 'flex', alignItems: 'center' }}>
+            {logoUrl && (
+              <img
+                src={logoUrl}
+                alt={item.ticker}
+                onError={(e) => {
+                  e.target.src = 'fallback_image_url';
                 }}
-              >
-                ${dollarChange.toFixed(2)} {' | '}
-                {isPositiveChange ? '+' : '-'}
-                {percentageChange.toFixed(2)}%
-              </span>
-            </h2>
-            <h3 style={{ margin: '0 0 5px 0' }}>Next Earnings:</h3>
+                style={{ marginRight: '20px', marginBottom: '65px', width: '70px', height: '70px' }}
+              />
+            )}
+            <div>
+              <h1 style={{ margin: 0 }}>{item.name}</h1>
+              <h3 style={{ margin: '0 0 5px 0' }}>{item.ticker} | NASDAQ</h3>
+              <h2 style={{ margin: '8px 0 0 0' }}>
+                ${item.price}{' '}
+                <span
+                  style={{
+                    color: isPositiveChange ? 'green' : 'red',
+                    marginLeft: '10px',
+                    backgroundColor,
+                    fontSize: '23.5px'
+                  }}
+                >
+                  ${dollarChange.toFixed(2)} {' | '}
+                  {isPositiveChange ? '+' : '-'}
+                  {percentageChange.toFixed(2)}%
+                </span>
+              </h2>
+              <h3 style={{ margin: '0 0 5px 0' }}>Next Earnings:</h3>
+            </div>
           </div>
         );
       })}
-
-      {twelveData?.map((data) => (
-        <div key={data.meta.symbol}>
-          {/* Render JSX elements based on each item in twelveData */}
-          {/* For example: */}
-          <img
-            src={data.url}
-            alt={data.meta.symbol}
-            onError={(e) => {
-              e.target.src = 'fallback_image_url';
-            }}
-          />
-          <p>{data.description}</p>
-        </div>
-      ))}
     </div>
   );
 };
