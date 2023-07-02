@@ -14,9 +14,8 @@ const DividendsChart = () => {
     if (searchTickerInput) {
       const fetchData = async () => {
         try {
-          const response = await fetch(`http://localhost:8080/dividends?ticker=${searchTickerInput}`);
-          const data = await response.json();
-
+          const response = await axios.get(`dividends?ticker=${searchTickerInput}`);
+          const data = response.data;
           dispatch(fetchStockDividends(data));
         } catch (error) {
           console.error('Error fetching Dividend data:', error);
