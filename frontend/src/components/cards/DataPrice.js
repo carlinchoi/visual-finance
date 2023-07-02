@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStockDataPrice } from 'store/actions/stockDataPriceActions';
 import { fetchTwelveData } from 'store/actions/twelveDataActions';
@@ -10,38 +10,17 @@ const DataPrice = () => {
   const loading = useSelector((state) => state.financialStatement.loading);
   const error = useSelector((state) => state.financialStatement.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
-  const [apiToken, setApiToken] = useState('');
   const twelveData = useSelector((state) => state.twelveData.twelveData);
 
   useEffect(() => {
-    const fetchApiToken = async () => {
-      try {
-        console.log('Fetching API token...');
-        const response = await axios.get('/api/token');
-        const data = response.data;
-        console.log('API token:', data.token);
-        setApiToken(data.token);
-      } catch (error) {
-        console.error('Error fetching API token:', error);
-      }
-    };
-
-    fetchApiToken();
-  }, []);
-
-  useEffect(() => {
-    if (searchTickerInput && apiToken) {
+    if (searchTickerInput) {
       const fetchData = async () => {
         try {
-          console.log('Fetching financial data...');
           const response = await axios.get(`quote?symbols=${searchTickerInput}`);
           const data = response.data;
-          console.log('Financial data:', data);
           dispatch(fetchStockDataPrice(data));
-
           const twelveResponse = await axios.get(`/logo?symbol=${searchTickerInput}`);
           const twelvedata = twelveResponse.data;
-          console.log('Twelve Data:', twelvedata);
           dispatch(fetchTwelveData(twelvedata));
         } catch (error) {
           console.error('Error fetching financial data:', error);
@@ -50,7 +29,7 @@ const DataPrice = () => {
 
       fetchData();
     }
-  }, [searchTickerInput, apiToken, dispatch]);
+  }, [searchTickerInput, dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -68,7 +47,6 @@ const DataPrice = () => {
         const isPositiveChange = dollarChange >= 0;
         const backgroundColor = isPositiveChange ? '#c9fbd1' : '#fbd1d1';
 
-        // Get the corresponding twelvedata object
         const twelvedata = twelveData?.find((data) => data.meta.symbol === item.ticker);
         const logoUrl = twelvedata?.url || '';
 
