@@ -70,8 +70,8 @@ const DataPrice = () => {
 
         // Get the corresponding twelvedata object
         const twelvedata = twelveData?.[0];
-        const url = twelvedata?.url || '';
-
+        const url = twelvedata?.meta.url || '';
+        console.log('URL:', url);
         return (
           <div key={item.ticker}>
             <h1 style={{ margin: 0 }}>
@@ -102,7 +102,13 @@ const DataPrice = () => {
         <div key={data.meta.symbol}>
           {/* Render JSX elements based on each item in twelveData */}
           {/* For example: */}
-          <img src={data.url} alt={data.meta.symbol} />
+          <img
+            src={data.url}
+            alt={data.meta.symbol}
+            onError={(e) => {
+              e.target.src = 'fallback_image_url';
+            }}
+          />
           <p>{data.description}</p>
         </div>
       ))}

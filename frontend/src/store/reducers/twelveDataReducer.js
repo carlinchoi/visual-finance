@@ -12,7 +12,7 @@ const twelveDataReducer = (state = initialState, action) => {
     case FETCH_TWELVE_DATA:
       return {
         ...state,
-        twelveData: payload.action,
+        twelveData: action.payload,
         loading: false,
         error: null
       };
