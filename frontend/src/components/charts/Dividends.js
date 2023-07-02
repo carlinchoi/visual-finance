@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import Chart from 'react-apexcharts';
 import { fetchStockDividends } from '../../store/actions/stockDividendsActions';
+import axios from 'boot/axios';
 
 const DividendsChart = () => {
   const dispatch = useDispatch();

@@ -7,8 +7,8 @@ import axios from 'boot/axios';
 const DataPrice = () => {
   const dispatch = useDispatch();
   const stockDataPrice = useSelector((state) => state.stockDataPrice.stockDataPrice);
-  const loading = useSelector((state) => state.financialStatement.loading);
-  const error = useSelector((state) => state.financialStatement.error);
+  const loading = useSelector((state) => state.stockDataPrice.loading);
+  const error = useSelector((state) => state.stockDataPrice.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
   const twelveData = useSelector((state) => state.twelveData.twelveData);
 
