@@ -30,8 +30,8 @@ const DashboardDefault = () => {
         </Grid>
       </Grid>
       {searchTickerInput && (
-        <Grid container justifyContent="center">
-          <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
+        <Grid container justifyContent="center" alignItems="center">
+          <Grid item xs={12} md={5} lg={4}>
             <DataPrice />
           </Grid>
         </Grid>
