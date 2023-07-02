@@ -14,7 +14,7 @@ public class StockDataPriceAPIService {
     private final RestTemplate restTemplate;
     private final String apiToken;
 
-    public StockDataPriceAPIService(RestTemplate restTemplate, @Value("${stockdata.api.token}") String apiToken){
+    public StockDataPriceAPIService(RestTemplate restTemplate, @Value("${stock-data.api.token}") String apiToken){
         this.restTemplate = restTemplate;
         this.apiToken = apiToken;
     }

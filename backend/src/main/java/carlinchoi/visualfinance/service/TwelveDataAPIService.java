@@ -15,7 +15,7 @@ public class TwelveDataAPIService {
     private final RestTemplate restTemplate;
     private final String apiKey;
 
-    public TwelveDataAPIService(RestTemplate restTemplate, @Value("${twelvedata.api.key}") String apiKey){
+    public TwelveDataAPIService(RestTemplate restTemplate, @Value("${twelve-data.api.key}") String apiKey){
         this.restTemplate = restTemplate;
         this.apiKey = apiKey;
     }
