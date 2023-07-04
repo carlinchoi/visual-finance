@@ -3,6 +3,7 @@ package carlinchoi.visualfinance.controller;
 import carlinchoi.visualfinance.model.TwelveEarnings;
 import carlinchoi.visualfinance.model.TwelveLogo;
 import carlinchoi.visualfinance.service.TwelveDataAPIService;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;

@@ -3,6 +3,7 @@ package carlinchoi.visualfinance.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
 import java.util.Arrays;
 
 public class StockDataPrice {
@@ -22,7 +23,7 @@ public class StockDataPrice {
         @JsonProperty("name")
         private String name;
         @JsonProperty("price")
-        private int price;
+        private BigDecimal  price;
         @JsonProperty("market_cap")
         private long marketCap;
         @JsonProperty("52_week_high")
@@ -30,7 +31,7 @@ public class StockDataPrice {
         @JsonProperty("52_week_low")
         private int yearlyLow;
         @JsonProperty("previous_close_price")
-        private int previousCloseprice;
+        private BigDecimal previousCloseprice;
 
         public String getTicker() {
             return ticker;
@@ -48,11 +49,11 @@ public class StockDataPrice {
             this.name = name;
         }
 
-        public int getPrice() {
+        public BigDecimal  getPrice() {
             return price;
         }
 
-        public void setPrice(int price) {
+        public void setPrice(BigDecimal  price) {
             this.price = price;
         }
 
@@ -80,11 +81,11 @@ public class StockDataPrice {
             this.yearlyLow = yearlyLow;
         }
 
-        public int getPreviousCloseprice() {
+        public BigDecimal  getPreviousCloseprice() {
             return previousCloseprice;
         }
 
-        public void setPreviousCloseprice(int previousCloseprice) {
+        public void setPreviousCloseprice(BigDecimal  previousCloseprice) {
             this.previousCloseprice = previousCloseprice;
         }
         @Override
