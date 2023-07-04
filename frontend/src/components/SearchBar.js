@@ -9,11 +9,9 @@ import { SearchOutlined } from '@ant-design/icons';
 const SearchBar = ({ setSearchTicker }) => {
   const [searchValue, setSearchValue] = useState('');
 
-  const handleSearch = (event) => {
-    if (event.key === 'Enter') {
-      const uppercaseValue = searchValue.toUpperCase();
-      setSearchTicker(uppercaseValue);
-    }
+  const handleSearch = () => {
+    const uppercaseValue = searchValue.toUpperCase();
+    setSearchTicker(uppercaseValue);
   };
 
   const handleChange = (event) => {
@@ -35,14 +33,18 @@ const SearchBar = ({ setSearchTicker }) => {
             aria-describedby="search-bar-text"
             inputProps={{
               'aria-label': 'weight',
-              onKeyDown: handleSearch
+              onKeyDown: (event) => {
+                if (event.key === 'Enter') {
+                  handleSearch();
+                }
+              }
             }}
             placeholder="Search for Stock Ticker"
             value={searchValue}
             onChange={handleChange}
           />
         </FormControl>
-        <Button variant="contained" endIcon={<SendIcon />} sx={{ marginLeft: -1 }}>
+        <Button variant="contained" endIcon={<SendIcon />} sx={{ marginLeft: -1 }} onClick={handleSearch}>
           Search
         </Button>
       </Box>

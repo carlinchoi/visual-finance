@@ -58,7 +58,7 @@ const DataPrice = () => {
         const logoUrl = logoData?.url || '';
 
         const earningsData = twelveEarningsData[0]?.earnings || [];
-        const nextEarningsDate = earningsData[0]?.date || '53';
+        const nextEarningsDate = earningsData[3]?.date || 'Data Not Available';
         console.log(twelveEarningsData);
         console.log(item); // Check if the item object contains the expected data
 
@@ -92,7 +92,9 @@ const DataPrice = () => {
                   {percentageChange.toFixed(2)}%
                 </span>
               </h2>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: '26px' }}>Next Earnings: {nextEarningsDate}</h3>
+              <h3 style={{ margin: '0 0 20px 0', fontSize: '26px' }}>
+                Next Earnings: <span style={{ fontWeight: 'normal' }}>{nextEarningsDate}</span>
+              </h3>
             </div>
           </div>
         );
