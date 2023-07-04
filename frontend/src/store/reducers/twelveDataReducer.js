@@ -1,18 +1,27 @@
-import { FETCH_TWELVE_DATA } from '../actions/twelveDataActions';
+import { FETCH_TWELVE_LOGO, FETCH_TWELVE_EARNINGS } from '../actions/twelveDataActions';
 
 const initialState = {
-  twelveData: [],
+  twelveLogo: [],
   loading: true,
   error: null,
-  searchTicker: ''
+  searchTicker: '',
+  twelveEarnings: []
 };
 
 const twelveDataReducer = (state = initialState, action) => {
   switch (action.type) {
-    case FETCH_TWELVE_DATA:
+    case FETCH_TWELVE_LOGO:
       return {
         ...state,
-        twelveData: action.payload,
+        twelveLogo: action.payload,
+        loading: false,
+        error: null
+      };
+    case FETCH_TWELVE_EARNINGS:
+      console.log('action.payload:' + action.payload);
+      return {
+        ...state,
+        twelveEarnings: action.payload,
         loading: false,
         error: null
       };

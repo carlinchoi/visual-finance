@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchStockDataPrice } from 'store/actions/stockDataPriceActions';
-import { fetchTwelveData } from 'store/actions/twelveDataActions';
+import { fetchTwelveLogoData, fetchTwelveEarningsDate } from 'store/actions/twelveDataActions';
 import axios from 'boot/axios';
 
 const DataPrice = () => {
@@ -10,18 +10,25 @@ const DataPrice = () => {
   const loading = useSelector((state) => state.stockDataPrice.loading);
   const error = useSelector((state) => state.stockDataPrice.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
-  const twelveData = useSelector((state) => state.twelveData.twelveData);
+  const twelveLogoData = useSelector((state) => state.twelveData.twelveLogo);
+  const twelveEarningsData = useSelector((state) => state.twelveData.twelveEarnings);
 
   useEffect(() => {
     if (searchTickerInput) {
       const fetchData = async () => {
         try {
-          const response = await axios.get(`quote?symbols=${searchTickerInput}`);
+          const response = await axios.get(`/quote?symbols=${searchTickerInput}`);
           const data = response.data;
           dispatch(fetchStockDataPrice(data));
-          const twelveResponse = await axios.get(`/logo?symbol=${searchTickerInput}`);
-          const twelvedata = twelveResponse.data;
-          dispatch(fetchTwelveData(twelvedata));
+
+          const logoResponse = await axios.get(`/logo?symbol=${searchTickerInput}`);
+          const logoData = logoResponse.data;
+          dispatch(fetchTwelveLogoData(logoData));
+
+          // Fetch earnings data
+          const earningsResponse = await axios.get(`/earnings?symbol=${searchTickerInput}`);
+          const earningsData = earningsResponse.data;
+          dispatch(fetchTwelveEarningsDate(earningsData));
         } catch (error) {
           console.error('Error fetching financial data:', error);
         }
@@ -47,8 +54,13 @@ const DataPrice = () => {
         const isPositiveChange = dollarChange >= 0;
         const backgroundColor = isPositiveChange ? '#c9fbd1' : '#fbd1d1';
 
-        const twelvedata = twelveData?.find((data) => data.meta.symbol === item.ticker);
-        const logoUrl = twelvedata?.url || '';
+        const logoData = twelveLogoData?.find((data) => data?.meta?.symbol === item.ticker);
+        const logoUrl = logoData?.url || '';
+
+        const earningsData = twelveEarningsData[0]?.earnings || [];
+        const nextEarningsDate = earningsData[0]?.date || '53';
+        console.log(twelveEarningsData);
+        console.log(item); // Check if the item object contains the expected data
 
         return (
           <div key={item.ticker} style={{ display: 'flex', alignItems: 'center', marginTop: '25px' }}>
@@ -80,7 +92,7 @@ const DataPrice = () => {
                   {percentageChange.toFixed(2)}%
                 </span>
               </h2>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: '26px' }}>Next Earnings:</h3>
+              <h3 style={{ margin: '0 0 20px 0', fontSize: '26px' }}>Next Earnings: {nextEarningsDate}</h3>
             </div>
           </div>
         );
