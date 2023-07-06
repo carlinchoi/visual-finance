@@ -57,9 +57,9 @@ const DataPrice = () => {
         const logoData = twelveLogoData?.find((data) => data?.meta?.symbol === item.ticker);
         const logoUrl = logoData?.url || '';
 
-        const earningsData = twelveEarningsData[0]?.earnings || [];
-        const nextEarningsDate = earningsData[3]?.date || 'Data Not Available';
-        console.log(twelveEarningsData);
+        const earningsData = twelveEarningsData?.earnings || [];
+        const nextEarningsDate = earningsData[0]?.date || 'Data Not Available';
+        console.log('tweleveEarnignsDAta: ' + twelveEarningsData);
         console.log(item); // Check if the item object contains the expected data
 
         return (
