@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { Grid } from '@mui/material';
+import { Grid, Divider } from '@mui/material';
 import MainCard from 'components/MainCard';
 import SearchBar from 'components/SearchBar';
 import DataPrice from 'components/cards/DataPrice';
@@ -36,10 +36,23 @@ const DashboardDefault = () => {
           </Grid>
         </Grid>
       )}
+
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={12} md={5} lg={4}>
-            <Statistics />
+            <MainCard>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                  <Statistics />
+                </Grid>
+                <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
+                  <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
+                </Grid>
+                <Grid item xs={5}>
+                  <Statistics />
+                </Grid>
+              </Grid>
+            </MainCard>
           </Grid>
         </Grid>
       )}
