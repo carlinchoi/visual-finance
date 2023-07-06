@@ -24,6 +24,7 @@ const Statistics = () => {
           <div key={item.ticker} style={{ marginTop: '25px' }}>
             <div>EPS Estimate: {nextEarningsDate?.eps_estimate ?? 'N/A'}</div>
             <div>EPS Actual: {nextEarningsDate?.eps_actual ?? 'N/A'}</div>
+            <div>Previous Close Price: {item['previous_close_price']} </div>
             <div>52-Week High: {item['52_week_high']}</div>
             <div>52-Week Low: {item['52_week_low']}</div>
           </div>

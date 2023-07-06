@@ -11,7 +11,7 @@ import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
 import DividendsChart from 'components/charts/Dividends';
 import HomeText from 'components/cards/HomeText';
-import Statistics from 'components/cards/Statistics';
+import Price from 'components/additionalStatistics/Price';
 const DashboardDefault = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
@@ -36,20 +36,19 @@ const DashboardDefault = () => {
           </Grid>
         </Grid>
       )}
-
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={12} md={5} lg={4}>
             <MainCard>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                  <Statistics />
+                  <Price />
                 </Grid>
                 <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
                   <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
                 </Grid>
                 <Grid item xs={5}>
-                  <Statistics />
+                  <Price />
                 </Grid>
               </Grid>
             </MainCard>
