@@ -18,7 +18,7 @@ const twelveDataReducer = (state = initialState, action) => {
         error: null
       };
     case FETCH_TWELVE_EARNINGS:
-      console.log('action.payload:' + action.payload);
+      console.log('action.payload:', action.payload);
       return {
         ...state,
         twelveEarnings: action.payload,
