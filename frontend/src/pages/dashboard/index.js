@@ -23,12 +23,12 @@ const DashboardDefault = () => {
       <Grid item xs={12}>
         {searchTickerInput ? null : <HomeText />}
       </Grid>
-      <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
-        <Grid container justifyContent="center">
-          <MainCard sx={{ mt: 2 }}>
+      <Grid item xs={12} md={5} lg={4}>
+        <MainCard sx={{ mt: 2 }}>
+          <Grid container justifyContent="center">
             <SearchBar />
-          </MainCard>
-        </Grid>
+          </Grid>
+        </MainCard>
       </Grid>
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
