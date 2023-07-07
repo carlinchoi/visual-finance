@@ -200,6 +200,10 @@ public class StockFinancials {
         private IncomeStatementItem revenues;
         @JsonProperty("basic_earnings_per_share")
         private IncomeStatementItem basicEarningsPerShare;
+        @JsonProperty("net_income_loss")
+        private IncomeStatementItem netIncomeLoss;
+        @JsonProperty("operating_income_loss")
+        private IncomeStatementItem operatingIncomeLoss;
 
         public IncomeStatementItem getGrossProfit() {
             return grossProfit;
@@ -233,6 +237,22 @@ public class StockFinancials {
             this.basicEarningsPerShare = basicEarningsPerShare;
         }
 
+        public IncomeStatementItem getNetIncomeLoss() {
+            return netIncomeLoss;
+        }
+
+        public void setNetIncomeLoss(IncomeStatementItem netIncomeLoss) {
+            this.netIncomeLoss = netIncomeLoss;
+        }
+
+        public IncomeStatementItem getOperatingIncomeLoss() {
+            return operatingIncomeLoss;
+        }
+
+        public void setOperatingIncomeLoss(IncomeStatementItem operatingIncomeLoss) {
+            this.operatingIncomeLoss = operatingIncomeLoss;
+        }
+
         @Override
         public String toString() {
             return "IncomeStatement{" +
@@ -240,6 +260,8 @@ public class StockFinancials {
                     ", operatingExpenses=" + operatingExpenses +
                     ", revenues=" + revenues +
                     ", basicEarningsPerShare=" + basicEarningsPerShare +
+                    ", netIncomeLoss=" + netIncomeLoss +
+                    ", operatingIncomeLoss=" + operatingIncomeLoss +
                     '}';
         }
     }

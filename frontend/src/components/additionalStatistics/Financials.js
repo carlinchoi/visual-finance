@@ -22,7 +22,7 @@ const Financials = () => {
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       {sortedData.map((item) => (
         <div key={item.fiscal_year}>
-          <h3 style={{ textAlign: 'center', marginBottom: '1rem' }}>{item.fiscal_year} Financials</h3>
+          <h3 style={{ textAlign: 'center' }}>{item.fiscal_year} Financials</h3>
           <div>
             <strong> Basic Earnings per Share:</strong> {item.financials?.income_statement?.basic_earnings_per_share?.value || 'N/A'}
           </div>

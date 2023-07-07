@@ -27,9 +27,9 @@ public class StockDataPrice {
         @JsonProperty("market_cap")
         private long marketCap;
         @JsonProperty("52_week_high")
-        private int yearlyHigh;
+        private BigDecimal yearlyHigh;
         @JsonProperty("52_week_low")
-        private int yearlyLow;
+        private BigDecimal yearlyLow;
         @JsonProperty("previous_close_price")
         private BigDecimal previousCloseprice;
 
@@ -49,7 +49,7 @@ public class StockDataPrice {
             this.name = name;
         }
 
-        public BigDecimal  getPrice() {
+        public BigDecimal getPrice() {
             return price;
         }
 
@@ -65,19 +65,19 @@ public class StockDataPrice {
             this.marketCap = marketCap;
         }
 
-        public int getYearlyHigh() {
+        public BigDecimal getYearlyHigh() {
             return yearlyHigh;
         }
 
-        public void setYearlyHigh(int yearlyHigh) {
+        public void setYearlyHigh(BigDecimal yearlyHigh) {
             this.yearlyHigh = yearlyHigh;
         }
 
-        public int getYearlyLow() {
+        public BigDecimal getYearlyLow() {
             return yearlyLow;
         }
 
-        public void setYearlyLow(int yearlyLow) {
+        public void setYearlyLow(BigDecimal yearlyLow) {
             this.yearlyLow = yearlyLow;
         }
 
