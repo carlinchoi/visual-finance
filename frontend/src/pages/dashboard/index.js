@@ -12,6 +12,8 @@ import OperatingExpensesChart from 'components/charts/OperatingExpenses';
 import DividendsChart from 'components/charts/Dividends';
 import HomeText from 'components/cards/HomeText';
 import Price from 'components/additionalStatistics/Price';
+import Financials from 'components/additionalStatistics/Financials';
+
 const DashboardDefault = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
@@ -48,7 +50,7 @@ const DashboardDefault = () => {
                   <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
                 </Grid>
                 <Grid item xs={5}>
-                  <Price />
+                  <Financials />
                 </Grid>
               </Grid>
             </MainCard>
