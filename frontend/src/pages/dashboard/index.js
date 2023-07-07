@@ -21,9 +21,7 @@ const DashboardDefault = () => {
   return (
     <Grid container justifyContent="center" alignItems="center">
       <Grid item xs={12}>
-        <Grid container justifyContent="center">
-          {searchTickerInput ? null : <HomeText />}
-        </Grid>
+        {searchTickerInput ? null : <HomeText />}
       </Grid>
       <Grid item xs={12} md={5} lg={4} sx={{ maxWidth: 800 }}>
         <Grid container justifyContent="center">
@@ -41,7 +39,7 @@ const DashboardDefault = () => {
       )}
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={5} lg={6}>
             <MainCard>
               <Grid container spacing={2}>
                 <Grid item xs={4}>
@@ -56,7 +54,7 @@ const DashboardDefault = () => {
                 <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
                   <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
                 </Grid>
-                <Grid item xs={3}>
+                <Grid item xs={2}>
                   <Margins />
                 </Grid>
               </Grid>
