@@ -11,7 +11,6 @@ const DataPrice = () => {
   const error = useSelector((state) => state.stockDataPrice.error);
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
   const twelveLogoData = useSelector((state) => state.twelveData.twelveLogo);
-  const twelveEarningsData = useSelector((state) => state.twelveData.twelveEarnings);
 
   useEffect(() => {
     if (searchTickerInput) {
@@ -25,7 +24,6 @@ const DataPrice = () => {
           const logoData = logoResponse.data;
           dispatch(fetchTwelveLogoData(logoData));
 
-          // Fetch earnings data
           const earningsResponse = await axios.get(`/earnings?symbol=${searchTickerInput}`);
           const earningsData = earningsResponse.data;
           dispatch(fetchTwelveEarningsDate(earningsData));
@@ -57,11 +55,6 @@ const DataPrice = () => {
         const logoData = twelveLogoData?.find((data) => data?.meta?.symbol === item.ticker);
         const logoUrl = logoData?.url || '';
 
-        const earningsData = twelveEarningsData?.earnings || [];
-        const nextEarningsDate = earningsData[0]?.date || 'Data Not Available';
-        console.log('tweleveEarnignsDAta: ' + twelveEarningsData);
-        console.log(item); // Check if the item object contains the expected data
-
         return (
           <div key={item.ticker} style={{ display: 'flex', alignItems: 'center', marginTop: '25px' }}>
             {logoUrl && (
@@ -71,30 +64,28 @@ const DataPrice = () => {
                 onError={(e) => {
                   e.target.src = 'fallback_image_url';
                 }}
-                style={{ marginRight: '20px', marginBottom: '105px', width: '100px', height: '100px' }}
+                style={{ marginRight: '20px', marginBottom: '13px', width: '140px', height: '140px' }}
               />
             )}
             <div>
               <h1 style={{ margin: '0 0 0 0', fontSize: '38px' }}>{item.name}</h1>
-              <h3 style={{ margin: '0 0 15px 0', fontSize: '30px' }}>{item.ticker} | NASDAQ</h3>
-              <h2 style={{ margin: '10px 0 0 0', fontSize: '25px' }}>
+              <h3 style={{ margin: '0 0 0 0', fontSize: '30px' }}>{item.ticker} | NASDAQ</h3>
+              <h2 style={{ margin: '0 0 25px 0', fontSize: '24px' }}>
                 ${item.price}{' '}
                 <span
                   style={{
                     color: isPositiveChange ? 'green' : 'red',
                     marginLeft: '10px',
                     backgroundColor,
-                    fontSize: '24px'
+                    fontSize: '22px'
                   }}
                 >
-                  ${dollarChange.toFixed(2)} {' | '}
+                  {dollarChange >= 0 ? '$' : '-$'}
+                  {Math.abs(dollarChange).toFixed(2)} {' | '}
                   {isPositiveChange ? '+' : '-'}
-                  {percentageChange.toFixed(2)}%
+                  {Math.abs(percentageChange).toFixed(2)}%
                 </span>
               </h2>
-              <h3 style={{ margin: '0 0 20px 0', fontSize: '26px' }}>
-                Next Earnings: <span style={{ fontWeight: 'normal' }}>{nextEarningsDate}</span>
-              </h3>
             </div>
           </div>
         );

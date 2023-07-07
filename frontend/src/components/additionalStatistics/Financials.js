@@ -60,12 +60,23 @@ const formatValues = (value) => {
     return 'N/A';
   }
 
-  if (Math.abs(value) >= 1e9) {
-    return `${(value / 1e9).toFixed(2)} billion`;
+  if (value >= 0) {
+    if (Math.abs(value) >= 1e9) {
+      return `$${(value / 1e9).toFixed(2)}B`;
+    }
+    if (Math.abs(value) >= 1e6) {
+      return `$${(value / 1e6).toFixed(2)}M`;
+    }
   }
 
-  if (Math.abs(value) >= 1e6) {
-    return `${(value / 1e6).toFixed(2)} million`;
+  if (value < 0) {
+    if (Math.abs(value) >= 1e9) {
+      return `-$${(Math.abs(value) / 1e9).toFixed(2)}B`;
+    }
+    if (Math.abs(value) >= 1e6) {
+      return `-$${(Math.abs(value) / 1e6).toFixed(2)}M`;
+    }
+    return `-$${Math.abs(value).toFixed(2)}`;
   }
 
   return value.toString();

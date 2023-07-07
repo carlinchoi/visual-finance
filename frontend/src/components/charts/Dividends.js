@@ -43,21 +43,24 @@ const DividendsChart = () => {
   const chartData = {
     options: {
       xaxis: {
-        categories: dividendData.map((item) => `${item.payDate}`).reverse()
-      },
-      yaxis: {
-        title: {
-          text: 'Dividend Amount Paid'
+        categories: dividendData.map((item) => `${item.payDate}`).reverse(),
+        labels: {
+          fontSize: '18px' // Adjust font size as needed
         }
-      },
+      }
+    },
+    yaxis: {
       title: {
-        text: 'Dividends',
-        align: 'center',
-        style: {
-          fontSize: '18px',
-          fontWeight: 'bold',
-          fontFamily: undefined
-        }
+        text: 'Dividend Amount Paid'
+      }
+    },
+    title: {
+      text: 'Dividends',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+        fontWeight: 'bold',
+        fontFamily: undefined
       }
     },
     series: [
