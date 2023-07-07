@@ -15,8 +15,8 @@ const Price = () => {
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-      <h3 style={{ textAlign: 'center', borderBottom: '1px dashed #ccc' }}>Market Data</h3>
+    <div style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      <h2 style={{ marginBottom: '5px', textAlign: 'left', borderBottom: '1px dashed #ccc' }}>Market Data</h2>
       {stockDataPrice?.map((item) => {
         const earningsData = twelveEarningsData[4]?.earnings || [];
         const nextEarningsDate = earningsData[4]?.date || 'Data Not Available';
@@ -39,7 +39,7 @@ const Price = () => {
               <strong style={{ textAlign: 'left' }}>52-Week High:</strong>
               <span style={{ textAlign: 'right' }}>${item['52_week_high']}</span>
             </div>
-            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between' }}>
               <strong style={{ textAlign: 'left' }}>52-Week Low:</strong>
               <span style={{ textAlign: 'right' }}>${item['52_week_low']}</span>
             </div>

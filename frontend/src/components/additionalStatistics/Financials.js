@@ -19,27 +19,35 @@ const Financials = () => {
   const sortedData = filteredData.sort((a, b) => b.fiscal_year - a.fiscal_year);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <div style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       {sortedData.map((item) => (
         <div key={item.fiscal_year}>
-          <h3 style={{ textAlign: 'center' }}>{item.fiscal_year} Financials</h3>
-          <div>
-            <strong> Basic Earnings per Share:</strong> {item.financials?.income_statement?.basic_earnings_per_share?.value || 'N/A'}
+          <h2 style={{ marginBottom: '5px', textAlign: 'left', borderBottom: '1px dashed #ccc' }}>FY {item.fiscal_year} Financials</h2>
+          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Basic Earnings per Share:</strong>{' '}
+            <span style={{ textAlign: 'right' }}> {item.financials?.income_statement?.basic_earnings_per_share?.value || 'N/A'}</span>
           </div>
-          <div>
-            <strong> Revenue:</strong> {formatValues(item.financials?.income_statement?.revenues?.value || 'N/A')}
+          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Revenue:</strong>{' '}
+            <span style={{ textAlign: 'right' }}> {formatValues(item.financials?.income_statement?.revenues?.value || 'N/A')}</span>
           </div>
-          <div>
-            <strong> Current Liabilities:</strong> {formatValues(item.financials?.balance_sheet?.current_liabilities?.value || 'N/A')}
+          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Current Liabilities:</strong>{' '}
+            <span style={{ textAlign: 'right' }}> {formatValues(item.financials?.balance_sheet?.current_liabilities?.value || 'N/A')}</span>
           </div>
-          <div>
-            <strong> Net Cash Flow:</strong> {formatValues(item.financials?.cash_flow_statement?.net_cash_flow?.value)}
+          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Net Cash Flow:</strong>{' '}
+            <span style={{ textAlign: 'right' }}> {formatValues(item.financials?.cash_flow_statement?.net_cash_flow?.value)}</span>
           </div>
-          <div>
-            <strong> Gross Profit:</strong> {formatValues(item.financials?.income_statement?.gross_profit?.value || 'N/A')}
+          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Gross Profit:</strong>{' '}
+            <span style={{ textAlign: 'right' }}> {formatValues(item.financials?.income_statement?.gross_profit?.value || 'N/A')}</span>
           </div>
-          <div>
-            <strong> Operating Expenses:</strong> {formatValues(item.financials?.income_statement?.operating_expenses?.value || 'N/A')}
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
+            <strong style={{ textAlign: 'left' }}> Operating Expenses:</strong>
+            <span style={{ textAlign: 'right' }}>
+              {formatValues(item.financials?.income_statement?.operating_expenses?.value || 'N/A')}
+            </span>
           </div>
         </div>
       ))}
