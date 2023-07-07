@@ -20,14 +20,14 @@ const Margins = () => {
   const sortedData = filteredData.sort((a, b) => b.fiscal_year - a.fiscal_year);
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+    <div style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
       <h2 style={{ marginBottom: '5px', textAlign: 'left', borderBottom: '1px dashed #ccc' }}>Margins and Growth</h2>
       {sortedData.map((item) => (
         <div key={item.fiscal_year}>
           <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
             <strong>Profit Margin:</strong> {calculateProfitMargin(item)}
           </div>
-          <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between' }}>
             <strong>Operating Margin:</strong> {calculateOperatingMargin(item)}
           </div>
         </div>
