@@ -20,7 +20,7 @@ const Price = () => {
         return (
           <div key={item.ticker}>
             <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
-              <strong style={{ textAlign: 'left' }}>Previous Close Price:</strong>
+              <strong style={{ textAlign: 'left' }}>Previous Day&apos;s Close Price:</strong>
               <span style={{ textAlign: 'right' }}>${item['previous_close_price']}</span>
             </div>
             <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
