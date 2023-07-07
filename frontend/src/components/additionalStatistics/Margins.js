@@ -21,9 +21,9 @@ const Margins = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
+      <h3 style={{ textAlign: 'center' }}>Margins and Growth</h3>
       {sortedData.map((item) => (
         <div key={item.fiscal_year}>
-          <h3 style={{ textAlign: 'center' }}>{item.fiscal_year} Margins and Growth</h3>
           <div>
             <strong>Profit Margin:</strong> {calculateProfitMargin(item)}
           </div>

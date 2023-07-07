@@ -39,22 +39,22 @@ const DashboardDefault = () => {
       )}
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
-          <Grid item xs={12} md={5} lg={6}>
+          <Grid item xs={14} md={8} lg={6}>
             <MainCard>
               <Grid container spacing={2}>
                 <Grid item xs={4}>
                   <Price />
                 </Grid>
-                <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid item xs={0} sx={{ display: 'flex', alignItems: 'center' }}>
                   <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
                 </Grid>
                 <Grid item xs={4}>
                   <Financials />
                 </Grid>
-                <Grid item xs={1} sx={{ display: 'flex', alignItems: 'center' }}>
+                <Grid item xs={0} sx={{ display: 'flex', alignItems: 'center' }}>
                   <Divider orientation="vertical" flexItem variant="middle" sx={{ height: '100%' }} />
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={3.5}>
                   <Margins />
                 </Grid>
               </Grid>

@@ -16,27 +16,32 @@ const Price = () => {
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', flexDirection: 'column' }}>
-      <h3 style={{ textAlign: 'center' }}>Market Data</h3>
+      <h3 style={{ textAlign: 'center', borderBottom: '1px dashed #ccc' }}>Market Data</h3>
       {stockDataPrice?.map((item) => {
         const earningsData = twelveEarningsData[4]?.earnings || [];
         const nextEarningsDate = earningsData[4]?.date || 'Data Not Available';
 
         return (
           <div key={item.ticker}>
-            <div>
-              <strong>EPS Estimate:</strong> {nextEarningsDate?.eps_estimate ?? 'N/A'}
+            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+              <strong style={{ textAlign: 'left' }}>EPS Estimate:</strong>
+              <span style={{ textAlign: 'right' }}>{nextEarningsDate?.eps_estimate ?? 'N/A'}</span>
             </div>
-            <div>
-              <strong>EPS Actual:</strong> {nextEarningsDate?.eps_actual ?? 'N/A'}
+            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+              <strong style={{ textAlign: 'left' }}>EPS Actual:</strong>
+              <span style={{ textAlign: 'right' }}>{nextEarningsDate?.eps_actual ?? 'N/A'}</span>
             </div>
-            <div>
-              <strong>Previous Close Price:</strong> ${item['previous_close_price']}{' '}
+            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+              <strong style={{ textAlign: 'left' }}>Previous Close Price:</strong>
+              <span style={{ textAlign: 'right' }}>${item['previous_close_price']}</span>
             </div>
-            <div>
-              <strong>52-Week High:</strong> ${item['52_week_high']}
+            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+              <strong style={{ textAlign: 'left' }}>52-Week High:</strong>
+              <span style={{ textAlign: 'right' }}>${item['52_week_high']}</span>
             </div>
-            <div>
-              <strong>52-Week Low:</strong> ${item['52_week_low']}
+            <div style={{ marginBottom: '5px', borderBottom: '1px dashed #ccc', display: 'flex', justifyContent: 'space-between' }}>
+              <strong style={{ textAlign: 'left' }}>52-Week Low:</strong>
+              <span style={{ textAlign: 'right' }}>${item['52_week_low']}</span>
             </div>
           </div>
         );
