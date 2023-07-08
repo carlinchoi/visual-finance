@@ -9,12 +9,12 @@ const HomePage = () => {
   const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ height: '100px' }}>
+    <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '80px' }}>
       <Grid item xs={12}>
         {searchTickerInput ? null : <HomeText />}
       </Grid>
       <Grid item xs={12} md={5} lg={4}>
-        <MainCard sx={{ mt: 2 }} style={{ marginTop: 0 }}>
+        <MainCard sx={{ mt: 2 }}>
           <Grid container justifyContent="center">
             <SearchBar />
           </Grid>
