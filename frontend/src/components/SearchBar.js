@@ -1,17 +1,20 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import { Box, FormControl, InputAdornment, OutlinedInput, Button } from '@mui/material';
+import SearchOutlinedIcon from '@mui/icons-material/SearchOutlined';
 import SendIcon from '@mui/icons-material/Send';
 import { connect } from 'react-redux';
 import { setSearchTicker } from '../store/actions/financialStatementActions';
-import { SearchOutlined } from '@ant-design/icons';
+import { useNavigate } from 'react-router-dom';
 
 const SearchBar = ({ setSearchTicker }) => {
   const [searchValue, setSearchValue] = useState('');
+  const navigate = useNavigate();
 
   const handleSearch = () => {
     const uppercaseValue = searchValue.toUpperCase();
     setSearchTicker(uppercaseValue);
+    navigate('/dashboard/default');
   };
 
   const handleChange = (event) => {
@@ -27,7 +30,7 @@ const SearchBar = ({ setSearchTicker }) => {
             id="search-bar"
             startAdornment={
               <InputAdornment position="start" sx={{ marginRight: -0.5 }}>
-                <SearchOutlined />
+                <SearchOutlinedIcon />
               </InputAdornment>
             }
             aria-describedby="search-bar-text"

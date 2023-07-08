@@ -10,7 +10,7 @@ import NetCashFlowChart from 'components/charts/NetCashFlow';
 import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
 import DividendsChart from 'components/charts/Dividends';
-import HomeText from 'components/cards/HomeText';
+// import HomeText from 'components/cards/HomeText';
 import Price from 'components/additionalStatistics/Price';
 import Financials from 'components/additionalStatistics/Financials';
 import Margins from 'components/additionalStatistics/Margins';
@@ -20,9 +20,9 @@ const DashboardDefault = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={12}>
+      {/* <Grid item xs={12}>
         {searchTickerInput ? null : <HomeText />}
-      </Grid>
+      </Grid> */}
       <Grid item xs={12} md={5} lg={4}>
         <MainCard sx={{ mt: 2 }}>
           <Grid container justifyContent="center">

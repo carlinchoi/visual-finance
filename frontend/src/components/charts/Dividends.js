@@ -45,7 +45,7 @@ const DividendsChart = () => {
       xaxis: {
         categories: dividendData.map((item) => `${item.payDate}`).reverse(),
         labels: {
-          fontSize: '18px' // Adjust font size as needed
+          fontSize: '18px'
         }
       }
     },
