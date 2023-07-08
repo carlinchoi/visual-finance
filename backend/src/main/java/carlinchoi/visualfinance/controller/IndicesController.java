@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/")
@@ -20,9 +19,8 @@ public class IndicesController {
     }
 
     @GetMapping("/indices")
-    public ResponseEntity<Indices> getIndicesData(@RequestParam String symbol, @RequestParam String date) {
-        Indices indicesData = indicesAPIService.getIndicesData(symbol, date);
+    public ResponseEntity<Indices> getIndicesData(@RequestParam("symbol") String symbol) {
+        Indices indicesData = indicesAPIService.getIndicesData(symbol);
         return ResponseEntity.ok(indicesData);
     }
-
 }

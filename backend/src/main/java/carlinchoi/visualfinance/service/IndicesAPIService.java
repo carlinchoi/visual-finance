@@ -6,24 +6,21 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.client.RestTemplate;
 
-import java.util.Arrays;
-import java.util.List;
 
 @Service
 @CrossOrigin
 public class IndicesAPIService {
-    private static final String API_URL = "https://api.polygon.io/v1/open-close/";
+    private static final String API_URL = "https://api.marketdata.app/v1/indices/quotes/";
     private final RestTemplate restTemplate;
-    private final String apiKey;
+    private final String apiToken;
 
-    public IndicesAPIService(RestTemplate restTemplate, @Value("${polygon.api.key}") String apiKey) {
+    public IndicesAPIService(RestTemplate restTemplate, @Value("${market-data.api.token}") String apiToken) {
         this.restTemplate = restTemplate;
-        this.apiKey = apiKey;
+        this.apiToken = apiToken;
     }
 
-    public Indices getIndicesData(String symbol, String date) {
-        String url = API_URL + "I:" + symbol + "/" + date + "/?apiKey=" + apiKey;
+    public Indices getIndicesData(String symbol) {
+        String url = API_URL + symbol + "/?token=" + apiToken;
         return restTemplate.getForObject(url, Indices.class);
     }
-
 }
