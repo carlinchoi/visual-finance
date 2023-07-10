@@ -47,20 +47,26 @@ const DividendsChart = () => {
         labels: {
           fontSize: '18px'
         }
-      }
-    },
-    yaxis: {
+      },
+      yaxis: {
+        title: {
+          text: 'Dividend Amount Paid',
+          align: 'center',
+          style: {
+            fontSize: '18px',
+            fontWeight: 'bold',
+            fontFamily: undefined
+          }
+        }
+      },
       title: {
-        text: 'Dividend Amount Paid'
-      }
-    },
-    title: {
-      text: 'Dividends',
-      align: 'center',
-      style: {
-        fontSize: '18px',
-        fontWeight: 'bold',
-        fontFamily: undefined
+        text: 'Dividends',
+        align: 'center',
+        style: {
+          fontSize: '18px',
+          fontWeight: 'bold',
+          fontFamily: undefined
+        }
       }
     },
     series: [

@@ -17,7 +17,13 @@ const GrossProfitChart = () => {
       },
       yaxis: {
         title: {
-          text: 'In Millions'
+          text: 'In Millions',
+          align: 'center',
+          style: {
+            fontSize: '18px',
+            fontWeight: 'bold',
+            fontFamily: undefined
+          }
         },
         labels: {
           formatter: (value) => `${(value / 1000000).toFixed(0)}M`
