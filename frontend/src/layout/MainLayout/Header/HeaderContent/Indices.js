@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchIndicesData } from 'store/actions/IndicesDataActions';
 import axios from 'boot/axios';
+import { Box, Typography } from '@mui/material';
 
 const Indices = () => {
   const dispatch = useDispatch();
@@ -31,23 +32,28 @@ const Indices = () => {
     return <div>Error: {error}</div>;
   }
 
+  const formatIndexName = (symbol) => {
+    switch (symbol) {
+      case 'DJI':
+        return 'Dow Jones Industrial Average';
+      case 'NDX':
+        return 'NASDAQ 100 Index';
+      case 'SPX':
+        return 'S&P 500 Index';
+      default:
+        return '';
+    }
+  };
+
   return (
-    <div>
-      <h1>DJI</h1>
-      <p>Last: {indicesData[0]?.last}</p>
-      <p>Change: {indicesData[0]?.change}</p>
-      <p>Change %: {indicesData[0]?.changepct}</p>
-
-      <h1>NDX</h1>
-      <p>Last: {indicesData[1]?.last}</p>
-      <p>Change: {indicesData[1]?.change}</p>
-      <p>Change %: {indicesData[1]?.changepct}</p>
-
-      <h1>SPX</h1>
-      <p>Last: {indicesData[2]?.last}</p>
-      <p>Change: {indicesData[2]?.change}</p>
-      <p>Change %: {indicesData[2]?.changepct}</p>
-    </div>
+    <Box display="flex" alignItems="center">
+      {indicesData.map((data, index) => (
+        <Box key={index} mx={1} textAlign="center">
+          <Typography variant="h6">{formatIndexName(data.symbol[0])}</Typography>
+          <Typography>Last: {data.last[0]} USD</Typography>
+        </Box>
+      ))}
+    </Box>
   );
 };
 
