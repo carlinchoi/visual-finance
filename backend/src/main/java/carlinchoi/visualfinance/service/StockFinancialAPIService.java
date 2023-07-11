@@ -28,4 +28,13 @@ public class StockFinancialAPIService {
         }
         return List.of();
     }
+
+    public List <StockFinancials.Result> getFinancialDataByName(String name) {
+        String url = API_URL + "?company_name=" + name + "&apiKey=" + apiKey;
+        StockFinancials stockFinancials = restTemplate.getForObject(url, StockFinancials.class);
+        if (stockFinancials != null) {
+            return List.of(stockFinancials.getResults());
+        }
+        return List.of();
+    }
 }

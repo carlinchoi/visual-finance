@@ -20,8 +20,14 @@ public class StockFinancialController {
     }
 
     @GetMapping("/financial-data")
-    public ResponseEntity<List<StockFinancials.Result>> getFinancialData(@RequestParam String ticker) {
+    public ResponseEntity<List<StockFinancials.Result>>getFinancialData(@RequestParam String ticker) {
         List<StockFinancials.Result> financialData = financialAPIService.getFinancialData(ticker);
+        return ResponseEntity.ok(financialData);
+    }
+
+    @GetMapping("/financial-data-name")
+    public ResponseEntity<List<StockFinancials.Result>>getFinancialDataByName(@RequestParam String name) {
+        List<StockFinancials.Result> financialData = financialAPIService.getFinancialDataByName(name);
         return ResponseEntity.ok(financialData);
     }
 }
