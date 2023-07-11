@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { fetchIndicesData } from 'store/actions/IndicesDataActions';
 import axios from 'boot/axios';
-import { Box, Typography } from '@mui/material';
+import { Box, Typography, Divider } from '@mui/material';
 
 const Indices = () => {
   const dispatch = useDispatch();
@@ -35,23 +35,28 @@ const Indices = () => {
   const formatIndexName = (symbol) => {
     switch (symbol) {
       case 'DJI':
-        return 'Dow Jones Industrial Average';
+        return 'Dow Jones';
       case 'NDX':
-        return 'NASDAQ 100 Index';
+        return 'NASDAQ 100';
       case 'SPX':
-        return 'S&P 500 Index';
+        return 'S&P 500';
       default:
         return '';
     }
   };
 
   return (
-    <Box display="flex" alignItems="center">
+    <Box sx={{ width: '100%', ml: { xs: 0, md: 1 } }} display="flex" alignItems="center">
       {indicesData.map((data, index) => (
-        <Box key={index} mx={1} textAlign="center">
-          <Typography variant="h6">{formatIndexName(data.symbol[0])}</Typography>
-          <Typography>Last: {data.last[0]} USD</Typography>
-        </Box>
+        <React.Fragment key={index}>
+          <Box mx={1} textAlign="center">
+            <Typography variant="h6" sx={{ fontWeight: 'bold' }}>
+              {formatIndexName(data.symbol[0])}
+            </Typography>
+            <Typography>${data.last[0]}</Typography>
+          </Box>
+          {index !== indicesData.length - 1 && <Divider orientation="vertical" flexItem />}
+        </React.Fragment>
       ))}
     </Box>
   );

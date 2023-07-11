@@ -3,10 +3,11 @@ import { Box, IconButton, Link, useMediaQuery } from '@mui/material';
 import { GithubOutlined } from '@ant-design/icons';
 
 // project import
-import Indices from './Indices';
+// import Search from './Search';
 import Profile from './Profile';
 import Notification from './Notification';
 import MobileSection from './MobileSection';
+import Indices from './Indices';
 
 // ==============================|| HEADER - CONTENT ||============================== //
 
@@ -15,6 +16,9 @@ const HeaderContent = () => {
 
   return (
     <>
+      {/* {!matchesXs && <Search />}
+      {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />} */}
+
       {!matchesXs && <Indices />}
       {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
 
