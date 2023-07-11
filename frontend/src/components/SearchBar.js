@@ -29,8 +29,8 @@ const SearchBar = ({ setSearchTicker }) => {
 
   return (
     <Box sx={{ display: 'flex', alignItems: 'center', flexDirection: 'column', width: '100%' }}>
-      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 1, width: '100%' }}>
-        <FormControl sx={{ flex: 1, marginRight: 1 }}>
+      <Box sx={{ display: 'flex', alignItems: 'center', marginBottom: 0.5, width: '100%' }}>
+        <FormControl sx={{ flex: 1 }}>
           <OutlinedInput
             size="small"
             id="search-bar"
