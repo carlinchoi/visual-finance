@@ -16,9 +16,9 @@ const Indices = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseSPX = await axios.get('http://localhost:8080/indices?symbol=SPX');
-        const responseNDX = await axios.get('http://localhost:8080/indices?symbol=NDX');
-        const responseDJI = await axios.get('http://localhost:8080/indices?symbol=DJI');
+        const responseSPX = await axios.get('indices?symbol=SPX');
+        const responseNDX = await axios.get('indices?symbol=NDX');
+        const responseDJI = await axios.get('indices?symbol=DJI');
         dispatch(fetchIndicesData([responseSPX.data, responseNDX.data, responseDJI.data]));
       } catch (error) {
         console.error('Error fetching Indices Data:', error);
