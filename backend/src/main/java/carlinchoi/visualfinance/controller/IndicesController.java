@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin
+@CrossOrigin(origins = "https://visualfinance.pro")
 public class IndicesController {
     private final IndicesAPIService indicesAPIService;
 
