@@ -1,5 +1,5 @@
 import axios from 'axios';
 
-axios.defaults.baseURL = 'https://d11ti89cnpcpii.cloudfront.net';
+axios.defaults.baseURL = 'http://18.144.177.117:8080';
 
 export default axios;
