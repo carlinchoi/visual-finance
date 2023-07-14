@@ -10,7 +10,8 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/")
-@CrossOrigin
+@CrossOrigin(origins = "https://d2ejg0bxx4cbj9.cloudfront.net")
+
 public class StockFinancialController {
     private final StockFinancialAPIService financialAPIService;
 
