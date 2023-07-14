@@ -15,6 +15,7 @@ carlinchoi\visualfinance\model\RegisterUserDto.class
 carlinchoi\visualfinance\model\StockFinancials.class
 carlinchoi\visualfinance\model\TwelveEarnings$Earning.class
 carlinchoi\visualfinance\model\StockFinancials$Result.class
+carlinchoi\visualfinance\VisualFinanceApplication$1.class
 carlinchoi\visualfinance\controller\StockFinancialController.class
 carlinchoi\visualfinance\controller\UserController.class
 carlinchoi\visualfinance\model\Authority.class
