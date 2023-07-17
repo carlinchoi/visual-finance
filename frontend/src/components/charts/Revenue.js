@@ -16,7 +16,7 @@ const RevenueChart = () => {
       const fetchData = async () => {
         try {
           console.log('Fetching financial data...');
-          const response = await axios.get(`financial-data?ticker=${searchTickerInput}`);
+          const response = await axios.get(`financial-data?ticker=${searchTickerInput}&apiKey=vwp7xrRUR8gCvOCfzsjMK_AFhqgSt_hj`);
           const data = response.data;
           console.log('Financial data:', data);
 
