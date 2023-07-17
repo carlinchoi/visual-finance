@@ -1,17 +1,17 @@
 // project import
 // import Routes from "routes";
 import { Routes } from "react-router-dom";
-import ThemeCustomization from "themes";
-import ScrollTop from "components/ScrollTop";
+import Theme from "./themes";
+import ScrollTop from "./components/ScrollTop";
 
 // ==============================|| APP - THEME, ROUTER, LOCAL  ||============================== //
 
 const App = () => (
-  <ThemeCustomization>
+  <Theme>
     <ScrollTop>
       <Routes />
     </ScrollTop>
-  </ThemeCustomization>
+  </Theme>
 );
 
 export default App;

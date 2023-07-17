@@ -4,17 +4,16 @@ import { BrowserRouter } from "react-router-dom";
 
 // scroll bar
 // import "simplebar/src/simplebar.css";
-import SimpleBar from "./components/third-party/SimpleBar";
 
 // third-party
 import { Provider as ReduxProvider } from "react-redux";
 
 // apex-chart
-import "boot/apex-chart.css";
+import "./boot/apex-chart.css";
 
 // project import
 import App from "./App";
-import { store } from "store";
+import { store } from "./store";
 import reportWebVitals from "./reportWebVitals";
 
 // ==============================|| MAIN - REACT DOM RENDER  ||============================== //

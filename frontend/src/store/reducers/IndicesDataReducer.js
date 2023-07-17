@@ -1,9 +1,10 @@
-import { FETCH_INDICES_DATA } from 'store/actions/IndicesDataActions';
+// import { FETCH_INDICES_DATA } from 'store/actions/IndicesDataActions';
+import { FETCH_INDICES_DATA } from "../actions/IndicesDataActions";
 
 const initialState = {
   indicesData: [],
   loading: false,
-  error: null
+  error: null,
 };
 
 const indicesDataReducer = (state = initialState, action) => {
@@ -14,7 +15,7 @@ const indicesDataReducer = (state = initialState, action) => {
         ...state,
         indicesData: payload,
         loading: false,
-        error: null
+        error: null,
       };
     }
     default:
