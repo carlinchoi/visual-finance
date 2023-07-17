@@ -5,6 +5,7 @@ import carlinchoi.visualfinance.service.IndicesAPIService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 
@@ -19,6 +20,7 @@ public class IndicesController {
         this.indicesAPIService = indicesAPIService;
     }
 
+    @PreAuthorize("permitAll")
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path = "/indices", method = RequestMethod.GET)
     public ResponseEntity<Indices> getIndicesData(@RequestParam("symbol") String symbol) {
