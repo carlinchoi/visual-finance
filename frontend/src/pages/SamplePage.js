@@ -7,6 +7,7 @@ import GrossProfitChart from 'components/charts/GrossProfit.js';
 const SamplePage = () => {
   return (
     <div>
+      <h1>Testing TESTING TESTIngggg</h1>
       <RevenueChart />
       <CurrentLiabilitiesChart />
       <NetCashFlowChart />
