@@ -16,8 +16,8 @@ const Indices = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const responseSPX = await fetch('https://d2ejg0bxx4cbj9.cloudfront.net/indices?symbol=SPX');
-        const responseNDX = await axios.get('indices?symbol=NDX&apiKey=vwp7xrRUR8gCvOCfzsjMK_AFhqgSt_hj');
+        const responseSPX = await fetch('https://d2ejg0bxx4cbj9.cloudfront.net/indices?symbol=SPX&apiKey=vwp7xrRUR8gCvOCfzsjMK_AFhqgSt_hj');
+        const responseNDX = await axios.get('indices?symbol=NDX');
         const responseDJI = await axios.get('indices?symbol=DJI');
         dispatch(fetchIndicesData([responseSPX.data, responseNDX.data, responseDJI.data]));
       } catch (error) {
