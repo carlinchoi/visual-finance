@@ -36,7 +36,6 @@ S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visua
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\security\jwt\JWTFilter.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\security\WebSecurityConfig.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\service\TwelveDataAPIService.java
-S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\controller\CorsConfig.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\model\LoginResponseDto.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\security\JwtAuthenticationEntryPoint.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\controller\TwelveDataController.java

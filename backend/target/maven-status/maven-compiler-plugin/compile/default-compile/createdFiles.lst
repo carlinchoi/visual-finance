@@ -15,6 +15,7 @@ carlinchoi\visualfinance\model\RegisterUserDto.class
 carlinchoi\visualfinance\model\StockFinancials.class
 carlinchoi\visualfinance\model\TwelveEarnings$Earning.class
 carlinchoi\visualfinance\model\StockFinancials$Result.class
+carlinchoi\visualfinance\VisualFinanceApplication$1.class
 carlinchoi\visualfinance\controller\StockFinancialController.class
 carlinchoi\visualfinance\controller\UserController.class
 carlinchoi\visualfinance\model\Authority.class
@@ -43,7 +44,6 @@ carlinchoi\visualfinance\dao\UserDao.class
 carlinchoi\visualfinance\controller\StockDividendsController.class
 carlinchoi\visualfinance\service\StockDividendsAPIService.class
 carlinchoi\visualfinance\service\StockFinancialAPIService.class
-carlinchoi\visualfinance\controller\CorsConfig.class
 carlinchoi\visualfinance\service\EmailServiceImpl.class
 carlinchoi\visualfinance\model\StockFinancials$BalanceSheetItem.class
 carlinchoi\visualfinance\model\StockFinancials$Financials.class
