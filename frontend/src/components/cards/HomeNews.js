@@ -25,7 +25,7 @@ const HomeNews = () => {
       }
     };
     fetchData();
-  }, []);
+  }, [dispatch]);
 
   if (loading) {
     return <div>Loading...</div>;
