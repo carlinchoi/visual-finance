@@ -25,7 +25,7 @@ const HomeNews = () => {
       }
     };
     fetchData();
-  }, [dispatch]);
+  }, []);
 
   if (loading) {
     return <div>Loading...</div>;
@@ -34,6 +34,19 @@ const HomeNews = () => {
   if (error) {
     return <div>Error: {error}</div>;
   }
+
+  const formatDate = (dateString) => {
+    const options = {
+      year: 'numeric',
+      month: 'long',
+      day: 'numeric',
+      hour: 'numeric',
+      minute: 'numeric'
+    };
+
+    const date = new Date(dateString);
+    return date.toLocaleString('en-US', options);
+  };
 
   return (
     <Grid container spacing={2}>
@@ -61,10 +74,10 @@ const HomeNews = () => {
               </div>
               <CardContent>
                 <Typography gutterBottom variant="h5" component="div">
-                  {item.published_at}
+                  {item.description}
                 </Typography>
                 <Typography variant="body2" color="text.secondary">
-                  {item.description}
+                  {formatDate(item.published_at)}
                 </Typography>
               </CardContent>
             </CardActionArea>
