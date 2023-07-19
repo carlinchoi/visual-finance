@@ -7,6 +7,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 import { CardActionArea, Grid } from '@mui/material';
+import { Link } from 'react-router-dom';
 
 const HomeNews = () => {
   const dispatch = useDispatch();
@@ -53,7 +54,7 @@ const HomeNews = () => {
       {stockDataNews?.map((item) => (
         <Grid item xs={12} sm={6} md={6} lg={6} key={item.uuid}>
           <Card sx={{ height: '100%' }}>
-            <CardActionArea>
+            <CardActionArea component={Link} to={item.url}>
               <div style={{ position: 'relative' }}>
                 <CardMedia component="img" height="250" image={item.image_url} alt="Article Image" />
                 <Typography
