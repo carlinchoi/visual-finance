@@ -3,6 +3,7 @@ import { Grid } from '@mui/material';
 import HomeText from 'components/cards/HomeText';
 import SearchBar from 'components/SearchBar';
 import MainCard from 'components/MainCard';
+import HomeNews from 'components/cards/HomeNews';
 
 const HomePage = () => {
   return (
@@ -10,12 +11,17 @@ const HomePage = () => {
       <Grid item xs={12}>
         <HomeText />
       </Grid>
-      <Grid item xs={12} md={5} lg={4}>
-        <MainCard sx={{ mt: 2 }}>
-          <Grid container justifyContent="center">
+      <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '20px' }}>
+        <Grid item xs={6}>
+          <MainCard sx={{ mt: 2 }}>
             <SearchBar />
-          </Grid>
-        </MainCard>
+          </MainCard>
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
+        <Grid item xs={5}>
+          <HomeNews />
+        </Grid>
       </Grid>
     </Grid>
   );

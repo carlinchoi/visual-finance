@@ -11,10 +11,9 @@ const initialState = {
 const stockDataPriceReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_STOCK_DATA_PRICE: {
-      const { payload } = action;
       return {
         ...state,
-        stockDataPrice: payload,
+        stockDataPrice: action.payload,
         loading: false,
         error: null
       };
