@@ -25,7 +25,7 @@ const HomePage = () => {
         </Grid>
       </Grid>
       <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
-        <Grid item xs={5}>
+        <Grid item xs={12}>
           <HomeExample />
         </Grid>
       </Grid>
