@@ -4,6 +4,7 @@ import HomeText from 'components/cards/HomeText';
 import SearchBar from 'components/SearchBar';
 import MainCard from 'components/MainCard';
 import HomeNews from 'components/cards/HomeNews';
+import HomeExample from 'components/cards/HomeExample';
 
 const HomePage = () => {
   return (
@@ -21,6 +22,11 @@ const HomePage = () => {
       <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
         <Grid item xs={5}>
           <HomeNews />
+        </Grid>
+      </Grid>
+      <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
+        <Grid item xs={5}>
+          <HomeExample />
         </Grid>
       </Grid>
     </Grid>
