@@ -1,5 +1,6 @@
 carlinchoi\visualfinance\model\TwelveLogo$Meta.class
 carlinchoi\visualfinance\service\StockDataPriceAPIService.class
+carlinchoi\visualfinance\service\CoinGeckoAPIService.class
 carlinchoi\visualfinance\controller\AuthenticationController.class
 carlinchoi\visualfinance\security\jwt\JWTConfigurer.class
 carlinchoi\visualfinance\controller\IndicesController.class
@@ -7,11 +8,14 @@ carlinchoi\visualfinance\security\jwt\JWTFilter.class
 carlinchoi\visualfinance\model\StockDividends$Result.class
 carlinchoi\visualfinance\model\StockDividends.class
 carlinchoi\visualfinance\model\StockFinancials$CashFlowStatement.class
+carlinchoi\visualfinance\service\CoinGeckoAPIService$1.class
+carlinchoi\visualfinance\model\CoinGecko$Result.class
 carlinchoi\visualfinance\model\Indices.class
 carlinchoi\visualfinance\model\StockDataNews$Highlight.class
 carlinchoi\visualfinance\security\JwtAccessDeniedHandler.class
 carlinchoi\visualfinance\model\StockDataNews$Similar.class
 carlinchoi\visualfinance\service\TwelveDataAPIService.class
+carlinchoi\visualfinance\controller\CoinGeckoController.class
 carlinchoi\visualfinance\service\IndicesAPIService.class
 carlinchoi\visualfinance\model\RegisterUserDto.class
 carlinchoi\visualfinance\model\StockFinancials.class
@@ -39,6 +43,7 @@ carlinchoi\visualfinance\model\StockFinancials$CashFlowStatementItem.class
 carlinchoi\visualfinance\security\SecurityUtils.class
 carlinchoi\visualfinance\model\StockFinancials$IncomeStatementItem.class
 carlinchoi\visualfinance\security\jwt\TokenProvider.class
+carlinchoi\visualfinance\model\CoinGecko.class
 carlinchoi\visualfinance\model\StockDataNews$Response.class
 carlinchoi\visualfinance\model\TwelveEarnings$Meta.class
 carlinchoi\visualfinance\VisualFinanceApplication.class

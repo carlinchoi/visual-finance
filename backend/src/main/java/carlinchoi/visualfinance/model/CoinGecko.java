@@ -3,98 +3,103 @@ package carlinchoi.visualfinance.model;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class CoinGecko {
-    @JsonProperty("symbol")
-    private int symbol;
-    @JsonProperty("name")
-    private int name;
-    @JsonProperty("market_cap")
-    private int marketCap;
-    @JsonProperty("total_volume")
-    private int totalVolume;
-    @JsonProperty("high_24h")
-    private int high24;
-    @JsonProperty("low_24h")
-    private int low24;
-    @JsonProperty("price_change_percentage_24h")
-    private int priceChangePct;
-    @JsonProperty("circulating_supply")
-    private long circulatingSupply;
+    private Result[] results;
 
-    public int getSymbol() {
-        return symbol;
+    public Result[] getResults() {
+        return results;
     }
 
-    public void setSymbol(int symbol) {
-        this.symbol = symbol;
+    public void setResults(Result[] results) {
+        this.results = results;
     }
 
-    public int getName() {
-        return name;
-    }
+    public static class Result {
+        @JsonProperty("symbol")
+        private String symbol;
 
-    public void setName(int name) {
-        this.name = name;
-    }
+        @JsonProperty("name")
+        private String name;
 
-    public int getMarketCap() {
-        return marketCap;
-    }
+        @JsonProperty("market_cap")
+        private long marketCap;
 
-    public void setMarketCap(int marketCap) {
-        this.marketCap = marketCap;
-    }
+        @JsonProperty("total_volume")
+        private long totalVolume;
 
-    public int getTotalVolume() {
-        return totalVolume;
-    }
+        @JsonProperty("high_24h")
+        private double high24;
 
-    public void setTotalVolume(int totalVolume) {
-        this.totalVolume = totalVolume;
-    }
+        @JsonProperty("low_24h")
+        private double low24;
 
-    public int getHigh24() {
-        return high24;
-    }
+        @JsonProperty("price_change_percentage_24h")
+        private double priceChangePct;
 
-    public void setHigh24(int high24) {
-        this.high24 = high24;
-    }
+        @JsonProperty("circulating_supply")
+        private long circulatingSupply;
 
-    public int getLow24() {
-        return low24;
-    }
+        public String getSymbol() {
+            return symbol;
+        }
 
-    public void setLow24(int low24) {
-        this.low24 = low24;
-    }
+        public void setSymbol(String symbol) {
+            this.symbol = symbol;
+        }
 
-    public int getPriceChangePct() {
-        return priceChangePct;
-    }
+        public String getName() {
+            return name;
+        }
 
-    public void setPriceChangePct(int priceChangePct) {
-        this.priceChangePct = priceChangePct;
-    }
+        public void setName(String name) {
+            this.name = name;
+        }
 
-    public long getCirculatingSupply() {
-        return circulatingSupply;
-    }
+        public long getMarketCap() {
+            return marketCap;
+        }
 
-    public void setCirculatingSupply(long circulatingSupply) {
-        this.circulatingSupply = circulatingSupply;
-    }
+        public void setMarketCap(long marketCap) {
+            this.marketCap = marketCap;
+        }
 
-    @Override
-    public String toString() {
-        return "CoinGecko{" +
-                "symbol=" + symbol +
-                ", name=" + name +
-                ", marketCap=" + marketCap +
-                ", totalVolume=" + totalVolume +
-                ", high24=" + high24 +
-                ", low24=" + low24 +
-                ", priceChangePct=" + priceChangePct +
-                ", circulatingSupply=" + circulatingSupply +
-                '}';
+        public long getTotalVolume() {
+            return totalVolume;
+        }
+
+        public void setTotalVolume(long totalVolume) {
+            this.totalVolume = totalVolume;
+        }
+
+        public double getHigh24() {
+            return high24;
+        }
+
+        public void setHigh24(double high24) {
+            this.high24 = high24;
+        }
+
+        public double getLow24() {
+            return low24;
+        }
+
+        public void setLow24(double low24) {
+            this.low24 = low24;
+        }
+
+        public double getPriceChangePct() {
+            return priceChangePct;
+        }
+
+        public void setPriceChangePct(double priceChangePct) {
+            this.priceChangePct = priceChangePct;
+        }
+
+        public long getCirculatingSupply() {
+            return circulatingSupply;
+        }
+
+        public void setCirculatingSupply(long circulatingSupply) {
+            this.circulatingSupply = circulatingSupply;
+        }
     }
 }

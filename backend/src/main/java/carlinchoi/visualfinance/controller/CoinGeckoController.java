@@ -3,17 +3,15 @@ package carlinchoi.visualfinance.controller;
 import carlinchoi.visualfinance.model.CoinGecko;
 import carlinchoi.visualfinance.service.CoinGeckoAPIService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
-@RequestMapping("/")
-@CrossOrigin
+@RequestMapping("/")  // Update the mapping to "/api" to be consistent
 public class CoinGeckoController {
     private final CoinGeckoAPIService coinGeckoAPIService;
 
@@ -23,8 +21,7 @@ public class CoinGeckoController {
     }
 
     @GetMapping("/coins")
-    public List<CoinGecko> getAllCoins() {
+    public List<CoinGecko.Result> getAllCoins() throws IOException {
         return coinGeckoAPIService.getCoinData();
     }
-
 }
