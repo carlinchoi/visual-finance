@@ -48,7 +48,10 @@ function HomeExample() {
             Portfolio tracking
           </Typography>
           <Typography paddingTop={1} fontSize={18}>
-            Coming soon...
+            Never lose track of your assets again.
+            <p>
+              <strong>Coming soon... </strong>
+            </p>
           </Typography>
         </Grid>
       </Grid>
@@ -69,7 +72,10 @@ function HomeExample() {
           </Typography>
           <Typography paddingTop={1} fontSize={18}>
             Be the first to know about price changes on your crypto assets. We list the top 100 cryptocurrencies by marketcap for your
-            convenience.
+            convenience.{' '}
+            <p>
+              <strong> Coming soon...</strong>
+            </p>
           </Typography>
         </Grid>
         {/* Prices Pic */}
