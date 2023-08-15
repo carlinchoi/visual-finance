@@ -38,6 +38,9 @@ public class CoinGecko {
         @JsonProperty("circulating_supply")
         private long circulatingSupply;
 
+        @JsonProperty("image")
+        private String image;
+
         public String getSymbol() {
             return symbol;
         }
@@ -100,6 +103,14 @@ public class CoinGecko {
 
         public void setCirculatingSupply(long circulatingSupply) {
             this.circulatingSupply = circulatingSupply;
+        }
+
+        public String getImage() {
+            return image;
+        }
+
+        public void setImage(String image) {
+            this.image = image;
         }
     }
 }
