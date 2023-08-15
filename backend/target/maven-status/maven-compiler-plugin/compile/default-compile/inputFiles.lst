@@ -40,4 +40,5 @@ S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visua
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\security\JwtAuthenticationEntryPoint.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\controller\TwelveDataController.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\service\StockFinancialAPIService.java
+S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\model\StockDataNews.java
 S:\Workspace\Side Projects\visual-finance\backend\src\main\java\carlinchoi\visualfinance\model\User.java
