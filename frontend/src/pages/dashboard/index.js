@@ -20,9 +20,6 @@ const DashboardDefault = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      {/* <Grid item xs={12}>
-        {searchTickerInput ? null : <HomeText />}
-      </Grid> */}
       <Grid item xs={12} md={5} lg={4}>
         <MainCard sx={{ mt: 2 }}>
           <Grid container justifyContent="center">

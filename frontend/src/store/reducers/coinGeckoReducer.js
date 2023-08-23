@@ -6,7 +6,7 @@ const initialState = {
   error: null
 };
 
-const coinDataReducer = (state = initialState, action) => {
+const coinGeckoReducer = (state = initialState, action) => {
   switch (action.type) {
     case FETCH_COIN_DATA:
       return {
@@ -19,3 +19,5 @@ const coinDataReducer = (state = initialState, action) => {
       return state;
   }
 };
+
+export default coinGeckoReducer;

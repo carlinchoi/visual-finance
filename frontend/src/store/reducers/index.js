@@ -7,6 +7,7 @@ import stockDataPriceReducer from './stockDataPriceReducer';
 import stockDividendsReducer from './stockDividendsReducer';
 import twelveDataReducer from './twelveDataReducer';
 import indicesDataReducer from './IndicesDataReducer';
+import coinGeckoReducer from './coinGeckoReducer';
 
 const reducers = combineReducers({
   menu,
@@ -14,7 +15,8 @@ const reducers = combineReducers({
   stockDataPrice: stockDataPriceReducer,
   stockDividends: stockDividendsReducer,
   twelveData: twelveDataReducer,
-  indicesData: indicesDataReducer
+  indicesData: indicesDataReducer,
+  coinData: coinGeckoReducer
 });
 
 export default reducers;

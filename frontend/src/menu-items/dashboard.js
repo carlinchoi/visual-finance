@@ -14,10 +14,18 @@ const dashboard = {
   type: 'group',
   children: [
     {
-      id: 'dashboard',
-      title: 'Dashboard',
+      id: 'stockDashboard',
+      title: 'Stock Dashboard',
       type: 'item',
       url: '/dashboard/default',
+      icon: icons.DashboardOutlined,
+      breadcrumbs: false
+    },
+    {
+      id: 'cryptoDashboard',
+      title: 'Crypto Dashboard',
+      type: 'item',
+      url: '/CryptoPage',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }
