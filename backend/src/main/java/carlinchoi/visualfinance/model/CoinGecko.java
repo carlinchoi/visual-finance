@@ -2,6 +2,8 @@ package carlinchoi.visualfinance.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
+import java.math.BigDecimal;
+
 public class CoinGecko {
     private Result[] results;
 
@@ -21,25 +23,25 @@ public class CoinGecko {
         private String name;
 
         @JsonProperty("current_price")
-        private long currentPrice;
+        private BigDecimal currentPrice;
 
         @JsonProperty("market_cap")
-        private long marketCap;
+        private BigDecimal marketCap;
 
         @JsonProperty("total_volume")
-        private long totalVolume;
+        private BigDecimal totalVolume;
 
         @JsonProperty("high_24h")
-        private double high24;
+        private BigDecimal high24;
 
         @JsonProperty("low_24h")
-        private double low24;
+        private BigDecimal low24;
 
         @JsonProperty("price_change_percentage_24h")
         private double priceChangePct;
 
         @JsonProperty("circulating_supply")
-        private long circulatingSupply;
+        private BigDecimal circulatingSupply;
 
         @JsonProperty("image")
         private String image;
@@ -60,35 +62,35 @@ public class CoinGecko {
             this.name = name;
         }
 
-        public long getMarketCap() {
+        public BigDecimal getMarketCap() {
             return marketCap;
         }
 
-        public void setMarketCap(long marketCap) {
+        public void setMarketCap(BigDecimal marketCap) {
             this.marketCap = marketCap;
         }
 
-        public long getTotalVolume() {
+        public BigDecimal getTotalVolume() {
             return totalVolume;
         }
 
-        public void setTotalVolume(long totalVolume) {
+        public void setTotalVolume(BigDecimal totalVolume) {
             this.totalVolume = totalVolume;
         }
 
-        public double getHigh24() {
+        public BigDecimal getHigh24() {
             return high24;
         }
 
-        public void setHigh24(double high24) {
+        public void setHigh24(BigDecimal high24) {
             this.high24 = high24;
         }
 
-        public double getLow24() {
+        public BigDecimal getLow24() {
             return low24;
         }
 
-        public void setLow24(double low24) {
+        public void setLow24(BigDecimal low24) {
             this.low24 = low24;
         }
 
@@ -100,11 +102,11 @@ public class CoinGecko {
             this.priceChangePct = priceChangePct;
         }
 
-        public long getCirculatingSupply() {
+        public BigDecimal getCirculatingSupply() {
             return circulatingSupply;
         }
 
-        public void setCirculatingSupply(long circulatingSupply) {
+        public void setCirculatingSupply(BigDecimal circulatingSupply) {
             this.circulatingSupply = circulatingSupply;
         }
 
@@ -116,12 +118,12 @@ public class CoinGecko {
             this.image = image;
         }
 
-        public long getCurrentPrice() {
+        public BigDecimal getCurrentPrice() {
             return currentPrice;
         }
 
-        public void setCurrentPrice(long currentPrice) {
-            this.currentPrice = currentPrice;
+        public BigDecimal setCurrentPrice(BigDecimal currentPrice) {
+            return this.currentPrice = currentPrice;
         }
     }
 }
