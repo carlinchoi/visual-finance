@@ -25,7 +25,7 @@ const dashboard = {
       id: 'cryptoDashboard',
       title: 'Crypto Dashboard',
       type: 'item',
-      url: '/CryptoPage',
+      url: '/dashboard/crypto',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     }

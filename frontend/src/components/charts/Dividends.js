@@ -28,7 +28,7 @@ const DividendsChart = () => {
   }, [searchTickerInput, dispatch]);
 
   if (loading) {
-    return <div>`${searchTickerInput}` has no dividend data to display</div>;
+    return <div>{searchTickerInput} has no dividend data to display</div>;
   }
 
   if (error) {

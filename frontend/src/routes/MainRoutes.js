@@ -6,12 +6,12 @@ import MainLayout from 'layout/MainLayout';
 
 // render - dashboard
 const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
+const CryptoPage = Loadable(lazy(() => import('pages/CryptoPage')));
 
 const HomePage = Loadable(lazy(() => import('pages/HomePage')));
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/SamplePage')));
-const CryptoPage = Loadable(lazy(() => import('pages/CryptoPage')));
 
 // render - utilities
 
@@ -32,16 +32,16 @@ const MainRoutes = {
         {
           path: 'default',
           element: <DashboardDefault />
+        },
+        {
+          path: 'crypto',
+          element: <CryptoPage />
         }
       ]
     },
     {
       path: 'sample-page',
       element: <SamplePage />
-    },
-    {
-      path: 'crypto',
-      element: <CryptoPage />
     }
   ]
 };

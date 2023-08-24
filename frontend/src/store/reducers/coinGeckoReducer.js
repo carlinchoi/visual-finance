@@ -11,7 +11,7 @@ const coinGeckoReducer = (state = initialState, action) => {
     case FETCH_COIN_DATA:
       return {
         ...state,
-        coinData: action.payload,
+        coinData: action.payload, // This should set the fetched data to coinData
         loading: false,
         error: null
       };
