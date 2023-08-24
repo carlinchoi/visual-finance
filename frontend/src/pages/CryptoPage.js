@@ -10,13 +10,21 @@ import TableRow from '@mui/material/TableRow';
 import Card from '@mui/material/Card';
 import CardHeader from '@mui/material/CardHeader';
 import Avatar from '@mui/material/Avatar';
-import Paper from '@mui/material/Paper'; // Import Paper here
+import Paper from '@mui/material/Paper';
 
 const CryptoPage = () => {
   const dispatch = useDispatch();
   const coinData = useSelector((state) => state.coinData.coinData);
   const loading = useSelector((state) => state.coinData.loading);
   const error = useSelector((state) => state.coinData.error);
+
+  // Helper function to format numbers with two decimal places and commas
+  const formatNumberWithCommasAndTwoDecimals = (number) => {
+    return new Intl.NumberFormat(undefined, {
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2
+    }).format(number);
+  };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -79,21 +87,23 @@ const CryptoPage = () => {
                   </Card>
                 </TableCell>
                 <TableCell align="right">
-                  {typeof coin.current_price === 'number' ? `$${coin.current_price.toFixed(2).toLocaleString()}` : 'N/A'}
+                  {typeof coin.current_price === 'number' ? `$${formatNumberWithCommasAndTwoDecimals(coin.current_price)}` : 'N/A'}
                 </TableCell>
                 <TableCell align="right">
-                  {typeof coin.high_24h === 'number' ? `$${coin.high_24h.toFixed(2).toLocaleString()}` : 'N/A'}
+                  {typeof coin.high_24h === 'number' ? `$${formatNumberWithCommasAndTwoDecimals(coin.high_24h)}` : 'N/A'}
                 </TableCell>
                 <TableCell align="right">
-                  {typeof coin.low_24h === 'number' ? `$${coin.low_24h.toFixed(2).toLocaleString()}` : 'N/A'}
+                  {typeof coin.low_24h === 'number' ? `$${formatNumberWithCommasAndTwoDecimals(coin.low_24h)}` : 'N/A'}
                 </TableCell>
                 <TableCell align="right" style={{ color: coin.price_change_percentage_24h < 0 ? 'red' : '#24A40B' }}>
                   {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
                 </TableCell>
-                <TableCell align="right">{typeof coin.market_cap === 'number' ? `$${coin.market_cap.toLocaleString()}` : 'N/A'}</TableCell>
+                <TableCell align="right">
+                  {typeof coin.market_cap === 'number' ? `$${formatNumberWithCommasAndTwoDecimals(coin.market_cap)}` : 'N/A'}
+                </TableCell>
                 <TableCell align="right">
                   {typeof coin.circulating_supply === 'number'
-                    ? `${coin.circulating_supply.toFixed(0).toLocaleString()} ${coin.symbol}`
+                    ? `${formatNumberWithCommasAndTwoDecimals(coin.circulating_supply)} ${coin.symbol}`
                     : 'N/A'}
                 </TableCell>
               </TableRow>
