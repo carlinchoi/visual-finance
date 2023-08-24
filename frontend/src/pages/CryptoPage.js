@@ -41,52 +41,67 @@ const CryptoPage = () => {
   }
 
   return (
-    <TableContainer component={Paper} sx={{ pt: 2, mb: 5 }}>
-      <Table aria-label="simple table">
-        <TableHead>
-          <TableRow>
-            <TableCell align="left">#</TableCell>
-            <TableCell>Coin</TableCell>
-            <TableCell align="right">Price</TableCell>
-            <TableCell align="right">High 24h</TableCell>
-            <TableCell align="right">Low 24h</TableCell>
-            <TableCell align="right">Price Change 24h</TableCell>
-            <TableCell align="right">Circulating Supply</TableCell>
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {coinData.map((coin) => (
-            <TableRow
-              key={coin.market_cap_rank}
-              sx={{
-                '&:last-child td, &:last-child th': {
-                  border: 0
-                }
-              }}
-            >
-              <TableCell>{coin.market_cap_rank}</TableCell> {/* Display Rank */}
-              <TableCell>
-                <Card elevation={0}>
-                  <CardHeader
-                    avatar={<Avatar alt="CoinLogo" src={coin.image} />}
-                    title={coin.name}
-                    subheader={coin.symbol}
-                    sx={{ padding: 0 }}
-                  />
-                </Card>
-              </TableCell>
-              <TableCell align="right">${coin.current_price.toFixed(2)}</TableCell>
-              <TableCell align="right">${coin.high_24h.toFixed(2)}</TableCell>
-              <TableCell align="right">${coin.low_24h.toFixed(2)}</TableCell>
-              <TableCell align="right" style={{ color: coin.price_change_percentage_24h < 0 ? 'red' : '#24A40B' }}>
-                {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
-              </TableCell>
-              <TableCell align="right">${coin.circulating_supply.toFixed(2)}</TableCell>
+    <div>
+      <h1>Cryptocurrency Prices by Market Cap</h1>
+      <TableContainer component={Paper} sx={{ pt: 2, mb: 5 }}>
+        <Table aria-label="simple table">
+          <TableHead>
+            <TableRow>
+              <TableCell align="left">#</TableCell>
+              <TableCell>Coin</TableCell>
+              <TableCell align="right">Price</TableCell>
+              <TableCell align="right">High 24h</TableCell>
+              <TableCell align="right">Low 24h</TableCell>
+              <TableCell align="right">Price Change 24h</TableCell>
+              <TableCell align="right">Market Cap</TableCell>
+              <TableCell align="right">Circulating Supply</TableCell>
             </TableRow>
-          ))}
-        </TableBody>
-      </Table>
-    </TableContainer>
+          </TableHead>
+          <TableBody>
+            {coinData.map((coin) => (
+              <TableRow
+                key={coin.market_cap_rank}
+                sx={{
+                  '&:last-child td, &:last-child th': {
+                    border: 0
+                  }
+                }}
+              >
+                <TableCell>{coin.market_cap_rank}</TableCell> {/* Display Rank */}
+                <TableCell>
+                  <Card elevation={0}>
+                    <CardHeader
+                      avatar={<Avatar alt="CoinLogo" src={coin.image} />}
+                      title={coin.name}
+                      subheader={coin.symbol}
+                      sx={{ padding: 0 }}
+                    />
+                  </Card>
+                </TableCell>
+                <TableCell align="right">
+                  {typeof coin.current_price === 'number' ? `$${coin.current_price.toFixed(2).toLocaleString()}` : 'N/A'}
+                </TableCell>
+                <TableCell align="right">
+                  {typeof coin.high_24h === 'number' ? `$${coin.high_24h.toFixed(2).toLocaleString()}` : 'N/A'}
+                </TableCell>
+                <TableCell align="right">
+                  {typeof coin.low_24h === 'number' ? `$${coin.low_24h.toFixed(2).toLocaleString()}` : 'N/A'}
+                </TableCell>
+                <TableCell align="right" style={{ color: coin.price_change_percentage_24h < 0 ? 'red' : '#24A40B' }}>
+                  {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
+                </TableCell>
+                <TableCell align="right">{typeof coin.market_cap === 'number' ? `$${coin.market_cap.toLocaleString()}` : 'N/A'}</TableCell>
+                <TableCell align="right">
+                  {typeof coin.circulating_supply === 'number'
+                    ? `${coin.circulating_supply.toFixed(0).toLocaleString()} ${coin.symbol}`
+                    : 'N/A'}
+                </TableCell>
+              </TableRow>
+            ))}
+          </TableBody>
+        </Table>
+      </TableContainer>
+    </div>
   );
 };
 
