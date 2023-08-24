@@ -81,7 +81,7 @@ const CryptoPage = () => {
                     <CardHeader
                       avatar={<Avatar alt="CoinLogo" src={coin.image} />}
                       title={coin.name}
-                      subheader={coin.symbol}
+                      subheader={coin.symbol.toUpperCase()}
                       sx={{ padding: 0 }}
                     />
                   </Card>
