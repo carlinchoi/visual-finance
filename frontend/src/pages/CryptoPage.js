@@ -81,7 +81,7 @@ const CryptoPage = () => {
               <TableCell align="right" style={{ color: coin.price_change_percentage_24h < 0 ? 'red' : '#24A40B' }}>
                 {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
               </TableCell>
-              <TableCell align="right">${coin.circulating_supply}</TableCell>
+              <TableCell align="right">${coin.circulating_supply.toFixed(2)}</TableCell>
             </TableRow>
           ))}
         </TableBody>
