@@ -45,7 +45,7 @@ const CryptoPage = () => {
       <Table aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell></TableCell>
+            <TableCell align="left">#</TableCell>
             <TableCell>Coin</TableCell>
             <TableCell align="right">Price</TableCell>
             <TableCell align="right">High 24h</TableCell>
@@ -64,7 +64,7 @@ const CryptoPage = () => {
                 }
               }}
             >
-              <TableCell>{coin.market_cap_rank}</TableCell>
+              <TableCell>{coin.market_cap_rank}</TableCell> {/* Display Rank */}
               <TableCell>
                 <Card elevation={0}>
                   <CardHeader
@@ -78,7 +78,7 @@ const CryptoPage = () => {
               <TableCell align="right">${coin.current_price.toFixed(2)}</TableCell>
               <TableCell align="right">${coin.high_24h.toFixed(2)}</TableCell>
               <TableCell align="right">${coin.low_24h.toFixed(2)}</TableCell>
-              <TableCell align="right">
+              <TableCell align="right" style={{ color: coin.price_change_percentage_24h < 0 ? 'red' : '#24A40B' }}>
                 {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
               </TableCell>
               <TableCell align="right">${coin.circulating_supply}</TableCell>
