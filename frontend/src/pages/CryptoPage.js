@@ -75,12 +75,12 @@ const CryptoPage = () => {
                   />
                 </Card>
               </TableCell>
-              <TableCell align="right">${coin.current_price}</TableCell>
+              <TableCell align="right">${coin.current_price.toFixed(2)}</TableCell>
+              <TableCell align="right">${coin.high_24h.toFixed(2)}</TableCell>
+              <TableCell align="right">${coin.low_24h.toFixed(2)}</TableCell>
               <TableCell align="right">
                 {coin.price_change_percentage_24h ? coin.price_change_percentage_24h.toFixed(2) + '%' : 'N/A'}
               </TableCell>
-              <TableCell align="right">${coin.total_volume}</TableCell>
-              <TableCell align="right">${coin.market_cap}</TableCell>
               <TableCell align="right">${coin.circulating_supply}</TableCell>
             </TableRow>
           ))}

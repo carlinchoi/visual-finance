@@ -46,6 +46,9 @@ public class CoinGecko {
         @JsonProperty("image")
         private String image;
 
+        @JsonProperty("market_cap_rank")
+        private int market_cap_rank;
+
         public String getSymbol() {
             return symbol;
         }
@@ -124,6 +127,14 @@ public class CoinGecko {
 
         public BigDecimal setCurrentPrice(BigDecimal currentPrice) {
             return this.currentPrice = currentPrice;
+        }
+
+        public int getMarket_cap_rank() {
+            return market_cap_rank;
+        }
+
+        public void setMarket_cap_rank(int market_cap_rank) {
+            this.market_cap_rank = market_cap_rank;
         }
     }
 }
