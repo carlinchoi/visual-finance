@@ -80,7 +80,11 @@ function HomeExample() {
         </Grid>
         {/* Prices Pic */}
         <Grid xs={12} md={6}>
-          <img src="/imgs/prices.jpeg" alt="Crypto Prices" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
+          <img
+            src="/assets/images/icons/cryptodash.png"
+            alt="Crypto Prices"
+            style={{ width: '100%', height: '100%', objectFit: 'cover' }}
+          />
         </Grid>
       </Grid>
     </Box>
