@@ -20,6 +20,9 @@ public class CoinGecko {
         @JsonProperty("name")
         private String name;
 
+        @JsonProperty("current_price")
+        private long currentPrice;
+
         @JsonProperty("market_cap")
         private long marketCap;
 
@@ -111,6 +114,14 @@ public class CoinGecko {
 
         public void setImage(String image) {
             this.image = image;
+        }
+
+        public long getCurrentPrice() {
+            return currentPrice;
+        }
+
+        public void setCurrentPrice(long currentPrice) {
+            this.currentPrice = currentPrice;
         }
     }
 }
