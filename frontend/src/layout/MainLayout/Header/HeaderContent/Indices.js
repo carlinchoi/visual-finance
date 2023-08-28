@@ -24,15 +24,17 @@ const Indices = () => {
         console.error('Error fetching Indices Data:', error);
       }
     };
+
+    // Include 'dispatch' in the dependency array
     fetchData();
-  }, [dispatch]);
+  }, [dispatch]); // 'dispatch' is now a dependency
 
   if (loading) {
     return <div>Loading...</div>;
   }
 
   if (error) {
-    return <div>Error: {error}</div>;
+    return <div>Error: {error.message}</div>;
   }
 
   const formatIndexName = (symbol) => {
@@ -56,7 +58,6 @@ const Indices = () => {
         return DowJonesLogo;
       case 'NDX':
         return NasdaqLogo;
-
       default:
         return null;
     }
