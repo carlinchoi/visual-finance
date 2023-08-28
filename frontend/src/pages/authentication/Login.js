@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom';
-
-// material-ui
 import { Grid, Stack, Typography } from '@mui/material';
-
-// project import
 import AuthLogin from './auth-forms/AuthLogin';
 import AuthWrapper from './AuthWrapper';
-
-// ================================|| LOGIN ||================================ //
 
 const Login = () => (
   <AuthWrapper>
@@ -22,6 +16,18 @@ const Login = () => (
       </Grid>
       <Grid item xs={12}>
         <AuthLogin />
+      </Grid>
+      <Grid item xs={12}>
+        {/* OAuth 2.0 Login Link */}
+        <Typography
+          component="a"
+          href="/oauth2/authorization/google" // Adjust the OAuth provider URL as needed
+          variant="body1"
+          sx={{ textDecoration: 'none' }}
+          color="primary"
+        >
+          Login with Google
+        </Typography>
       </Grid>
     </Grid>
   </AuthWrapper>
