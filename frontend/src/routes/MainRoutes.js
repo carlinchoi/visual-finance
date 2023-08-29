@@ -5,6 +5,7 @@ import Loadable from 'components/Loadable';
 import MainLayout from 'layout/MainLayout';
 
 // render - dashboard
+const DashboardDefault = Loadable(lazy(() => import('pages/dashboard')));
 const CryptoPage = Loadable(lazy(() => import('pages/CryptoPage')));
 
 const HomePage = Loadable(lazy(() => import('pages/HomePage')));
@@ -28,6 +29,10 @@ const MainRoutes = {
     {
       path: 'dashboard',
       children: [
+        {
+          path: 'default',
+          element: <DashboardDefault />
+        },
         {
           path: 'default',
           element: <HomePage />
