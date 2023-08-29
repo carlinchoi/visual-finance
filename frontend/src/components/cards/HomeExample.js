@@ -15,7 +15,6 @@ function HomeExample() {
           flexDirection: { xs: 'column', md: 'row' }
         }}
       >
-        {/* Dashboard Text */}
         <Grid xs={12} md={6} sx={{ pb: { xs: 5, md: 0 }, pr: { xs: 0, md: 5 } }}>
           <Typography fontSize={28} fontWeight={500} lineHeight={1.2}>
             Analyze your stocks with one click
@@ -25,7 +24,6 @@ function HomeExample() {
             of your stock market needs into one easy place.
           </Typography>
         </Grid>
-        {/* Dashboard Pic */}
         <Grid xs={12} md={6}>
           <img src="/assets/images/icons/visualfront.png" alt="Search Page" style={{ width: '100%', height: '100%', objectFit: 'cover' }} />
         </Grid>
@@ -37,7 +35,6 @@ function HomeExample() {
         sx={{
           px: { xs: 3, sm: 5, md: 10, lg: 20 },
           py: 5,
-          backgroundColor: '#ebeff3',
           flexDirection: { xs: 'column', md: 'row' }
         }}
       >
