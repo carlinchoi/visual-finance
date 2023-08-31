@@ -1,6 +1,8 @@
 package carlinchoi.visualfinance.model;
 
+import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 import java.util.HashSet;
 import java.util.Objects;
@@ -15,20 +17,31 @@ public class User {
    @JsonIgnore
    private boolean activated;
    private Set<Authority> authorities = new HashSet<>();
+   @JsonProperty("role")
    private String role;
+   @JsonProperty("email")
    private String email;
+   @JsonProperty("firstName")
+   @JsonAlias("first_name")
    private String firstName;
+   @JsonProperty("lastName")
+   @JsonAlias("last_name")
    private String lastName;
    private String tempPassword;
 
    public User() { }
 
-   public User(int id, String username, String password, String authorities) {
+
+   public User(int id, String username, String password, boolean activated, Set<Authority> authorities, String role, String email, String firstName, String lastName) {
       this.id = id;
       this.username = username;
       this.password = password;
-      if(authorities != null) this.setAuthorities(authorities);
-      this.activated = true;
+      this.activated = activated;
+      this.authorities = authorities;
+      this.role = role;
+      this.email = email;
+      this.firstName = firstName;
+      this.lastName = lastName;
    }
 
    public int getId() {
@@ -124,29 +137,31 @@ public class User {
    }
 
    @Override
-   public boolean equals(Object o) {
-      if (this == o) return true;
-      if (o == null || getClass() != o.getClass()) return false;
-      User user = (User) o;
-      return id == user.id &&
-              activated == user.activated &&
-              Objects.equals(username, user.username) &&
-              Objects.equals(password, user.password) &&
-              Objects.equals(authorities, user.authorities);
-   }
-
-   @Override
-   public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities);
-   }
-
-   @Override
    public String toString() {
       return "User{" +
               "id=" + id +
               ", username='" + username + '\'' +
+              ", password='" + password + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
+              ", role='" + role + '\'' +
+              ", email='" + email + '\'' +
+              ", firstName='" + firstName + '\'' +
+              ", lastName='" + lastName + '\'' +
+              ", tempPassword='" + tempPassword + '\'' +
               '}';
+   }
+
+   @Override
+   public boolean equals(Object o) {
+      if (this == o) return true;
+      if (o == null || getClass() != o.getClass()) return false;
+      User user = (User) o;
+      return id == user.id && activated == user.activated && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities) && Objects.equals(role, user.role) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(tempPassword, user.tempPassword);
+   }
+
+   @Override
+   public int hashCode() {
+      return Objects.hash(id, username, password, activated, authorities, role, email, firstName, lastName, tempPassword);
    }
 }
