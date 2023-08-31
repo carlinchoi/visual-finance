@@ -126,14 +126,14 @@ public class JdbcUserDao implements UserDao {
         System.out.println(volunteerPendingUser);
         String password_hash = new BCryptPasswordEncoder().encode(volunteerPendingUser.getTempPassword());
         System.out.println(password_hash);
-        return jdbcTemplate.update(insertUserSql, volunteerPendingUser.getUsername(), password_hash,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),volunteerPendingUser.getPhone(),"ROLE_PENDINGVOLUNTEER")==1;
+        return jdbcTemplate.update(insertUserSql, volunteerPendingUser.getUsername(), password_hash,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),"ROLE_PENDINGVOLUNTEER")==1;
     }
     @Override
     public void updatePendingVolunteerUser(User volunteerPendingUser) {
-        String insertUserSql = "UPDATE users SET  email=?, first_name=?, last_name=?, phone=? WHERE username=?";
+        String insertUserSql = "UPDATE users SET  email=?, first_name=?, last_name=? WHERE username=?";
         System.out.println(insertUserSql);
         System.out.println(volunteerPendingUser);
-        jdbcTemplate.update(insertUserSql,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),volunteerPendingUser.getPhone(),volunteerPendingUser.getUsername() );
+        jdbcTemplate.update(insertUserSql,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),volunteerPendingUser.getUsername() );
     }
 
     @Override

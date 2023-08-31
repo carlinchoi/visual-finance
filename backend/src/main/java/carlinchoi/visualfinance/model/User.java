@@ -19,9 +19,7 @@ public class User {
    private String email;
    private String firstName;
    private String lastName;
-   private String phone;
    private String tempPassword;
-   private String applicationStatus;
 
    public User() { }
 
@@ -105,13 +103,7 @@ public class User {
       this.lastName = lastName;
    }
 
-   public String getPhone() {
-      return phone;
-   }
 
-   public void setPhone(String phone) {
-      this.phone = phone;
-   }
 
    public String getTempPassword() {
       return tempPassword;
@@ -121,13 +113,7 @@ public class User {
       this.tempPassword = tempPassword;
    }
 
-   public String getApplicationStatus() {
-      return applicationStatus;
-   }
 
-   public void setApplicationStatus(String applicationStatus) {
-      this.applicationStatus = applicationStatus;
-   }
 
    public void setAuthorities(String authorities) {
       String[] roles = authorities.split(",");
