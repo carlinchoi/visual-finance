@@ -125,9 +125,10 @@ public class CoinGecko {
             return currentPrice;
         }
 
-        public BigDecimal setCurrentPrice(BigDecimal currentPrice) {
-            return this.currentPrice = currentPrice;
+        public void setCurrentPrice(BigDecimal currentPrice) {
+            this.currentPrice = currentPrice;
         }
+
 
         public int getMarket_cap_rank() {
             return market_cap_rank;
