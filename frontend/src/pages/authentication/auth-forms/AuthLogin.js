@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link as RouterLink } from 'react-router-dom';
-
-// material-ui
+import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
   Checkbox,
@@ -17,24 +16,26 @@ import {
   Stack,
   Typography
 } from '@mui/material';
-
-// third party
 import * as Yup from 'yup';
 import { Formik } from 'formik';
-
-// project import
-import FirebaseSocial from './FirebaseSocial';
-import AnimateButton from 'components/transitions-animations/AnimateButton';
-
-// assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-
-// ============================|| FIREBASE - LOGIN ||============================ //
+import { login } from '../../../store/actions/auth';
+import AnimateButton from 'components/transitions-animations/AnimateButton';
+import FirebaseSocial from './FirebaseSocial';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
-
   const [showPassword, setShowPassword] = React.useState(false);
+  const dispatch = useDispatch();
+  const user = useSelector((state) => state.auth.user); // Change 'authData' to 'auth'
+  const navigate = useNavigate(); // Initialize useNavigate
+
+  // Replace Redirect with useNavigate
+  if (user) {
+    navigate('/dashboard'); // Redirect to '/dashboard'
+  }
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -58,6 +59,8 @@ const AuthLogin = () => {
         onSubmit={async (values, { setErrors, setStatus, setSubmitting }) => {
           try {
             setStatus({ success: false });
+            // Dispatch the login action here
+            dispatch(login(values.email, values.password));
             setSubmitting(false);
           } catch (err) {
             setStatus({ success: false });
@@ -96,7 +99,7 @@ const AuthLogin = () => {
                   <OutlinedInput
                     fullWidth
                     error={Boolean(touched.password && errors.password)}
-                    id="-password-login"
+                    id="password-login"
                     type={showPassword ? 'text' : 'password'}
                     value={values.password}
                     name="password"
@@ -139,7 +142,7 @@ const AuthLogin = () => {
                     }
                     label={<Typography variant="h6">Keep me sign in</Typography>}
                   />
-                  <Link variant="h6" component={RouterLink} to="" color="text.primary">
+                  <Link variant="h6" component={RouterLink} to="/forgot-password" color="text.primary">
                     Forgot Password?
                   </Link>
                 </Stack>

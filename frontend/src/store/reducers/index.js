@@ -8,6 +8,7 @@ import stockDividendsReducer from './stockDividendsReducer';
 import twelveDataReducer from './twelveDataReducer';
 import indicesDataReducer from './IndicesDataReducer';
 import coinGeckoReducer from './coinGeckoReducer';
+import authReducer from './authReducer'; // Adjust the relative path as needed
 
 const reducers = combineReducers({
   menu,
@@ -16,7 +17,8 @@ const reducers = combineReducers({
   stockDividends: stockDividendsReducer,
   twelveData: twelveDataReducer,
   indicesData: indicesDataReducer,
-  coinData: coinGeckoReducer
+  coinData: coinGeckoReducer,
+  auth: authReducer
 });
 
 export default reducers;

@@ -92,6 +92,18 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
+    public User findByEmail(String email) {
+        if(email == null) throw new IllegalArgumentException("Email cannot be null");
+
+        for(User user: this.findAll()) {
+            if(user.getEmail().equals(email)) {
+                return user;
+            }
+        }
+        throw new UsernameNotFoundException("User " + email + " was not found.");
+    }
+
+    @Override
     public boolean create(String username, String password, String role) {
         String insertUserSql = "insert into users (username,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
