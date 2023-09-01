@@ -33,7 +33,7 @@ const AuthLogin = () => {
 
   // Replace Redirect with useNavigate
   if (user) {
-    navigate('/dashboard'); // Redirect to '/dashboard'
+    navigate('/'); // Redirect to '/dashboard'
   }
 
   const handleClickShowPassword = () => {

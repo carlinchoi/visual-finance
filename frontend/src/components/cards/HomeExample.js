@@ -44,10 +44,7 @@ function HomeExample() {
           </Typography>
           <Typography paddingTop={1} fontSize={18}>
             Be the first to know about price changes on your crypto assets. We list the top 100 cryptocurrencies by marketcap for your
-            convenience.{' '}
-            <p>
-              <strong> Coming soon...</strong>
-            </p>
+            convenience.
           </Typography>
         </Grid>
         {/* Prices Pic */}

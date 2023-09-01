@@ -19,13 +19,7 @@ const Login = () => (
       </Grid>
       <Grid item xs={12}>
         {/* OAuth 2.0 Login Link */}
-        <Typography
-          component="a"
-          href="/oauth2/authorization/google" // Adjust the OAuth provider URL as needed
-          variant="body1"
-          sx={{ textDecoration: 'none' }}
-          color="primary"
-        >
+        <Typography component="a" href="/oauth2/authorization/google" variant="body1" sx={{ textDecoration: 'none' }} color="primary">
           Login with Google
         </Typography>
       </Grid>
