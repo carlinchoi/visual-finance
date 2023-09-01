@@ -1,5 +1,3 @@
-// menu.js
-
 import { createSlice } from '@reduxjs/toolkit';
 
 const initialState = {
@@ -28,10 +26,14 @@ const menu = createSlice({
 
     openComponentDrawer(state, action) {
       state.componentDrawerOpen = action.payload.componentDrawerOpen;
+    },
+
+    closeDrawer(state) {
+      state.drawerOpen = false;
     }
   }
 });
 
-export const { activeItem, activeComponent, openDrawer, openComponentDrawer } = menu.actions;
+export const { activeItem, activeComponent, openDrawer, openComponentDrawer, closeDrawer } = menu.actions;
 
 export default menu.reducer;

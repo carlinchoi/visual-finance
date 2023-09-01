@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom'; // Import useNavigate
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
@@ -19,10 +19,9 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { login } from '../../../store/actions/auth';
+import { login } from '../../../store/actions/auth'; // Import logout action
 import AnimateButton from 'components/transitions-animations/AnimateButton';
 import FirebaseSocial from './FirebaseSocial';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);

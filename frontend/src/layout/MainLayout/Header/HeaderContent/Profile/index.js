@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
+import { useSelector } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -55,6 +56,7 @@ function a11yProps(index) {
 
 const Profile = () => {
   const theme = useTheme();
+  const user = useSelector((state) => state.auth.user);
 
   const handleLogout = async () => {
     // logout
@@ -98,7 +100,11 @@ const Profile = () => {
       >
         <Stack direction="row" spacing={2} alignItems="center" sx={{ p: 0.5 }}>
           <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
-          <Typography variant="subtitle1">Carlin Choi</Typography>
+          {user ? (
+            <Typography variant="subtitle1">{`${user.user.firstName} ${user.user.lastName}`}</Typography>
+          ) : (
+            <Typography variant="subtitle1">Log In</Typography>
+          )}
         </Stack>
       </ButtonBase>
       <Popper
@@ -141,7 +147,7 @@ const Profile = () => {
                           <Stack direction="row" spacing={1.25} alignItems="center">
                             <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                             <Stack>
-                              <Typography variant="h6">John Doe</Typography>
+                              <Typography variant="h6">{user ? `${user.firstName} ${user.lastName}` : 'Not Logged In'}</Typography>
                               <Typography variant="body2" color="textSecondary">
                                 UI/UX Designer
                               </Typography>

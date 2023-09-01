@@ -8,14 +8,17 @@ import { List, ListItemButton, ListItemIcon, ListItemText } from '@mui/material'
 // assets
 import { EditOutlined, ProfileOutlined, LogoutOutlined, UserOutlined, WalletOutlined } from '@ant-design/icons';
 
-// ==============================|| HEADER PROFILE - PROFILE TAB ||============================== //
-
 const ProfileTab = ({ handleLogout }) => {
   const theme = useTheme();
-
   const [selectedIndex, setSelectedIndex] = useState(0);
+
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
+  };
+
+  const handleLogoutClick = () => {
+    // Call the handleLogout function to log the user out
+    handleLogout();
   };
 
   return (
@@ -45,7 +48,7 @@ const ProfileTab = ({ handleLogout }) => {
         </ListItemIcon>
         <ListItemText primary="Billing" />
       </ListItemButton>
-      <ListItemButton selected={selectedIndex === 2} onClick={handleLogout}>
+      <ListItemButton selected={selectedIndex === 2} onClick={handleLogoutClick}>
         <ListItemIcon>
           <LogoutOutlined />
         </ListItemIcon>

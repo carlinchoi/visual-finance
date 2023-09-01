@@ -13,14 +13,16 @@ import navigation from 'menu-items';
 import Breadcrumbs from 'components/transitions-animations/Breadcrumbs';
 
 // types
-import { openDrawer } from 'store/reducers/menu';
+import { openDrawer } from 'store/reducers/menu'; // Import openDrawer
+import { closeDrawer } from 'store/reducers/menu'; // Import closeDrawer
 
-// ==============================|| MAIN LAYOUT ||============================== //
+// ...
 
 const MainLayout = () => {
   const theme = useTheme();
   const matchDownLG = useMediaQuery(theme.breakpoints.down('lg'));
   const dispatch = useDispatch();
+  const searchTickerInput = useSelector((state) => state.financialStatement.searchTickerInput);
 
   const { drawerOpen } = useSelector((state) => state.menu);
 
@@ -31,17 +33,21 @@ const MainLayout = () => {
     dispatch(openDrawer({ drawerOpen: !open }));
   };
 
-  // set media wise responsive drawer
+  // Close the drawer when searchTickerInput becomes true
+  useEffect(() => {
+    if (searchTickerInput) {
+      dispatch(closeDrawer());
+    }
+  }, [searchTickerInput]);
+
+  // set media-wise responsive drawer
   useEffect(() => {
     setOpen(!matchDownLG);
     dispatch(openDrawer({ drawerOpen: !matchDownLG }));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [matchDownLG]);
 
   useEffect(() => {
     if (open !== drawerOpen) setOpen(drawerOpen);
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [drawerOpen]);
 
   return (
