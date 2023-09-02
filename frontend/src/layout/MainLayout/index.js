@@ -38,17 +38,17 @@ const MainLayout = () => {
     if (searchTickerInput) {
       dispatch(closeDrawer());
     }
-  }, [searchTickerInput]);
+  }, [searchTickerInput, dispatch]);
 
   // set media-wise responsive drawer
   useEffect(() => {
     setOpen(!matchDownLG);
     dispatch(openDrawer({ drawerOpen: !matchDownLG }));
-  }, [matchDownLG]);
+  }, [matchDownLG, dispatch]);
 
   useEffect(() => {
     if (open !== drawerOpen) setOpen(drawerOpen);
-  }, [drawerOpen]);
+  }, [drawerOpen, dispatch, open]);
 
   return (
     <Box sx={{ display: 'flex', width: '100%' }}>
