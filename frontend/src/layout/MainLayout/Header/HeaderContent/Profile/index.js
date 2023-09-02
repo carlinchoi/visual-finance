@@ -25,6 +25,7 @@ import MainCard from 'components/MainCard';
 import Transitions from 'components/transitions-animations/Transitions';
 import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
+import UnloggedProfileTab from './UnloggedProfileTab';
 
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
@@ -103,7 +104,7 @@ const Profile = () => {
           {user ? (
             <Typography variant="subtitle1">{`${user.user.firstName} ${user.user.lastName}`}</Typography>
           ) : (
-            <Typography variant="subtitle1">Log In</Typography>
+            <Typography variant="subtitle1">Account</Typography>
           )}
         </Stack>
       </ButtonBase>
@@ -147,17 +148,27 @@ const Profile = () => {
                           <Stack direction="row" spacing={1.25} alignItems="center">
                             <Avatar alt="profile user" src={avatar1} sx={{ width: 32, height: 32 }} />
                             <Stack>
-                              <Typography variant="h6">{user ? `${user.firstName} ${user.lastName}` : 'Not Logged In'}</Typography>
-                              <Typography variant="body2" color="textSecondary">
-                                UI/UX Designer
-                              </Typography>
+                              {user ? (
+                                <>
+                                  <Typography variant="h6">{`${user.firstName} ${user.lastName}`}</Typography>
+                                  <Typography variant="body2" color="textSecondary">
+                                    UI/UX Designer
+                                  </Typography>
+                                </>
+                              ) : (
+                                <>
+                                  <Typography variant="h6">Not Logged In</Typography>
+                                </>
+                              )}
                             </Stack>
                           </Stack>
                         </Grid>
                         <Grid item>
-                          <IconButton size="large" color="secondary" onClick={handleLogout}>
-                            <LogoutOutlined />
-                          </IconButton>
+                          {user && (
+                            <IconButton size="large" color="secondary" onClick={handleLogout}>
+                              <LogoutOutlined />
+                            </IconButton>
+                          )}
                         </Grid>
                       </Grid>
                     </CardContent>
@@ -192,7 +203,7 @@ const Profile = () => {
                           </Tabs>
                         </Box>
                         <TabPanel value={value} index={0} dir={theme.direction}>
-                          <ProfileTab handleLogout={handleLogout} />
+                          {user ? <ProfileTab handleLogout={handleLogout} /> : <UnloggedProfileTab />}
                         </TabPanel>
                         <TabPanel value={value} index={1} dir={theme.direction}>
                           <SettingTab />
