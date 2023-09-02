@@ -12,7 +12,7 @@ export const LOGOUT = 'LOGOUT';
 // Action creators
 
 // Login action
-export const login = (username, password) => async (dispatch) => {
+export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post('/login', { email, password });
     dispatch({ type: LOGIN_SUCCESS, payload: response.data });
