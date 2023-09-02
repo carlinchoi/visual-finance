@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 
 // material-ui
 import {
@@ -26,7 +27,7 @@ import { Formik } from 'formik';
 import FirebaseSocial from './FirebaseSocial';
 import AnimateButton from 'components/transitions-animations/AnimateButton';
 import { strengthColor, strengthIndicator } from 'utils/password-strength';
-
+import { register } from 'store/actions/auth';
 // assets
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 
@@ -35,6 +36,8 @@ import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 const AuthRegister = () => {
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
+  const dispatch = useDispatch();
+
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
   };
@@ -59,7 +62,6 @@ const AuthRegister = () => {
           firstname: '',
           lastname: '',
           email: '',
-          company: '',
           password: '',
           submit: null
         }}
@@ -73,6 +75,7 @@ const AuthRegister = () => {
           try {
             setStatus({ success: false });
             setSubmitting(false);
+            dispatch(register(values.firstname, values.lastname, values.email, values.password));
           } catch (err) {
             console.error(err);
             setStatus({ success: false });
@@ -127,27 +130,7 @@ const AuthRegister = () => {
                   )}
                 </Stack>
               </Grid>
-              <Grid item xs={12}>
-                <Stack spacing={1}>
-                  <InputLabel htmlFor="company-signup">Company</InputLabel>
-                  <OutlinedInput
-                    fullWidth
-                    error={Boolean(touched.company && errors.company)}
-                    id="company-signup"
-                    value={values.company}
-                    name="company"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    placeholder="Demo Inc."
-                    inputProps={{}}
-                  />
-                  {touched.company && errors.company && (
-                    <FormHelperText error id="helper-text-company-signup">
-                      {errors.company}
-                    </FormHelperText>
-                  )}
-                </Stack>
-              </Grid>
+
               <Grid item xs={12}>
                 <Stack spacing={1}>
                   <InputLabel htmlFor="email-signup">Email Address*</InputLabel>

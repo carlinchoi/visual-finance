@@ -28,9 +28,8 @@ const AuthLogin = () => {
   const [showPassword, setShowPassword] = React.useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
-  const navigate = useNavigate(); // Initialize useNavigate
+  const navigate = useNavigate();
 
-  // Replace Redirect with useNavigate
   if (user) {
     navigate('/'); // Redirect to '/dashboard'
   }
