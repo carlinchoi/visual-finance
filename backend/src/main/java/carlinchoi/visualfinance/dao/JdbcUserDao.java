@@ -96,20 +96,20 @@ public class JdbcUserDao implements UserDao {
         if(email == null) throw new IllegalArgumentException("Email cannot be null");
 
         for(User user: this.findAll()) {
-            if(user.getEmail().equals(email)) {
+            if(user.getEmail().equalsIgnoreCase(email)) {
                 return user;
             }
         }
-        throw new UsernameNotFoundException("User " + email + " was not found.");
+        throw new UsernameNotFoundException(email + " was not found.");
     }
 
     @Override
-    public boolean create(String username, String password, String role, String email) {
-        String insertUserSql = "insert into users (username,password_hash,role, email) values (?,?,?,?)";
+    public boolean create(String email, String password, String role) {
+        String insertUserSql = "insert into users (email,password_hash,role) values (?,?,?)";
         String password_hash = new BCryptPasswordEncoder().encode(password);
         String ssRole = role.toUpperCase().startsWith("ROLE_") ? role.toUpperCase() : "ROLE_" + role.toUpperCase();
 
-        return jdbcTemplate.update(insertUserSql, username, password_hash, ssRole, email) == 1;
+        return jdbcTemplate.update(insertUserSql, email, password_hash, ssRole) == 1;
     }
 
     @Override
