@@ -16,7 +16,7 @@ public interface UserDao {
     int findIdByUsername(String username);
 
     User findByEmail(String email);
-    boolean create(String email, String password, String role);
+    boolean create(String email, String password, String role, String firstName, String lastName);
 
     void updateUser(User user);
 
