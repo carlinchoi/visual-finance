@@ -61,7 +61,7 @@ public class AuthenticationController {
             User user = userDao.findByEmail(newUser.getEmail());
             throw new ResponseStatusException(HttpStatus.BAD_REQUEST, "Email Already Exists.");
         } catch (UsernameNotFoundException e) {
-            userDao.create(newUser.getEmail(),newUser.getPassword(), newUser.getRole(), newUser.getFirstName(), newUser.getLastName());
+            userDao.create(newUser.getEmail(),newUser.getPassword(), newUser.getFirstName(), newUser.getLastName(), newUser.getRole());
         }
     }
 
