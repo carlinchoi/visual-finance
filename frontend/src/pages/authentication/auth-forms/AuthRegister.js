@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
+
 import { useDispatch } from 'react-redux';
 
 // material-ui
@@ -37,6 +38,7 @@ const AuthRegister = () => {
   const [level, setLevel] = useState();
   const [showPassword, setShowPassword] = useState(false);
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const handleClickShowPassword = () => {
     setShowPassword(!showPassword);
@@ -76,6 +78,7 @@ const AuthRegister = () => {
             setStatus({ success: false });
             setSubmitting(false);
             dispatch(register(values.email, values.password, values.firstname, values.lastname));
+            navigate('/login');
           } catch (err) {
             console.error(err);
             setStatus({ success: false });
