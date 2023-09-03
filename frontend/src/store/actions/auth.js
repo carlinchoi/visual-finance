@@ -22,10 +22,10 @@ export const login = (email, password) => async (dispatch) => {
 };
 
 // Register action
-export const register = (email, password, role, firstName, lastName) => async (dispatch) => {
+export const register = (email, password, firstName, lastName) => async (dispatch) => {
   try {
     const role = 'USER';
-    const response = await axios.post('/register', { email, password, role, firstName, lastName });
+    const response = await axios.post('/register', { email, password, firstName, lastName, role });
     dispatch({ type: REGISTER_SUCCESS, payload: response.data });
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, payload: error });
