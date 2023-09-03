@@ -61,6 +61,7 @@ const AuthRegister = () => {
         initialValues={{
           firstname: '',
           lastname: '',
+          role: 'USER',
           email: '',
           password: '',
           submit: null
