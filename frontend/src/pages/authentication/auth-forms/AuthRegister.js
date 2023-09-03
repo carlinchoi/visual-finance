@@ -75,7 +75,7 @@ const AuthRegister = () => {
           try {
             setStatus({ success: false });
             setSubmitting(false);
-            dispatch(register(values.email, values.password, values.firstname, values.lastname));
+            dispatch(register(values.email, values.password, role, values.firstname, values.lastname));
           } catch (err) {
             console.error(err);
             setStatus({ success: false });
