@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types';
 import { useRef, useState } from 'react';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -26,6 +26,7 @@ import Transitions from 'components/transitions-animations/Transitions';
 import ProfileTab from './ProfileTab';
 import SettingTab from './SettingTab';
 import UnloggedProfileTab from './UnloggedProfileTab';
+import { logout } from 'store/actions/auth';
 
 // assets
 import avatar1 from 'assets/images/users/avatar-1.png';
@@ -58,9 +59,12 @@ function a11yProps(index) {
 const Profile = () => {
   const theme = useTheme();
   const user = useSelector((state) => state.auth.user);
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     // logout
+    console.log('Logout button clicked');
+    dispatch(logout());
   };
 
   const anchorRef = useRef(null);
