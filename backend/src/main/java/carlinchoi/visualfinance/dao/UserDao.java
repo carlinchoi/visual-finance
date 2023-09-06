@@ -18,7 +18,7 @@ public interface UserDao {
     User findByEmail(String email);
     boolean create(String email, String password, String role, String firstName, String lastName);
 
-    void updateUser(User user);
+    void updateProfile(User user);
 
     User getUserByUsername(String username);
 
@@ -26,15 +26,7 @@ public interface UserDao {
 
     void updateUserPassword(User databaseUser, RegisterUserDto user);
 
-    boolean createPendingVolunteerUser(User volunteerPendingUser);
-
-    void updatePendingVolunteerUser(User volunteerPendingUser);
-
-
-
-    List<User> findAllVolunteersAndAdmin();
-
-    void updateUserApplicationStatus(int userId, String newStatus);
 
     void updateUserRole(int userId, String newRole);
+
 }

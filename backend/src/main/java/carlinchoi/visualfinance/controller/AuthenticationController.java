@@ -65,18 +65,6 @@ public class AuthenticationController {
         }
     }
 
-    @RequestMapping(value = "/update-password", method = RequestMethod.PUT)
-    public void updatePassword(@Valid @RequestBody RegisterUserDto newUser) {
-        try {
-              System.out.println(newUser);
-              User user = userDao.findByUsername(newUser.getUsername());
-            userDao.updateUserPassword(user, newUser);
-            userDao.updateUser(user);
-        } catch (UsernameNotFoundException e) {
-            System.out.println("error");
-        }
-    }
-//added this logout ? might need new classes ?
     @PostMapping("/logout")
     public ResponseEntity<Void> logout(HttpServletRequest request) {
         // Get the authentication object from the security context

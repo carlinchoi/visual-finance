@@ -113,14 +113,19 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public void updateUser(User user) {
-        String sql = "UPDATE users\n" +
-                "\tSET role='ROLE_VOLUNTEER'\n" +
-                "\tWHERE user_id= ?;";
-        //User user = new User();
-        //user.setId(userId);
-        jdbcTemplate.update(sql, user.getId());
+    public void updateProfile(User user) {
+        String sql = "UPDATE users SET first_name = ?, last_name = ?, email = ?, password_hash = ? WHERE email = ?";
+        jdbcTemplate.update(
+                sql,
+                user.getFirstName(),
+                user.getLastName(),
+                user.getEmail(),
+                user.getPassword(),
+                user.getEmail()
+        );
     }
+
+
 
     @Override
     public void updateUserPassword(User databaseUser, RegisterUserDto user) {
@@ -132,50 +137,10 @@ public class JdbcUserDao implements UserDao {
     }
 
     @Override
-    public boolean createPendingVolunteerUser(User volunteerPendingUser) {
-        String insertUserSql = "insert into users (username,password_hash,email, first_name, last_name, phone,role) values (?,?,?,?,?,?,?)";
-        System.out.println(insertUserSql);
-        System.out.println(volunteerPendingUser);
-        String password_hash = new BCryptPasswordEncoder().encode(volunteerPendingUser.getTempPassword());
-        System.out.println(password_hash);
-        return jdbcTemplate.update(insertUserSql, volunteerPendingUser.getUsername(), password_hash,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),"ROLE_PENDINGVOLUNTEER")==1;
-    }
-    @Override
-    public void updatePendingVolunteerUser(User volunteerPendingUser) {
-        String insertUserSql = "UPDATE users SET  email=?, first_name=?, last_name=? WHERE username=?";
-        System.out.println(insertUserSql);
-        System.out.println(volunteerPendingUser);
-        jdbcTemplate.update(insertUserSql,volunteerPendingUser.getEmail(),volunteerPendingUser.getFirstName(),volunteerPendingUser.getLastName(),volunteerPendingUser.getUsername() );
-    }
-
-    @Override
-    public List<User> findAllVolunteersAndAdmin() {
-        List<User> volunteers = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE role IN ('ROLE_VOLUNTEER', 'ROLE_ADMIN');";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
-
-        while (result.next()) {
-            volunteers.add(mapRowToUser(result));
-        }
-        return volunteers;
-    }
-
-
-    @Override
-    public void updateUserApplicationStatus(int userId, String newStatus) {
-        String sql = "UPDATE users SET application_status = ? WHERE user_id = ?;";
-        jdbcTemplate.update(sql, newStatus, userId);
-    }
-
-
-
-    @Override
     public void updateUserRole(int userId, String newRole) {
         String sql = "UPDATE users SET role = ? WHERE user_id = ?";
         jdbcTemplate.update(sql, newRole, userId);
     }
-    //comment
-
 
     private User mapRowToUser(SqlRowSet rs) {
         User user = new User();
