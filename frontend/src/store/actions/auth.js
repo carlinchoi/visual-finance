@@ -8,6 +8,8 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 export const REGISTER_SUCCESS = 'REGISTER_SUCCESS';
 export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGOUT = 'LOGOUT';
+export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
+export const EDIT_PROFILE_FAILURE = 'EDIT_PROFILE_FAILURE';
 
 // Action creators
 
@@ -39,5 +41,15 @@ export const logout = () => async (dispatch) => {
     dispatch({ type: LOGOUT });
   } catch (error) {
     // Handle any errors during logout if needed
+  }
+};
+
+//Edit Profile
+export const editProfile = () => async (dispatch) => {
+  try {
+    await axios.patch('/user/update-profile');
+    dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data });
+  } catch (error) {
+    dispatch({ type: EDIT_PROFILE_FAILURE, payload: error });
   }
 };
