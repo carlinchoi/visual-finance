@@ -1,5 +1,6 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 
 // material-ui
 import { useTheme } from '@mui/material/styles';
@@ -11,6 +12,7 @@ import { EditOutlined, ProfileOutlined, LogoutOutlined, UserOutlined, WalletOutl
 const ProfileTab = ({ handleLogout }) => {
   const theme = useTheme();
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const navigate = useNavigate();
 
   const handleListItemClick = (event, index) => {
     setSelectedIndex(index);
@@ -21,13 +23,17 @@ const ProfileTab = ({ handleLogout }) => {
     handleLogout();
   };
 
+  const handleEditProfileClick = () => {
+    navigate('/edit-profile');
+  };
+
   return (
     <List component="nav" sx={{ p: 0, '& .MuiListItemIcon-root': { minWidth: 32, color: theme.palette.grey[500] } }}>
       <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
         <ListItemIcon>
           <EditOutlined />
         </ListItemIcon>
-        <ListItemText primary="Edit Profile" />
+        <ListItemText primary="Edit Profile" onClick={handleEditProfileClick} />
       </ListItemButton>
       <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
         <ListItemIcon>
