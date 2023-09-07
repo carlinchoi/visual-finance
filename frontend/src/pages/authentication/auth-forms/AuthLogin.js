@@ -59,6 +59,7 @@ const AuthLogin = () => {
             setStatus({ success: false });
             // Dispatch the login action here
             dispatch(login(values.email, values.password));
+            dispatch(setLoginSuccess(true));
             setSubmitting(false);
           } catch (err) {
             setStatus({ success: false });
