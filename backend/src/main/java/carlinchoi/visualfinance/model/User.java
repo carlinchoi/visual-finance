@@ -27,7 +27,6 @@ public class User {
    @JsonProperty("lastName")
    @JsonAlias("last_name")
    private String lastName;
-   private String tempPassword;
 
    public User() { }
 
@@ -118,13 +117,7 @@ public class User {
 
 
 
-   public String getTempPassword() {
-      return tempPassword;
-   }
 
-   public void setTempPassword(String tempPassword) {
-      this.tempPassword = tempPassword;
-   }
 
 
 
@@ -148,7 +141,7 @@ public class User {
               ", email='" + email + '\'' +
               ", firstName='" + firstName + '\'' +
               ", lastName='" + lastName + '\'' +
-              ", tempPassword='" + tempPassword + '\'' +
+
               '}';
    }
 
@@ -157,11 +150,11 @@ public class User {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       User user = (User) o;
-      return id == user.id && activated == user.activated && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities) && Objects.equals(role, user.role) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName) && Objects.equals(tempPassword, user.tempPassword);
+      return id == user.id && activated == user.activated && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities) && Objects.equals(role, user.role) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities, role, email, firstName, lastName, tempPassword);
+      return Objects.hash(id, username, password, activated, authorities, role, email, firstName, lastName);
    }
 }

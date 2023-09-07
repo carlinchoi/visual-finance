@@ -44,11 +44,14 @@ export const logout = () => async (dispatch) => {
   }
 };
 
-//Edit Profile
-export const editProfile = () => async (dispatch) => {
+export const editProfile = (requestData, user) => async (dispatch) => {
   try {
-    await axios.patch('/user/update-profile');
-    dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data });
+    const response = await axios.patch('/user/update-profile', requestData, {
+      headers: {
+        Authorization: `Bearer ${user.token}`
+      }
+    });
+    dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data }); // Dispatch the response data
   } catch (error) {
     dispatch({ type: EDIT_PROFILE_FAILURE, payload: error });
   }
