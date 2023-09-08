@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link as RouterLink, useNavigate } from 'react-router-dom'; // Import useNavigate
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   Button,
@@ -19,7 +19,7 @@ import {
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { login } from '../../../store/actions/auth'; // Import logout action
+import { login } from '../../../store/actions/auth';
 import AnimateButton from 'components/transitions-animations/AnimateButton';
 import FirebaseSocial from './FirebaseSocial';
 
@@ -29,7 +29,6 @@ const AuthLogin = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
-  const [setLoggedIn] = React.useState(false);
 
   if (user) {
     navigate('/'); // Redirect to '/dashboard'
@@ -59,10 +58,8 @@ const AuthLogin = () => {
           try {
             setStatus({ success: false });
             // Dispatch the login action here
-            dispatch(login(values.email, values.password));
-            dispatch(setLoginSuccess(true));
+            await dispatch(login(values.email, values.password));
             setSubmitting(false);
-            dispatch(setLoggedIn(true));
           } catch (err) {
             setStatus({ success: false });
             setErrors({ submit: err.message });

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
-import { useSelector } from 'react-redux'; // Import useSelector to access Redux state
+import { useSelector, useDispatch } from 'react-redux'; // Import useSelector to access Redux state
 import HomeText from 'components/cards/HomeText';
 import SearchBar from 'components/SearchBar';
 import MainCard from 'components/MainCard';
@@ -8,12 +8,14 @@ import HomeNews from 'components/cards/HomeNews';
 import HomeExample from 'components/cards/HomeExample';
 import { Alert, Box, Collapse, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
+import { SET_LOGGED_IN } from 'store/actions/auth';
 
 const HomePage = () => {
   // Use loggedIn to control alert rendering
   const [open, setOpen] = useState(false);
+  const dispatch = useDispatch(); // Get the dispatch function
 
-  // Access the loggedIn state from Redux (change from isLoggedIn to loggedIn)
+  // Access the loggedIn state from Redux
   const loggedIn = useSelector((state) => state.auth.loggedIn);
 
   // Use useEffect to display the alert when loggedIn is true
@@ -21,17 +23,15 @@ const HomePage = () => {
     if (loggedIn) {
       // Display the alert
       setOpen(true);
-
-      // After displaying the alert, set loggedIn back to false
+      dispatch({ type: SET_LOGGED_IN, payload: false });
       setTimeout(() => {
         setOpen(false);
-      }, 5000); // Adjust the timeout duration as needed
+      }, 8000); // Adjust the timeout duration as needed
     }
-  }, [loggedIn]);
+  }, [loggedIn, dispatch]); // Include dispatch in the dependency array
 
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '80px' }}>
-      {/* Display the alert when open is true */}
       {open && (
         <Grid item xs={12}>
           <Box sx={{ width: '100%' }}>
@@ -43,8 +43,9 @@ const HomePage = () => {
                     color="inherit"
                     size="small"
                     onClick={() => {
-                      // Close the alert
                       setOpen(false);
+                      // Dispatch an action to set loggedIn to false when the alert is closed
+                      dispatch({ type: SET_LOGGED_IN, payload: false });
                     }}
                   >
                     <CloseIcon fontSize="inherit" />

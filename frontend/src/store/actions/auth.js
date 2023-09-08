@@ -11,7 +11,7 @@ export const LOGOUT = 'LOGOUT';
 export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const EDIT_PROFILE_FAILURE = 'EDIT_PROFILE_FAILURE';
 export const SET_LOGGED_IN = 'SET_LOGGED_IN'; // New action type
-
+export const SET_EDIT_STATUS = 'SET_EDIT_STATUS';
 // Action creators
 
 // Login action
@@ -53,7 +53,8 @@ export const editProfile = (requestData, user) => async (dispatch) => {
         Authorization: `Bearer ${user.token}`
       }
     });
-    dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data }); // Dispatch the response data
+    dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data });
+    dispatch({ type: SET_EDIT_STATUS, payload: response.data });
   } catch (error) {
     dispatch({ type: EDIT_PROFILE_FAILURE, payload: error });
   }

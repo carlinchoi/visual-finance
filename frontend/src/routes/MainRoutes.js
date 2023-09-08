@@ -12,6 +12,7 @@ const HomePage = Loadable(lazy(() => import('pages/HomePage')));
 
 // render - sample page
 const SamplePage = Loadable(lazy(() => import('pages/SamplePage')));
+const EditProfile = Loadable(lazy(() => import('pages/authentication/EditProfile')));
 
 // render - utilities
 
@@ -24,6 +25,10 @@ const MainRoutes = {
     {
       path: '/',
       element: <HomePage />
+    },
+    {
+      path: 'edit-profile',
+      element: <EditProfile />
     },
 
     {

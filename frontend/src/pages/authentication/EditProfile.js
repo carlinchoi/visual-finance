@@ -1,8 +1,8 @@
 import React from 'react';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 
 import { useDispatch, useSelector } from 'react-redux';
-import { editProfile } from 'store/actions/auth';
+import { editProfile, SET_EDIT_STATUS } from 'store/actions/auth';
 import { Formik } from 'formik';
 import {
   Box,
@@ -15,8 +15,12 @@ import {
   InputLabel,
   OutlinedInput,
   Stack,
-  Typography
+  Typography,
+  Alert,
+  Collapse
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
 import * as Yup from 'yup';
 import AnimateButton from 'components/transitions-animations/AnimateButton';
@@ -27,6 +31,8 @@ const EditProfile = () => {
   const user = useSelector((state) => state.auth.user);
   const [showPassword, setShowPassword] = useState(false);
   const [level, setLevel] = useState();
+  const editStatus = useSelector((state) => state.auth.editStatus);
+  const [open, setOpen] = useState(false);
 
   const changePassword = (value) => {
     const temp = strengthIndicator(value);
@@ -41,8 +47,41 @@ const EditProfile = () => {
     event.preventDefault();
   };
 
+  useEffect(() => {
+    if (editStatus) {
+      // Display the alert
+      setOpen(true);
+      dispatch({ type: SET_EDIT_STATUS, payload: false });
+      setTimeout(() => {
+        setOpen(false);
+      }, 5000); // Adjust the timeout duration as needed
+    }
+  }, [editStatus, dispatch]); // Include dispatch in the dependency array
+
   return (
     <div>
+      <Box sx={{ width: '100%' }}>
+        <Collapse in={open}>
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                  dispatch({ type: SET_EDIT_STATUS, payload: false });
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            Changes Saved!
+          </Alert>
+        </Collapse>
+      </Box>
       <h1>Edit Profile</h1>
       <Formik
         initialValues={{
@@ -74,6 +113,7 @@ const EditProfile = () => {
             }
             console.log(requestData.email, requestData.password, requestData.firstName, requestData.lastName);
             dispatch(editProfile(requestData, user));
+            dispatch({ type: SET_EDIT_STATUS, payload: true });
           } catch (err) {
             console.error(err);
             setStatus({ success: false });

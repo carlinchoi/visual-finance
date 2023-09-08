@@ -8,7 +8,8 @@ import {
   LOGOUT,
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAILURE,
-  SET_LOGGED_IN
+  SET_LOGGED_IN,
+  SET_EDIT_STATUS
 } from '../actions/auth';
 
 const initialState = {
@@ -33,7 +34,9 @@ export const authReducer = (state = initialState, action) => {
     case EDIT_PROFILE_FAILURE:
       return { ...state, user: null, error: action.payload };
     case SET_LOGGED_IN:
-      return { ...state, loggedIn: action.payload }; // Update loggedIn
+      return { ...state, loggedIn: action.payload };
+    case SET_EDIT_STATUS:
+      return { ...state, editStatus: action.payload };
     default:
       return state;
   }
