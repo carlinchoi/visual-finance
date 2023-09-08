@@ -29,6 +29,7 @@ const AuthLogin = () => {
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+  const [setLoggedIn] = React.useState(false);
 
   if (user) {
     navigate('/'); // Redirect to '/dashboard'
@@ -61,6 +62,7 @@ const AuthLogin = () => {
             dispatch(login(values.email, values.password));
             dispatch(setLoginSuccess(true));
             setSubmitting(false);
+            dispatch(setLoggedIn(true));
           } catch (err) {
             setStatus({ success: false });
             setErrors({ submit: err.message });

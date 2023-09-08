@@ -1,6 +1,6 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Grid } from '@mui/material';
-import { useSelector } from 'react-redux';
+import { useSelector } from 'react-redux'; // Import useSelector to access Redux state
 import HomeText from 'components/cards/HomeText';
 import SearchBar from 'components/SearchBar';
 import MainCard from 'components/MainCard';
@@ -10,22 +10,24 @@ import { Alert, Box, Collapse, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 
 const HomePage = () => {
-  // Use useSelector to access the user data from Redux state
-  const user = useSelector((state) => state.auth.user);
+  // Use loggedIn to control alert rendering
+  const [open, setOpen] = useState(false);
 
-  // Use useEffect to display the alert when user data is available
+  // Access the loggedIn state from Redux (change from isLoggedIn to loggedIn)
+  const loggedIn = useSelector((state) => state.auth.loggedIn);
+
+  // Use useEffect to display the alert when loggedIn is true
   useEffect(() => {
-    if (user) {
-      console.log('User data:', user);
-
+    if (loggedIn) {
       // Display the alert
-      console.log('Login successful');
       setOpen(true);
-    }
-  }, [user]);
 
-  // State to control the alert visibility
-  const [open, setOpen] = React.useState(false);
+      // After displaying the alert, set loggedIn back to false
+      setTimeout(() => {
+        setOpen(false);
+      }, 5000); // Adjust the timeout duration as needed
+    }
+  }, [loggedIn]);
 
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '80px' }}>

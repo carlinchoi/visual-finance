@@ -10,6 +10,7 @@ export const REGISTER_FAILURE = 'REGISTER_FAILURE';
 export const LOGOUT = 'LOGOUT';
 export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const EDIT_PROFILE_FAILURE = 'EDIT_PROFILE_FAILURE';
+export const SET_LOGGED_IN = 'SET_LOGGED_IN'; // New action type
 
 // Action creators
 
@@ -18,6 +19,7 @@ export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post('/login', { email, password });
     dispatch({ type: LOGIN_SUCCESS, payload: response.data });
+    dispatch({ type: SET_LOGGED_IN, payload: true });
   } catch (error) {
     dispatch({ type: LOGIN_FAILURE, payload: error });
   }
