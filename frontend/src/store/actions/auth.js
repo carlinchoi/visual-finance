@@ -55,8 +55,10 @@ export const editProfile = (requestData, user) => async (dispatch) => {
         Authorization: `Bearer ${user.token}`
       }
     });
+
+    console.log(response.data);
     dispatch({ type: EDIT_PROFILE_SUCCESS, payload: response.data });
-    dispatch({ type: SET_EDIT_STATUS, payload: response.data });
+    dispatch({ type: SET_EDIT_STATUS, payload: true });
   } catch (error) {
     dispatch({ type: EDIT_PROFILE_FAILURE, payload: error });
   }

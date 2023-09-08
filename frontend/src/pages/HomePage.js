@@ -26,22 +26,22 @@ const HomePage = () => {
       dispatch({ type: SET_LOGGED_IN, payload: false });
       setTimeout(() => {
         setOpen(false);
-      }, 8000); // Adjust the timeout duration as needed
+      }, 4500); // Adjust the timeout duration as needed
     }
   }, [loggedIn, dispatch]); // Include dispatch in the dependency array
 
   return (
-    <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '80px' }}>
+    <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '20px' }}>
       {open && (
         <Grid item xs={12}>
-          <Box sx={{ width: '100%' }}>
+          <Box sx={{ width: '100%', marginTop: '-20px' }}>
             <Collapse in={open}>
               <Alert
                 action={
                   <IconButton
                     aria-label="close"
                     color="inherit"
-                    size="small"
+                    size="medium"
                     onClick={() => {
                       setOpen(false);
                       // Dispatch an action to set loggedIn to false when the alert is closed

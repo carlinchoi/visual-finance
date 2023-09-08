@@ -27,11 +27,11 @@ export const authReducer = (state = initialState, action) => {
     case REGISTER_SUCCESS:
       return { ...state, user: action.payload, error: null };
     case REGISTER_FAILURE:
-      return { ...state, user: null, error: action.payload };
+      return { ...state, error: action.payload };
     case LOGOUT:
       return { ...state, user: null, error: null };
     case EDIT_PROFILE_SUCCESS:
-      return { ...state, user: action.payload, error: null };
+      return { ...state, error: null };
     case EDIT_PROFILE_FAILURE:
       return { ...state, user: null, error: action.payload };
     case SET_LOGGED_IN:
