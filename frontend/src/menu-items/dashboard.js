@@ -17,7 +17,7 @@ const dashboard = {
       id: 'stockDashboard',
       title: 'Stock Dashboard',
       type: 'item',
-      url: '/dashboard/default',
+      url: '/dashboard/stocks',
       icon: icons.DashboardOutlined,
       breadcrumbs: false
     },

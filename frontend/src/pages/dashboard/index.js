@@ -10,7 +10,8 @@ import NetCashFlowChart from 'components/charts/NetCashFlow';
 import GrossProfitChart from 'components/charts/GrossProfit';
 import OperatingExpensesChart from 'components/charts/OperatingExpenses';
 import DividendsChart from 'components/charts/Dividends';
-// import HomeText from 'components/cards/HomeText';
+import HomeText from 'components/cards/HomeText';
+import HomeNews from 'components/cards/HomeNews';
 import Price from 'components/additionalStatistics/Price';
 import Financials from 'components/additionalStatistics/Financials';
 import Margins from 'components/additionalStatistics/Margins';
@@ -20,13 +21,31 @@ const DashboardDefault = () => {
 
   return (
     <Grid container justifyContent="center" alignItems="center">
-      <Grid item xs={12} md={5} lg={4}>
-        <MainCard sx={{ mt: 2 }}>
-          <Grid container justifyContent="center">
-            <SearchBar />
+      {!searchTickerInput && (
+        <div>
+          <Grid item xs={12}>
+            <HomeText />
           </Grid>
-        </MainCard>
+        </div>
+      )}
+      ;
+      <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '20px' }}>
+        <Grid item xs={6}>
+          <MainCard sx={{ mt: 2 }}>
+            <SearchBar />
+          </MainCard>
+        </Grid>
       </Grid>
+      {!searchTickerInput && (
+        <div>
+          <Grid container justifyContent="center" style={{ marginTop: '30px' }}>
+            <Grid item xs={5}>
+              <HomeNews />
+            </Grid>
+          </Grid>
+        </div>
+      )}
+      ;
       {searchTickerInput && (
         <Grid container justifyContent="center" alignItems="center">
           <Grid item xs={12} md={5} lg={4}>

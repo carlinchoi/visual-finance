@@ -35,7 +35,7 @@ const MainRoutes = {
       path: 'dashboard',
       children: [
         {
-          path: 'default',
+          path: 'stocks',
           element: <DashboardDefault />
         },
         {
