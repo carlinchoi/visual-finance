@@ -1,9 +1,13 @@
 import React from 'react';
+
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import {
+  Alert,
   Button,
+  Box,
   Checkbox,
+  Collapse,
   Divider,
   FormControlLabel,
   FormHelperText,
@@ -16,19 +20,23 @@ import {
   Stack,
   Typography
 } from '@mui/material';
+import CloseIcon from '@mui/icons-material/Close';
+
 import * as Yup from 'yup';
 import { Formik } from 'formik';
 import { EyeOutlined, EyeInvisibleOutlined } from '@ant-design/icons';
-import { login } from '../../../store/actions/auth';
+import { login, SET_REGISTER_STATUS } from '../../../store/actions/auth';
 import AnimateButton from 'components/transitions-animations/AnimateButton';
 import FirebaseSocial from './FirebaseSocial';
 
 const AuthLogin = () => {
   const [checked, setChecked] = React.useState(false);
+  const [open, setOpen] = React.useState(false);
   const [showPassword, setShowPassword] = React.useState(false);
   const dispatch = useDispatch();
   const user = useSelector((state) => state.auth.user);
   const navigate = useNavigate();
+  const registerStatus = useSelector((state) => state.auth.registerStatus);
 
   if (user) {
     navigate('/'); // Redirect to '/dashboard'
@@ -42,8 +50,41 @@ const AuthLogin = () => {
     event.preventDefault();
   };
 
+  React.useEffect(() => {
+    // Display the alert
+    if (registerStatus) {
+      setOpen(true);
+      dispatch({ type: SET_REGISTER_STATUS, payload: false });
+      setTimeout(() => {
+        setOpen(false);
+      }, 4500); // Adjust the timeout duration as needed
+    }
+  }, [registerStatus, dispatch]);
+
   return (
     <>
+      <Box sx={{ width: '100%' }}>
+        <Collapse in={open}>
+          <Alert
+            action={
+              <IconButton
+                aria-label="close"
+                color="inherit"
+                size="small"
+                onClick={() => {
+                  setOpen(false);
+                  dispatch({ type: SET_REGISTER_STATUS, payload: false });
+                }}
+              >
+                <CloseIcon fontSize="inherit" />
+              </IconButton>
+            }
+            sx={{ mb: 2 }}
+          >
+            Registration Successful! Please Login.
+          </Alert>
+        </Collapse>
+      </Box>
       <Formik
         initialValues={{
           email: 'example@gmail.com',

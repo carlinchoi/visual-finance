@@ -9,7 +9,8 @@ import {
   EDIT_PROFILE_SUCCESS,
   EDIT_PROFILE_FAILURE,
   SET_LOGGED_IN,
-  SET_EDIT_STATUS
+  SET_EDIT_STATUS,
+  SET_REGISTER_STATUS
 } from '../actions/auth';
 
 const initialState = {
@@ -37,6 +38,8 @@ export const authReducer = (state = initialState, action) => {
       return { ...state, loggedIn: action.payload };
     case SET_EDIT_STATUS:
       return { ...state, editStatus: action.payload };
+    case SET_REGISTER_STATUS:
+      return { ...state, registerStatus: action.payload };
     default:
       return state;
   }

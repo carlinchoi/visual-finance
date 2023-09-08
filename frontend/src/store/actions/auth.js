@@ -12,6 +12,7 @@ export const EDIT_PROFILE_SUCCESS = 'EDIT_PROFILE_SUCCESS';
 export const EDIT_PROFILE_FAILURE = 'EDIT_PROFILE_FAILURE';
 export const SET_LOGGED_IN = 'SET_LOGGED_IN'; // New action type
 export const SET_EDIT_STATUS = 'SET_EDIT_STATUS';
+export const SET_REGISTER_STATUS = 'SET_REGISTER_STATUS';
 // Action creators
 
 // Login action
@@ -31,6 +32,7 @@ export const register = (email, password, firstName, lastName) => async (dispatc
     const role = 'USER';
     const response = await axios.post('/register', { email, password, firstName, lastName, role });
     dispatch({ type: REGISTER_SUCCESS, payload: response.data });
+    dispatch({ type: SET_REGISTER_STATUS, payload: true });
   } catch (error) {
     dispatch({ type: REGISTER_FAILURE, payload: error });
   }
