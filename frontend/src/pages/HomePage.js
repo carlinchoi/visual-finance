@@ -9,17 +9,14 @@ import HomeExample from 'components/cards/HomeExample';
 import { Alert, Box, Collapse, IconButton } from '@mui/material';
 import CloseIcon from '@mui/icons-material/Close';
 import { SET_LOGGED_IN } from 'store/actions/auth';
-import { useNavigate } from 'react-router-dom';
 
 const HomePage = () => {
   // Use loggedIn to control alert rendering
   const [open, setOpen] = useState(false);
   const dispatch = useDispatch(); // Get the dispatch function
-  const navigate = useNavigate();
 
   // Access the loggedIn state from Redux
   const loggedIn = useSelector((state) => state.auth.loggedIn);
-  const searchTickerInput = useSelector((state) => state.financialStatement.searchTicker);
 
   // Use useEffect to display the alert when loggedIn is true
   useEffect(() => {
@@ -31,10 +28,7 @@ const HomePage = () => {
         setOpen(false);
       }, 4500); // Adjust the timeout duration as needed
     }
-    if (searchTickerInput) {
-      navigate('/dashboard/stocks');
-    }
-  }, [loggedIn, dispatch]); // Include dispatch in the dependency array
+  }, [loggedIn, dispatch]);
 
   return (
     <Grid container justifyContent="center" alignItems="center" style={{ marginTop: '20px' }}>

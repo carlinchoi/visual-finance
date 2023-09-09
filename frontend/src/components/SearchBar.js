@@ -14,7 +14,7 @@ const SearchBar = ({ setSearchTicker }) => {
   const handleSearch = () => {
     const uppercaseValue = searchValue.toUpperCase();
     setSearchTicker(uppercaseValue);
-    navigate('/dashboard/default');
+    navigate('/dashboard/stocks');
   };
 
   const handleChange = (event) => {
