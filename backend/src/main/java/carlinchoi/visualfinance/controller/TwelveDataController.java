@@ -1,9 +1,9 @@
 package carlinchoi.visualfinance.controller;
 
 import carlinchoi.visualfinance.model.TwelveEarnings;
+import carlinchoi.visualfinance.model.TwelveIndices;
 import carlinchoi.visualfinance.model.TwelveLogo;
 import carlinchoi.visualfinance.service.TwelveDataAPIService;
-import com.fasterxml.jackson.core.JsonProcessingException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -28,8 +28,14 @@ public class TwelveDataController {
     }
 
     @GetMapping("/earnings")
-    public ResponseEntity<List<TwelveEarnings>> getEarnings(@RequestParam("symbol") String symbol) {
+    public ResponseEntity<List<TwelveEarnings>>getEarnings(@RequestParam("symbol") String symbol) {
         List<TwelveEarnings> earnings = twelveDataAPIService.getTwelveEarnings(symbol);
         return ResponseEntity.ok(earnings);
+    }
+
+    @GetMapping("/twelve-indices")
+    public ResponseEntity<List<TwelveIndices>> getIndices(@RequestParam("symbol") String symbol) {
+        List<TwelveIndices> indices = twelveDataAPIService.getTwelveIndices(symbol);
+        return ResponseEntity.ok(indices);
     }
 }
