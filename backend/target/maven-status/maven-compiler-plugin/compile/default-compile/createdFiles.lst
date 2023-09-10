@@ -10,6 +10,7 @@ carlinchoi\visualfinance\model\StockDividends.class
 carlinchoi\visualfinance\model\StockFinancials$CashFlowStatement.class
 carlinchoi\visualfinance\service\CoinGeckoAPIService$1.class
 carlinchoi\visualfinance\model\CoinGecko$Result.class
+carlinchoi\visualfinance\model\UpdateProfileDto.class
 carlinchoi\visualfinance\model\Indices.class
 carlinchoi\visualfinance\model\StockDataNews$Highlight.class
 carlinchoi\visualfinance\security\JwtAccessDeniedHandler.class
@@ -23,6 +24,7 @@ carlinchoi\visualfinance\model\TwelveEarnings$Earning.class
 carlinchoi\visualfinance\model\StockFinancials$Result.class
 carlinchoi\visualfinance\VisualFinanceApplication$1.class
 carlinchoi\visualfinance\controller\StockFinancialController.class
+carlinchoi\visualfinance\model\TwelveIndices.class
 carlinchoi\visualfinance\controller\UserController.class
 carlinchoi\visualfinance\model\Authority.class
 carlinchoi\visualfinance\model\LoginDto.class
@@ -61,6 +63,7 @@ carlinchoi\visualfinance\security\WebSecurityConfig.class
 carlinchoi\visualfinance\model\TwelveLogo.class
 carlinchoi\visualfinance\security\UserNotActivatedException.class
 carlinchoi\visualfinance\model\User.class
+carlinchoi\visualfinance\model\TwelveIndices$FiftyTwoWeek.class
 carlinchoi\visualfinance\model\StockFinancials$BalanceSheet.class
 carlinchoi\visualfinance\security\JwtAuthenticationEntryPoint.class
 carlinchoi\visualfinance\controller\SecurityTest.class

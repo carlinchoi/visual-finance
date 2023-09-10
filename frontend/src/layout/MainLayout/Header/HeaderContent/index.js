@@ -7,8 +7,9 @@ import { GithubOutlined } from '@ant-design/icons';
 import Profile from './Profile';
 import Notification from './Notification';
 import MobileSection from './MobileSection';
-import Indices from './Indices';
+// import Indices from './Indices';
 
+import TwelveIndices from './TwelveIndices';
 // ==============================|| HEADER - CONTENT ||============================== //
 
 const HeaderContent = () => {
@@ -19,7 +20,7 @@ const HeaderContent = () => {
       {/* {!matchesXs && <Search />}
       {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />} */}
 
-      {!matchesXs && <Indices />}
+      {!matchesXs && <TwelveIndices />}
       {matchesXs && <Box sx={{ width: '100%', ml: 1 }} />}
 
       <IconButton
