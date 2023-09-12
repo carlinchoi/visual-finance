@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Grid, Paper } from '@mui/material';
+import { Grid, Paper, TableSortLabel } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -22,7 +22,7 @@ const StyledTableCell = styled(TableCell)(({ theme }) => ({
 }));
 
 const StyledTableRow = styled(TableRow)(({ theme }) => ({
-  '&:nth-of-type(odd)': {
+  '&:nth-of-type(even)': {
     backgroundColor: theme.palette.action.hover
   },
   '&:last-child td, &:last-child th': {
@@ -32,11 +32,10 @@ const StyledTableRow = styled(TableRow)(({ theme }) => ({
 
 function createData(name, value, shares, invested) {
   const gains = value - invested;
-  const allocation = ((value / invested) * 100).toFixed(2);
-  return { name, value, gains, allocation, shares, invested };
+  return { name, value, gains, shares, invested };
 }
 
-const rows = [
+const initialRows = [
   createData('Microsoft', 17554, 8.3, 10000),
   createData('Apple', 15000, 6.5, 12000),
   createData('Google', 22000, 10.0, 20000),
@@ -45,6 +44,41 @@ const rows = [
 ];
 
 const StockPorfolioPage = () => {
+  const [rows, setRows] = useState(initialRows);
+  const [sortOrder, setSortOrder] = useState('asc');
+  const [sortedColumn, setSortedColumn] = useState(null);
+
+  useEffect(() => {
+    // Calculate the total portfolio value
+    const totalValue = rows.reduce((total, row) => total + row.value, 0);
+
+    // Calculate the correct allocation percentage
+    const updatedRows = rows.map((row) => {
+      const allocation = ((row.value / totalValue) * 100).toFixed(2);
+      return { ...row, allocation };
+    });
+
+    setRows(updatedRows);
+  }, [rows]);
+
+  const handleSort = (column) => {
+    const isAsc = sortedColumn === column && sortOrder === 'asc';
+    const newSortOrder = isAsc ? 'desc' : 'asc';
+
+    setSortedColumn(column);
+    setSortOrder(newSortOrder);
+
+    const sortedRows = [...rows].sort((a, b) => {
+      if (column === 'name') {
+        return isAsc ? a.name.localeCompare(b.name) : b.name.localeCompare(a.name);
+      } else {
+        return isAsc ? a[column] - b[column] : b[column] - a[column];
+      }
+    });
+
+    setRows(sortedRows);
+  };
+
   return (
     <div>
       <Grid container spacing={2}>
@@ -54,7 +88,7 @@ const StockPorfolioPage = () => {
               <Typography variant="h3" gutterBottom>
                 Total Value
               </Typography>
-              <Typography variant="h1">$82,554</Typography>
+              <Typography variant="h1">${rows.reduce((total, row) => total + row.value, 0)}</Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -64,7 +98,7 @@ const StockPorfolioPage = () => {
               <Typography variant="h3" gutterBottom>
                 # of Stocks
               </Typography>
-              <Typography variant="h1">37</Typography>
+              <Typography variant="h1">{rows.length}</Typography>
             </CardContent>
           </Card>
         </Grid>
@@ -76,14 +110,38 @@ const StockPorfolioPage = () => {
       <Grid container>
         <TableContainer component={Paper}>
           <Table sx={{ minWidth: 700 }} aria-label="customized table">
-            <TableHead>
+            <TableHead style={{ backgroundColor: '#E3F5FF' }}>
               <TableRow>
-                <StyledTableCell>Name</StyledTableCell>
-                <StyledTableCell align="right">Value</StyledTableCell>
-                <StyledTableCell align="right">Gain / Return</StyledTableCell>
-                <StyledTableCell align="right">Allocation %</StyledTableCell>
-                <StyledTableCell align="right">Shares</StyledTableCell>
-                <StyledTableCell align="right">Invested</StyledTableCell>
+                <StyledTableCell>
+                  <TableSortLabel active={sortedColumn === 'name'} direction={sortOrder} onClick={() => handleSort('name')}>
+                    Name
+                  </TableSortLabel>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <TableSortLabel active={sortedColumn === 'value'} direction={sortOrder} onClick={() => handleSort('value')}>
+                    Current Value
+                  </TableSortLabel>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <TableSortLabel active={sortedColumn === 'gains'} direction={sortOrder} onClick={() => handleSort('gains')}>
+                    Gain / Return
+                  </TableSortLabel>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <TableSortLabel active={sortedColumn === 'allocation'} direction={sortOrder} onClick={() => handleSort('allocation')}>
+                    Allocation %
+                  </TableSortLabel>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <TableSortLabel active={sortedColumn === 'shares'} direction={sortOrder} onClick={() => handleSort('shares')}>
+                    Shares
+                  </TableSortLabel>
+                </StyledTableCell>
+                <StyledTableCell align="right">
+                  <TableSortLabel active={sortedColumn === 'invested'} direction={sortOrder} onClick={() => handleSort('invested')}>
+                    Invested
+                  </TableSortLabel>
+                </StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
@@ -92,11 +150,11 @@ const StockPorfolioPage = () => {
                   <StyledTableCell component="th" scope="row">
                     {row.name}
                   </StyledTableCell>
-                  <StyledTableCell align="right">{row.value}</StyledTableCell>
+                  <StyledTableCell align="right">${row.value}</StyledTableCell>
                   <StyledTableCell align="right">{row.gains}</StyledTableCell>
                   <StyledTableCell align="right">{row.allocation}%</StyledTableCell>
                   <StyledTableCell align="right">{row.shares}</StyledTableCell>
-                  <StyledTableCell align="right">{row.invested}</StyledTableCell>
+                  <StyledTableCell align="right">${row.invested}</StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
