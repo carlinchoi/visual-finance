@@ -82,7 +82,7 @@ const TwelveIndices = () => {
             <Typography textAlign="left">
               ${`${data[0].open.toFixed(2)}`}
               <span style={{ color: data[0].percent_change >= 0 ? 'green' : 'red', marginLeft: '10px' }}>
-                {`${data[0].percent_change.toFixed(2)}%`}
+                {data[0].percent_change >= 0 ? `+${data[0].percent_change.toFixed(2)}%` : `${data[0].percent_change.toFixed(2)}%`}
               </span>
             </Typography>
           </Box>
