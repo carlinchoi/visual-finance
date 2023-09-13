@@ -154,9 +154,9 @@ const Profile = () => {
                             <Stack>
                               {user ? (
                                 <>
-                                  <Typography variant="h6">{`${user.firstName} ${user.lastName}`}</Typography>
+                                  <Typography variant="h6">{`${user.user.firstName} ${user.user.lastName}`}</Typography>
                                   <Typography variant="body2" color="textSecondary">
-                                    UI/UX Designer
+                                    Visual Investor
                                   </Typography>
                                 </>
                               ) : (
