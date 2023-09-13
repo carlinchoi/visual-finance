@@ -11,8 +11,6 @@ const CryptoPage = Loadable(lazy(() => import('pages/CryptoPage')));
 
 const HomePage = Loadable(lazy(() => import('pages/HomePage')));
 
-// render - sample page
-const SamplePage = Loadable(lazy(() => import('pages/SamplePage')));
 const EditProfile = Loadable(lazy(() => import('pages/authentication/EditProfile')));
 
 // ==============================|| MAIN ROUTING ||============================== //
@@ -46,10 +44,6 @@ const MainRoutes = {
           element: <CryptoPage />
         }
       ]
-    },
-    {
-      path: 'sample-page',
-      element: <SamplePage />
     },
     {
       path: 'portfolio',
