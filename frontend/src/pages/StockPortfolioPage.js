@@ -10,6 +10,7 @@ import TableCell from '@mui/material/TableCell';
 import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
+import Chart from 'react-apexcharts';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${theme.breakpoints.up('sm')} th`]: {
@@ -47,6 +48,7 @@ const StockPorfolioPage = () => {
   const [rows, setRows] = useState(initialRows);
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortedColumn, setSortedColumn] = useState(null);
+  const [donutChartData, setDonutChartData] = useState([]);
 
   useEffect(() => {
     // Calculate the total portfolio value
@@ -59,6 +61,14 @@ const StockPorfolioPage = () => {
     });
 
     setRows(updatedRows);
+
+    // Calculate data for the donut chart
+    const donutData = updatedRows.map((row) => ({
+      name: row.name,
+      data: parseFloat(row.allocation) // Convert to a floating-point number
+    }));
+
+    setDonutChartData(donutData);
   }, [rows]);
 
   const handleSort = (column) => {
@@ -79,11 +89,32 @@ const StockPorfolioPage = () => {
     setRows(sortedRows);
   };
 
+  const options = {
+    chart: {
+      type: 'donut'
+    },
+    labels: donutChartData.map((data) => data.name), // Labels for the segments
+    colors: ['#FF5733', '#FFC300', '#4CAF50', '#2196F3', '#9C27B0'], // Colors for segments
+    legend: {
+      show: true, // Display a legend
+      position: 'bottom' // Position of the legend (e.g., 'top', 'bottom', 'left', 'right')
+    },
+    title: {
+      text: 'Porfolio Allocation',
+      align: 'center',
+      style: {
+        fontSize: '18px',
+        fontWeight: 'bold'
+        // fontFamily: undefined
+      }
+    }
+  };
+
   return (
     <div>
-      <Grid container spacing={2}>
-        <Grid item xs={3}>
-          <Card sx={{ minWidth: 100 }}>
+      <Grid container spacing={2} justifyContent="center" alignItems="center">
+        <Grid item xs={12} sm={5}>
+          <Card>
             <CardContent>
               <Typography variant="h3" gutterBottom>
                 Total Value
@@ -91,9 +122,7 @@ const StockPorfolioPage = () => {
               <Typography variant="h1">${rows.reduce((total, row) => total + row.value, 0)}</Typography>
             </CardContent>
           </Card>
-        </Grid>
-        <Grid item xs={3}>
-          <Card sx={{ minWidth: 100 }}>
+          <Card sx={{ marginTop: '2%' }}>
             <CardContent>
               <Typography variant="h3" gutterBottom>
                 # of Stocks
@@ -101,6 +130,16 @@ const StockPorfolioPage = () => {
               <Typography variant="h1">{rows.length}</Typography>
             </CardContent>
           </Card>
+        </Grid>
+        <Grid item xs={12} sm={7}>
+          <Chart
+            options={options} // Add your chart options here
+            series={donutChartData.map((data) => data.data)}
+            labels={donutChartData.map((data) => data.name)}
+            type="donut"
+            width={700}
+            height={500}
+          />
         </Grid>
       </Grid>
 
