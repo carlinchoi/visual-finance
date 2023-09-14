@@ -93,11 +93,11 @@ const StockPorfolioPage = () => {
     chart: {
       type: 'donut'
     },
-    labels: donutChartData.map((data) => data.name), // Labels for the segments
-    colors: ['#FF5733', '#FFC300', '#4CAF50', '#2196F3', '#9C27B0'], // Colors for segments
+    labels: donutChartData.map((data) => data.name),
+    colors: ['#FF5733', '#FFC300', '#4CAF50', '#2196F3', '#9C27B0'],
     legend: {
-      show: true, // Display a legend
-      position: 'bottom' // Position of the legend (e.g., 'top', 'bottom', 'left', 'right')
+      show: true,
+      position: 'bottom'
     },
     title: {
       text: 'Porfolio Allocation',
@@ -105,7 +105,6 @@ const StockPorfolioPage = () => {
       style: {
         fontSize: '18px',
         fontWeight: 'bold'
-        // fontFamily: undefined
       }
     }
   };
@@ -133,7 +132,7 @@ const StockPorfolioPage = () => {
         </Grid>
         <Grid item xs={12} sm={7}>
           <Chart
-            options={options} // Add your chart options here
+            options={options}
             series={donutChartData.map((data) => data.data)}
             labels={donutChartData.map((data) => data.name)}
             type="donut"
@@ -143,7 +142,6 @@ const StockPorfolioPage = () => {
         </Grid>
       </Grid>
 
-      {/* Add space between the two grid containers */}
       <div style={{ marginTop: '20px' }}></div>
 
       <Grid container>
