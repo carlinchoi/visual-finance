@@ -1,4 +1,5 @@
 #!/bin/bash
+export PGHOST=visualfinancedatabase.cnj1icqbobib.us-west-1.rds.amazonaws.com
 export PGPASSWORD='gogosing'
 BASEDIR=$(dirname $0)
 DATABASE=visualfinance
