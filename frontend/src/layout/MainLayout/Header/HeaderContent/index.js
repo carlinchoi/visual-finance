@@ -23,7 +23,7 @@ const HeaderContent = () => {
         target="_blank"
         disableRipple
         color="secondary"
-        title="Download Free Version"
+        title="Visual Finance Github Repository"
         sx={{ color: 'text.primary', bgcolor: 'grey.100' }}
       >
         <GithubOutlined />

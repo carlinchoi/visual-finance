@@ -80,32 +80,32 @@ const DashboardDefault = () => {
       )}
       {searchTickerInput && (
         <Grid container justifyContent="center">
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <RevenueChart />
             </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <CurrentLiabilitiesChart />
             </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <NetCashFlowChart />
             </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <GrossProfitChart />
             </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <OperatingExpensesChart />
             </MainCard>
           </Grid>
-          <Grid item xs={12} md={5} lg={4}>
+          <Grid item xs={12} md={12} lg={4}>
             <MainCard sx={{ mt: 2 }}>
               <DividendsChart />
             </MainCard>
