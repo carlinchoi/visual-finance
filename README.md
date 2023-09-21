@@ -20,8 +20,12 @@ This project leverages a stack of modern technologies:
 
 - **Stock Tracking**: Monitor the latest stock prices, trends, and historical data for your favorite companies.
 - **Interactive Visualization**: Explore stock data through interactive charts and visualizations.
+![visualfront](https://github.com/carlinchoi/visual-finance/assets/113961812/4a7668a0-17f3-46ef-bad8-c1b4285e3d47)
 - **Top 100 Crypto Tracking**: Grab the real-time changes in crypto prices, supply, and other metrics in one click.
+  ![cryptodash](https://github.com/carlinchoi/visual-finance/assets/113961812/934104c8-e4d1-409c-a9ae-57ddd251dedf)
 - **Personal Portfolio**: Create and manage your stock portfolio to track your investments.
+![portfolio](https://github.com/carlinchoi/visual-finance/assets/113961812/244afd1c-30c5-4123-be72-1c1b48aa7c56)
+
 - **User Accounts & Authentication**: Create your user account to personalize your stock tracking experience.
 - **News & Insights**: Stay updated with the latest financial news and insights.
 - **User Community**: Engage with a community of investors and share your stock analysis.
