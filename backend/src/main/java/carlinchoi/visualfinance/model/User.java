@@ -11,8 +11,6 @@ import java.util.Set;
 public class User {
 
    private int id;
-   private String username;
-   @JsonIgnore
    private String password;
    @JsonIgnore
    private boolean activated;
@@ -31,9 +29,8 @@ public class User {
    public User() { }
 
 
-   public User(int id, String username, String password, boolean activated, Set<Authority> authorities, String role, String email, String firstName, String lastName) {
+   public User(int id, String password, boolean activated, Set<Authority> authorities, String role, String email, String firstName, String lastName) {
       this.id = id;
-      this.username = username;
       this.password = password;
       this.activated = activated;
       this.authorities = authorities;
@@ -49,14 +46,6 @@ public class User {
 
    public void setId(int id) {
       this.id = id;
-   }
-
-   public String getUsername() {
-      return username;
-   }
-
-   public void setUsername(String username) {
-      this.username = username;
    }
 
    public String getPassword() {
@@ -133,7 +122,6 @@ public class User {
    public String toString() {
       return "User{" +
               "id=" + id +
-              ", username='" + username + '\'' +
               ", password='" + password + '\'' +
               ", activated=" + activated +
               ", authorities=" + authorities +
@@ -150,11 +138,11 @@ public class User {
       if (this == o) return true;
       if (o == null || getClass() != o.getClass()) return false;
       User user = (User) o;
-      return id == user.id && activated == user.activated && Objects.equals(username, user.username) && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities) && Objects.equals(role, user.role) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
+      return id == user.id && activated == user.activated && Objects.equals(password, user.password) && Objects.equals(authorities, user.authorities) && Objects.equals(role, user.role) && Objects.equals(email, user.email) && Objects.equals(firstName, user.firstName) && Objects.equals(lastName, user.lastName);
    }
 
    @Override
    public int hashCode() {
-      return Objects.hash(id, username, password, activated, authorities, role, email, firstName, lastName);
+      return Objects.hash(id, password, activated, authorities, role, email, firstName, lastName);
    }
 }

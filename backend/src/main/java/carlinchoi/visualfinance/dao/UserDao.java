@@ -11,7 +11,6 @@ public interface UserDao {
 
     User getUserById(int userId);
 
-    User findByUsername(String username);
 
     int findIdByUsername(String username);
 
@@ -20,7 +19,7 @@ public interface UserDao {
 
     void updateProfile(User user);
 
-    User getUserByUsername(String username);
+
 
     void deleteUser(User username);
 

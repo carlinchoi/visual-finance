@@ -16,13 +16,19 @@ export const SET_REGISTER_STATUS = 'SET_REGISTER_STATUS';
 // Action creators
 
 // Login action
+// Updated login action
 export const login = (email, password) => async (dispatch) => {
   try {
     const response = await axios.post('/login', { email, password });
     dispatch({ type: LOGIN_SUCCESS, payload: response.data });
     dispatch({ type: SET_LOGGED_IN, payload: true });
   } catch (error) {
-    dispatch({ type: LOGIN_FAILURE, payload: error });
+    // Handle Axios error and extract the error message
+    let errorMessage = 'An error occurred during login.';
+    if (error.response && error.response.data && error.response.data.message) {
+      errorMessage = error.response.data.message;
+    }
+    dispatch({ type: LOGIN_FAILURE, payload: errorMessage });
   }
 };
 

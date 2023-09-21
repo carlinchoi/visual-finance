@@ -79,8 +79,8 @@ public class UserController {
 
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(value = "/{username}", method = RequestMethod.DELETE)
-    public void deleteUser(@RequestBody User user, @PathVariable("username") String username) {
-        user = userDao.getUserByUsername(username);
+    public void deleteUser(@RequestBody User user, @PathVariable("email") String email) {
+        user = userDao.findByEmail(email);
         userDao.deleteUser(user);
     }
 
