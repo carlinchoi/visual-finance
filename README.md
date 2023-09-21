@@ -28,7 +28,6 @@ This project leverages a stack of modern technologies:
 
 - **User Accounts & Authentication**: Create your user account to personalize your stock tracking experience.
 - **News & Insights**: Stay updated with the latest financial news and insights.
-- **User Community**: Engage with a community of investors and share your stock analysis.
 
 ## Installation
 
