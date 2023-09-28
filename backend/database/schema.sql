@@ -14,7 +14,13 @@ CREATE TABLE users (
 );
 
 CREATE TABLE stock_portfolio (
-    stock_id SERIAL,
-    stock
+    portfolio_id SERIAL PRIMARY KEY,
+    user_id INT NOT NULL, -- This links the portfolio to a specific user
+    stock_name VARCHAR(255) NOT NULL,
+    dollars_invested DECIMAL(10, 2) NOT NULL,
+    number_of_shares INT NOT NULL,
+    stock_price DECIMAL(10, 2) NOT NULL,
+    CONSTRAINT FK_user_portfolio FOREIGN KEY (user_id) REFERENCES users(user_id)
 );
+
 COMMIT TRANSACTION;
