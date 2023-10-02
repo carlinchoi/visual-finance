@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Grid, Paper, TableSortLabel } from '@mui/material';
+import { Grid, Paper, TableSortLabel, Button } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -11,6 +11,8 @@ import TableContainer from '@mui/material/TableContainer';
 import TableHead from '@mui/material/TableHead';
 import TableRow from '@mui/material/TableRow';
 import Chart from 'react-apexcharts';
+import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${theme.breakpoints.up('sm')} th`]: {
@@ -51,10 +53,8 @@ const StockPorfolioPage = () => {
   const [donutChartData, setDonutChartData] = useState([]);
 
   useEffect(() => {
-    // Calculate the total portfolio value
     const totalValue = rows.reduce((total, row) => total + row.value, 0);
 
-    // Calculate the correct allocation percentage
     const updatedRows = rows.map((row) => {
       const allocation = ((row.value / totalValue) * 100).toFixed(2);
       return { ...row, allocation };
@@ -62,10 +62,9 @@ const StockPorfolioPage = () => {
 
     setRows(updatedRows);
 
-    // Calculate data for the donut chart
     const donutData = updatedRows.map((row) => ({
       name: row.name,
-      data: parseFloat(row.allocation) // Convert to a floating-point number
+      data: parseFloat(row.allocation)
     }));
 
     setDonutChartData(donutData);
@@ -87,6 +86,12 @@ const StockPorfolioPage = () => {
     });
 
     setRows(sortedRows);
+  };
+
+  const handleAddEntry = () => {
+    const newEntry = createData('', 0, 0, 0);
+
+    setRows([...rows, newEntry]);
   };
 
   const options = {
@@ -198,6 +203,14 @@ const StockPorfolioPage = () => {
           </Table>
         </TableContainer>
       </Grid>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'right', marginTop: '20px' }}>
+        <Button variant="outlined" startIcon={<DeleteIcon />}>
+          Delete
+        </Button>
+        <Button variant="contained" endIcon={<AddCircleOutlineIcon />} onClick={handleAddEntry}>
+          Add to Portfolio
+        </Button>
+      </div>
     </div>
   );
 };
