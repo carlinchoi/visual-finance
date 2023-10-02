@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import { Grid, Paper, TableSortLabel, Button } from '@mui/material';
+import { Grid, Paper, TableSortLabel, Button, TextField } from '@mui/material';
 import { styled } from '@mui/material/styles';
 import Table from '@mui/material/Table';
 import TableBody from '@mui/material/TableBody';
@@ -13,6 +13,7 @@ import TableRow from '@mui/material/TableRow';
 import Chart from 'react-apexcharts';
 import AddCircleOutlineIcon from '@mui/icons-material/AddCircleOutline';
 import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 
 const StyledTableCell = styled(TableCell)(({ theme }) => ({
   [`&.${theme.breakpoints.up('sm')} th`]: {
@@ -46,11 +47,14 @@ const initialRows = [
   createData('Facebook', 13000, 5.8, 11000)
 ];
 
-const StockPorfolioPage = () => {
+const StockPortfolioPage = () => {
   const [rows, setRows] = useState(initialRows);
   const [sortOrder, setSortOrder] = useState('asc');
   const [sortedColumn, setSortedColumn] = useState(null);
   const [donutChartData, setDonutChartData] = useState([]);
+  const [isEditing, setIsEditing] = useState(null); // Track which row is being edited
+  // const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false); // Control delete confirmation dialog
+  const [editedRow, setEditedRow] = useState({});
 
   useEffect(() => {
     const totalValue = rows.reduce((total, row) => total + row.value, 0);
@@ -90,9 +94,50 @@ const StockPorfolioPage = () => {
 
   const handleAddEntry = () => {
     const newEntry = createData('', 0, 0, 0);
-
     setRows([...rows, newEntry]);
   };
+
+  const handleEdit = (rowIndex) => {
+    setIsEditing(rowIndex);
+    setEditedRow({ ...rows[rowIndex] });
+  };
+
+  const handleSaveEdit = () => {
+    if (isEditing !== null) {
+      const updatedRows = [...rows];
+      const editedRowCopy = { ...editedRow };
+
+      // Calculate gains and allocation
+      editedRowCopy.gains = editedRowCopy.value - editedRowCopy.invested;
+      const totalValue = rows.reduce((total, row) => (row === editedRow ? editedRowCopy : row).value, 0);
+      editedRowCopy.allocation = ((editedRowCopy.value / totalValue) * 100).toFixed(2);
+
+      updatedRows[isEditing] = editedRowCopy;
+      setRows(updatedRows);
+      setIsEditing(null);
+    }
+  };
+
+  const handleCancelEdit = () => {
+    setIsEditing(null);
+  };
+
+  // const handleDelete = (rowIndex) => {
+  //   setIsDeleteDialogOpen(true);
+  //   setIsEditing(null);
+  // };
+
+  // const handleConfirmDelete = () => {
+  //   if (isEditing !== null) {
+  //     // If editing, cancel editing before deleting
+  //     setIsEditing(null);
+  //   }
+
+  //   const updatedRows = [...rows];
+  //   updatedRows.splice(isDeleteDialogOpen, 1);
+  //   setRows(updatedRows);
+  //   setIsDeleteDialogOpen(false);
+  // };
 
   const options = {
     chart: {
@@ -105,7 +150,7 @@ const StockPorfolioPage = () => {
       position: 'bottom'
     },
     title: {
-      text: 'Porfolio Allocation',
+      text: 'Portfolio Allocation',
       align: 'center',
       style: {
         fontSize: '18px',
@@ -184,29 +229,73 @@ const StockPorfolioPage = () => {
                     Invested
                   </TableSortLabel>
                 </StyledTableCell>
+                <StyledTableCell align="right">Actions</StyledTableCell>
               </TableRow>
             </TableHead>
             <TableBody>
-              {rows.map((row) => (
+              {rows.map((row, index) => (
                 <StyledTableRow key={row.name}>
                   <StyledTableCell component="th" scope="row">
-                    {row.name}
+                    {isEditing === index ? (
+                      <TextField value={editedRow.name} onChange={(e) => setEditedRow({ ...editedRow, name: e.target.value })} />
+                    ) : (
+                      row.name
+                    )}
                   </StyledTableCell>
-                  <StyledTableCell align="right">${row.value}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    {isEditing === index ? (
+                      <TextField value={editedRow.value} onChange={(e) => setEditedRow({ ...editedRow, value: e.target.value })} />
+                    ) : (
+                      `$${row.value}`
+                    )}
+                  </StyledTableCell>
                   <StyledTableCell align="right">{row.gains}</StyledTableCell>
                   <StyledTableCell align="right">{row.allocation}%</StyledTableCell>
-                  <StyledTableCell align="right">{row.shares}</StyledTableCell>
-                  <StyledTableCell align="right">${row.invested}</StyledTableCell>
+                  <StyledTableCell align="right">
+                    {isEditing === index ? (
+                      <TextField
+                        value={editedRow.shares} // Use editedRow.shares here
+                        onChange={(e) => setEditedRow({ ...editedRow, shares: e.target.value })} // Update shares property
+                      />
+                    ) : (
+                      `${row.shares}`
+                    )}
+                  </StyledTableCell>
+                  <StyledTableCell align="right">
+                    {isEditing === index ? (
+                      <TextField
+                        value={editedRow.invested} // Use editedRow.invested here
+                        onChange={(e) => setEditedRow({ ...editedRow, invested: e.target.value })} // Update invested property
+                      />
+                    ) : (
+                      `$${row.invested}`
+                    )}
+                  </StyledTableCell>
+
+                  <StyledTableCell align="right">
+                    {isEditing === index ? (
+                      <>
+                        <Button onClick={handleSaveEdit}>Save</Button>
+                        <Button onClick={handleCancelEdit}>Cancel</Button>
+                      </>
+                    ) : (
+                      <>
+                        <Button onClick={() => handleEdit(index)} startIcon={<EditIcon />} disabled={isEditing !== null}>
+                          Edit
+                        </Button>
+                        <Button onClick={() => handleDelete(index)} startIcon={<DeleteIcon />} disabled={isEditing !== null}>
+                          Delete
+                        </Button>
+                      </>
+                    )}
+                  </StyledTableCell>
                 </StyledTableRow>
               ))}
             </TableBody>
           </Table>
         </TableContainer>
       </Grid>
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'right', marginTop: '20px' }}>
-        <Button variant="outlined" startIcon={<DeleteIcon />}>
-          Delete
-        </Button>
+      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', marginTop: '20px' }}>
         <Button variant="contained" endIcon={<AddCircleOutlineIcon />} onClick={handleAddEntry}>
           Add to Portfolio
         </Button>
@@ -215,4 +304,4 @@ const StockPorfolioPage = () => {
   );
 };
 
-export default StockPorfolioPage;
+export default StockPortfolioPage;
